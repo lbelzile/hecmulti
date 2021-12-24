@@ -4,6 +4,6 @@ Ce paquetage **R** contient des fonctions et les jeux de données du cours MATH 
 
 Vous pouvez installer le paquetage à partir de Github à l'aide des commandes suivantes après avoir installé `remotes`:
 ```R
-install.packages(c("learnr","remotes"))
+install.packages("remotes")
 remotes::install_github("lbelzile/hecmulti")
 ```
