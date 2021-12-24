@@ -1,0 +1,17 @@
+Package: hecmulti
+Type: Package
+Title: Matériel de cours pour Analyse multidimensionnelle appliquée
+Version: 2021.12.23
+Author: Leo Belzile
+Maintainer: Leo Belzile <leo.belzile@hec.ca>
+Description: Jeux de données et fonctions pour 
+    Analyse multidimensionnelle appliquée (MATH 60602) 
+    à HEC Montréal
+License: CC BY-SA 4.0
+Encoding: UTF-8
+LazyData: true
+Depends: 
+    R (>= 4.0)
+Imports: ggplot2, poorman, viridis
+Suggests: survival
+RoxygenNote: 7.1.2
