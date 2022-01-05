@@ -1,7 +1,7 @@
 Package: hecmulti
 Type: Package
 Title: Matériel de cours pour Analyse multidimensionnelle appliquée
-Version: 2022.01.04
+Version: 2022.01.05
 Author: Leo Belzile
 Maintainer: Leo Belzile <leo.belzile@hec.ca>
 Description: Jeux de données et fonctions pour 
@@ -12,6 +12,15 @@ Encoding: UTF-8
 LazyData: true
 Depends: 
     R (>= 4.0)
-Imports: ggplot2, poorman, viridis, stats
-Suggests: survival
+Imports: 
+    ggplot2, 
+    poorman, 
+    patchwork
+Suggests: 
+    rmarkdown,
+    knitr,
+    survival,
+    corrplot,
+    psych
 RoxygenNote: 7.1.2
+VignetteBuilder: knitr

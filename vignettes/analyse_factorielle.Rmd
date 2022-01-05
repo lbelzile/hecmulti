@@ -1,0 +1,128 @@
+---
+title: "Analyse factorielle"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{analyse_factorielle}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(hecmulti)
+```
+
+# Introduction à l'analyse factorielle
+
+L'analyse factorielle consiste à résumer une matrice de covariance à l'aide d'un plus petit nombre de paramètres. 
+Si on charge les données dans l'environnement, on remarque que toutes les variables correspondent à des échelles de Likert allant de un à cinq. Il n'est donc pas nécessaire de standardiser les données (en travaillant avec la matrice de corrélation). 
+
+```{r dataload, eval = TRUE, echo = TRUE, fig.cap = "Matrice de corrélation"}
+data(factor, package = "hecmulti")
+# Statistiques descriptives de base
+summary(factor)
+# Matrice de corrélation
+cormat <- cor(factor, method = "pearson")
+corrplot::corrplot(cormat)
+```
+
+# Estimation
+
+Il y a deux méthodes principales d'estimation:
+
+- la méthode du maximum de vraisemblance, qui suppose que les facteurs et les aléas sont gaussiens et indépendants; cela donne naissance à une fonction de vraisemblance pour la matrice de covariance empirique (Wishart)
+- la méthode des composantes principales: on retient uniquement $k$ vecteurs propres de la matrice de covariance
+
+Dans les deux cas, la solution est identifiable à rotation orthogonale près. Le but de l'analyse factorielle est d'obtenir une solution facilement identifiable: on choisit souvent une rotation varimax, qui tend à donner des chargements qui sont larges ou quasi-nuls.
+
+## Estimation par maximum de vraisemblance
+
+La méthode de base dans **R** consiste à ajuster le modèle factoriel par maximum de vraisemblance. La fonction `factanal` sert à cette tâche, mais le paquetage `psych` inclut plusieurs autres options.
+
+```{r mlefactanal}
+fa4 <- factanal(x = factor, factors = 4L)
+print(fa4$loadings, cutoff = 0.3)
+```
+
+Par défaut, la solution retournée correspond à la rotation varimax. On imprime les chargements en omettant les valeurs inférieures à 0.3 pour faciliter la visualisation.
+
+Puisqu'on ajuste le modèle par maximum de vraisemblance, la sortie inclut un test d'hypothèse que le modèle à $k$ facteurs pour la matrice de covariance est une simplification adéquate du modèle avec toutes les $p$ variables originales.
+
+La valeur-_p_ pour le test du rapport de vraisemblance (adéquation de la structure de corrélation paramétrique) est enregistrée dans la liste et basée sur la loi asymptotique khi-carrée. Une approximation de Bartlett à la statistique du rapport de vraisemblance fournit une meilleure approximation si $n$ est plus grand que $p$.
+
+
+```{r lrtest}
+fa4$PVAL
+# avec correction de Bartlett
+bartlettcorr_factanal(fa4)$pvalue
+```
+Le paquetage `hecmulti` contient des méthodes pour 
+extraire la log-vraisemblance et les critères d'information pour un modèle d'analyse factorielle  (objet de classe "factanal"). On fait une boucle pour calculer les AIC, BIC et la valeur-$p$ du test d'adéquation.
+
+```{r tableau}
+# Tableau avec critères
+emv_crit <- crit_emv_factanal(x = factor, 
+                              factors = 1:5)
+emv_crit
+```
+
+Le nombre de facteurs optimal selon les critères AIC et BIC est trois, et c'est également le nombre minimal de facteurs selon test du khi-deux qui donne une description adéquate de la matrice de covariance.
+
+La variance des aléas (l'unicité, ou *uniqueness*) est un indicateur de la fiabilité du modèle ajusté par la méthode du maximum de vraisemblance. Une valeur près de 1 (à 0.005) indique que la solution est un cas de Heywood
+On voit qu'avec quatre ou cinq facteurs, le modèle correspond à un cas de Heywood et la solution est invalide. Cela peut-être dû à plusieurs causes: colinéarité, facteur redondant (avec une corrélation de un avec une des variables), trop grand nombre ou trop petit nombre de facteurs, etc.
+  
+## Estimation par composantes principales
+  
+On peut effectuer une analyse en composantes principales et faire une rotation subséquente des valeurs propres: la décomposition en valeurs propres/vecteurs propres est la même peut importe le nombre de facteurs retenus, le coût est donc moindre à l'autre méthode d'estimation. La solution retournée est également toujours valide si on n'a pas de valeurs manquantes, puisque les corrélations retournées sont positives.
+
+Le choix du nombre de facteurs est moins facile. Deux critères sont employés en pratique:  le critère de Kaiser (retenir autant de facteurs qu'il n'y a de valeurs propres de la matrice de corrélation supérieures à 1) et
+le critère du coude (trouver un nombre de facteurs dans un diagramme d'éboulis à partir duquel le pourcentage de variance exprimée est faible).
+
+On fait la décomposition en valeurs propres/vecteurs propres à la mitaine pour ensuite extraire le nombre de valeurs propres supérieures à 1.
+
+```{r eigendecomposition, fig.cap = "Diagramme d'éboulis", fig.width = 9, fig.height = 4, fig.retina = 3}
+decomposition <- eigen(cov(factor))
+valpropres <- decomposition$values
+critkaiser <- sum(valpropres > 1)
+# Diagramme d'éboulis
+eboulis(decomposition)
+```
+
+On peut aussi tracer un diagramme d'éboulis, qui suggère cinq facteurs. Si on extrait les cinq premières composantes principales et qu'on effectue une rotation varimax, on recouvre le modèle d'analyse factorielle avec cinq facteurs.
+
+```{r acp5}
+acp5 <- decomposition$vectors[,seq_len(critkaiser)]
+varimax(acp5)
+```
+
+Le paquetage `psych` permet aussi l'estimation (plus directe) avec d'autres méthodes, notamment la méthode des composantes principales.
+
+```{r acppsych, eval = FALSE}
+fa_compprin <- psych::principal(r = factor, 
+                                nfactors = 3L, 
+                                rotate = "varimax")
+```
+
+
+# Création d'échelles
+
+On calcule simplement les moyennes et on vérifie la cohérence interne. La règle du pouce veut qu'on conserve les échelles si les variables qui les forment ont un $\alpha$ de Cronbach qui excède 0.6.
+
+```{r echelles}
+ech_service <- rowMeans(factor[,c("x4","x8","x11")])
+ech_produit <- rowMeans(factor[,c("x3","x6","x9","x12")])
+ech_paiement <- rowMeans(factor[,c("x2","x7","x10")])
+ech_prix <- rowMeans(factor[,c("x1","x5")])
+# Cohérence interne (alpha de Cronbach)
+alpha_Cronbach(factor[,c("x4","x8","x11")])
+alpha_Cronbach(factor[,c("x3","x6","x9","x12")])
+alpha_Cronbach(factor[,c("x2","x7","x10")])
+alpha_Cronbach(factor[,c("x1","x5")])
+```
+

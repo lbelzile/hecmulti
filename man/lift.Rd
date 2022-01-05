@@ -4,14 +4,24 @@
 \alias{lift}
 \title{Courbe lift}
 \usage{
-lift(prob, resp)
+lift(prob, resp, plot = TRUE, levels = seq(0.1, 0.9, by = 0.1))
 }
 \arguments{
 \item{prob}{vecteur de probabilités estimées}
 
 \item{resp}{variable réponse binaire}
+
+\item{plot}{logique; si \code{TRUE}, retourne un graphique de la courbe lift}
+
+\item{levels}{niveaux des points de coupure}
+}
+\value{
+un graphique \code{ggplot} de la courbe lift et une base de données avec la valeur du lift
 }
 \description{
 Pour un vecteur de probabilitées (prédictions) d'un modèle, \code{prob},
 et une variable binaire \code{resp}, calculer la courbe lift.
+}
+\details{
+Le nombre de données classifiées est arrondi, contrairement au graphique
 }
