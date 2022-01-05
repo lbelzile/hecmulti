@@ -20,8 +20,8 @@ lift <- function(prob, resp){
        bty = "l",
        type= "s",
        panel.first = abline(a = 0, b = 1, lty = 2),
-       xlab = "Pourcentage de positifs classés",
-       ylab = "Pourcentage de positifs détectés")
+       xlab = "Pourcentage de positifs class\u00e9s",
+       ylab = "Pourcentage de positifs d\u00e9tect\u00e9s")
   return(slift)
 }
 
@@ -95,11 +95,13 @@ pcoupe <- function(model, c00 = 1, c11 = 1, c01 = 0, c10 = 0,
   # Vérifier qu'on modélise des données binaires
   if(inherits(class(model), what = "glm")){
     if(!model$family$family == "binomial"){
-      stop("Modèle linéaire généralisé n'a pas une variable réponse binomiale.")
+      stop("Mod\u00e8le lin\u00e9aire g\u00e9n\u00e9ralis\u00e9 n'a pas une variable r\u00e9ponse binomiale.")
     }
+  } else{
+    stop("Mod\u00e8le invalide.")
   }
   if(is.null(nrow(model$data))){
-    stop("Modèle ajusté devrait contenir une base de données `data` avec les variables explicatives.")
+    stop("Mod\u00e8le ajust\u00e9 devrait contenir une base de donn\u00e9es `data` avec les variables explicatives.")
   }
   model$data$y <- model$data[,all.vars(formula(model))[attr(terms(formula(model)), "response")]]
  stopifnot(length(unique(model$data$y)) != 2)

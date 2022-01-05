@@ -5,7 +5,17 @@
 \alias{chomage}
 \title{Étude sur le chômage}
 \format{
-
+Une base de données avec 2500 lignes et 8 variables:
+\describe{
+\item{\code{duree}}{double, nombre de semaines de prestations payées par le programme d’assurance emploi.}
+\item{\code{age}}{facteur, variable catégorielle pour la tranche d’âge, soit \code{18,25}, \code{25,50} ou \code{50,65} ans.}
+\item{\code{formation}}{facteur, variable catégorielle indiquant le niveau de formation, soit \code{aucune}, \code{secondaire}, \code{professionnel}, \code{collegial} ou \code{universitaire}.}
+\item{\code{sexe}}{entier, variable indicatrice binaire ; 1 pour femmes, 0 pour hommes.}
+\item{\code{retrait}}{entier, \code{1} si la personne bénéficiaire se désinscrit du programme avant la fin de la période maximale de prestation parce qu’elle cesse de chercher un emploi, \code{2} si elle trouve un emploi, \code{0} sinon.}
+\item{\code{montant}}{double, montant hebdomadaire des prestations, allant jusqu’à 55 pourcent de la rémunération hebdomadaire avant perte d’emploi jusqu’à concurrence de 547$ par semaine.}
+\item{\code{nheures}}{entier, nombre d’heures cumulées à l’emploi avant d’être au chômage, soit un minimum de 14 semaines (420 heures) ou 22 semaines (700 heures) dépendamment du taux de chômage de la région et du nombre d’heures d’emploi assurables dans la période de référence.}
+\item{\code{prestationmax}}{double, durée maximale pour les prestations}
+}
 }
 \usage{
 chomage

@@ -1,6 +1,6 @@
 # Méthodes S3 de base pour objects de classe "factanal"
-
-
+#' @import stats
+#' @importFrom graphics abline
 #' @export
 logLik.factanal <- function(object, ...) {
   # Log-vraisemblance de la loi de Wishart
@@ -20,17 +20,14 @@ nobs.factanal <- function(object, ...){
 }
 
 #' @export
-AIC.factanal <- function(object, ...){
+AIC.factanal <- function(object, k = 2, ...){
   n <- object$n.obs
   k <- object$factors
   p <- nrow(object$correlation)
-  as.numeric(-2*logLik(object) + 2*nobs(object))
+  as.numeric(-2*logLik(object) + k*nobs(object))
 }
 
 #' @export
 BIC.factanal <- function(object, ...){
-  n <- object$n.obs
-  k <- object$factors
-  p <- nrow(object$correlation)
-  as.numeric(-2*logLik(object) + log(n)*nobs(object))
+  AIC.factanal(object, k = log(object$n.obs))
 }
