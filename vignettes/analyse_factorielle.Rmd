@@ -2,7 +2,7 @@
 title: "Analyse factorielle"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{analyse_factorielle}
+  %\VignetteIndexEntry{Analyse factorielle}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -14,18 +14,15 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-library(hecmulti)
-```
-
 # Introduction à l'analyse factorielle
 
 L'analyse factorielle consiste à résumer une matrice de covariance à l'aide d'un plus petit nombre de paramètres. 
 Si on charge les données dans l'environnement, on remarque que toutes les variables correspondent à des échelles de Likert allant de un à cinq. Il n'est donc pas nécessaire de standardiser les données (en travaillant avec la matrice de corrélation). 
 
 ```{r dataload, eval = TRUE, echo = TRUE, fig.cap = "Matrice de corrélation"}
+library(hecmulti)
 data(factor, package = "hecmulti")
-# Statistiques descriptives de base
+# Statistiques descriptives
 summary(factor)
 # Matrice de corrélation
 cormat <- cor(factor, method = "pearson")
@@ -54,10 +51,10 @@ Par défaut, la solution retournée correspond à la rotation varimax. On imprim
 
 Puisqu'on ajuste le modèle par maximum de vraisemblance, la sortie inclut un test d'hypothèse que le modèle à $k$ facteurs pour la matrice de covariance est une simplification adéquate du modèle avec toutes les $p$ variables originales.
 
-La valeur-_p_ pour le test du rapport de vraisemblance (adéquation de la structure de corrélation paramétrique) est enregistrée dans la liste et basée sur la loi asymptotique khi-carrée. Une approximation de Bartlett à la statistique du rapport de vraisemblance fournit une meilleure approximation si $n$ est plus grand que $p$.
+La valeur-_p_ pour le test du rapport de vraisemblance (adéquation de la structure de corrélation paramétrique) basée sur la loi asymptotique khi-carrée est enregistrée dans la liste; avec une valeur-_p_ de `r round(as.numeric(fa4$PVAL), 2)`, on a aucune preuve contre l'hypothèse nulle de l'adéquation du modèle de covariance. Une approximation de Bartlett à la statistique du rapport de vraisemblance fournit une meilleure approximation si $n$ est plus grand que $p$; ici, la différence est minime avec une valeur-_p_ de `r round(bartlettcorr_factanal(fa4)$pvalue, 2)`.
 
 
-```{r lrtest}
+```{r lrtest, eval = FALSE}
 fa4$PVAL
 # avec correction de Bartlett
 bartlettcorr_factanal(fa4)$pvalue
@@ -96,17 +93,23 @@ eboulis(decomposition)
 
 On peut aussi tracer un diagramme d'éboulis, qui suggère cinq facteurs. Si on extrait les cinq premières composantes principales et qu'on effectue une rotation varimax, on recouvre le modèle d'analyse factorielle avec cinq facteurs.
 
+La décomposition en vecteurs propres de la matrice de covariance est $\boldsymbol{S} = \boldsymbol{Q}\boldsymbol{\Lambda}\boldsymbol{Q}^{-1}$, où $\boldsymbol{Q}$ est la matrice $p \times p$ de vecteurs propres et $\boldsymbol{\Lambda}$ une matrice diagonale contenant les valeurs propres (ordonnées de la plus grande à la plus petite). L'analyse en composantes principales revient à conserver uniquement les $k$ premières composantes, d'où une racine avec $\boldsymbol{Q}_{(k)}\boldsymbol{\Lambda}_{(k)}^{1/2}$ où $\boldsymbol{Q}_{(k)}$ est une matrice $p \times k$ avec les $k$ premiers vecteurs propres et $\boldsymbol{\Lambda}_{k}$ la sous-matrice $k \times k$ de $\boldsymbol{\Lambda}$ contenant les $k$ plus grandes valeurs propres. Il suffit ensuite de calculer la rotation de cette racine.
+
 ```{r acp5}
-acp5 <- decomposition$vectors[,seq_len(critkaiser)]
+vecp <- decomposition$vectors[,seq_len(critkaiser)]
+diag_valp <- diag(sqrt(valpropres[seq_len(critkaiser)]))
+acp5 <-  vecp %*% diag_valp
 varimax(acp5)
 ```
 
 Le paquetage `psych` permet aussi l'estimation (plus directe) avec d'autres méthodes, notamment la méthode des composantes principales.
 
 ```{r acppsych, eval = FALSE}
-fa_compprin <- psych::principal(r = factor, 
-                                nfactors = 3L, 
+fa_compprin <- psych::principal(r = cov(factor), 
+                                covar = TRUE, 
+                                nfactors = 5L, 
                                 rotate = "varimax")
+# covar = FALSE pour matrice de corrélation
 ```
 
 
