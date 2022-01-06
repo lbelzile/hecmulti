@@ -22,5 +22,6 @@ Suggests:
     survival,
     corrplot,
     psych
+URL: https://github.com/lbelzile/hecmulti
 RoxygenNote: 7.1.2
 VignetteBuilder: knitr
