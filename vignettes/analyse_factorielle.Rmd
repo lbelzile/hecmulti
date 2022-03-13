@@ -40,7 +40,7 @@ Dans les deux cas, la solution est identifiable à rotation orthogonale près. L
 
 ## Estimation par maximum de vraisemblance
 
-La méthode de base dans **R** consiste à ajuster le modèle factoriel par maximum de vraisemblance. La fonction `factanal` sert à cette tâche, mais le paquetage `psych` inclut plusieurs autres options.
+La méthode de base dans **R** consiste à ajuster le modèle factoriel par maximum de vraisemblance. La fonction `factanal` sert à cette tâche, mais le paquet `psych` inclut plusieurs autres options.
 
 ```{r mlefactanal}
 fa4 <- factanal(x = factor, factors = 4L)
@@ -59,7 +59,7 @@ fa4$PVAL
 # avec correction de Bartlett
 bartlettcorr_factanal(fa4)$pvalue
 ```
-Le paquetage `hecmulti` contient des méthodes pour 
+Le paquet `hecmulti` contient des méthodes pour 
 extraire la log-vraisemblance et les critères d'information pour un modèle d'analyse factorielle  (objet de classe "factanal"). On fait une boucle pour calculer les AIC, BIC et la valeur-$p$ du test d'adéquation.
 
 ```{r tableau}
@@ -102,7 +102,7 @@ acp5 <-  vecp %*% diag_valp
 varimax(acp5)
 ```
 
-Le paquetage `psych` permet aussi l'estimation (plus directe) avec d'autres méthodes, notamment la méthode des composantes principales.
+Le paquet `psych` permet aussi l'estimation (plus directe) avec d'autres méthodes, notamment la méthode des composantes principales.
 
 ```{r acppsych, eval = FALSE}
 fa_compprin <- psych::principal(r = cov(factor), 
