@@ -12,6 +12,14 @@ logLik.factanal <- function(object, ...) {
 }
 
 #' @export
+coefscore.factanal <- function(object, ...){
+  stopifnot(is.list(object),
+            !is.null(object$correlation),
+            !is.null(object$loadings))
+  solve(object$correlation) %*% object$loadings
+}
+
+#' @export
 nobs.factanal <- function(object, ...){
   k <- object$factors
   p <- nrow(object$correlation)
@@ -20,9 +28,9 @@ nobs.factanal <- function(object, ...){
 
 #' @export
 AIC.factanal <- function(object, k = 2, ...){
-  n <- object$n.obs
-  k <- object$factors
-  p <- nrow(object$correlation)
+  # n <- object$n.obs
+  # k <- object$factors
+  # p <- nrow(object$correlation)
   as.numeric(-2*logLik(object) + k*nobs(object))
 }
 
@@ -39,11 +47,16 @@ BIC.factanal <- function(object, ...){
 #' @param x matrice de variables numériques
 #' @return alpha de Cronbach
 #' @export
-alpha_Cronbach <- function(x){
+alpha <- function(x){
   S2 <- var(rowSums(x))
   ncol(x)/(ncol(x)-1)*(S2-sum(apply(x, 2, var)))/S2
 }
 
+#' @export
+#' @keywords internal
+alpha_Cronbach <- function(x){
+  alpha(x)
+}
 
 #' Correction de Bartlett pour analyse factorielle
 #'
@@ -81,7 +94,7 @@ list(statistic = as.numeric(lrt),
 #' @export
 #' @param factors le nombre de facteurs à ajuster (vecteur)
 #' @param ... autres arguments passés à factanal
-crit_emv_factanal <- function(factors, ...){
+adjustement_factanal <- function(factors, ...){
  stopifnot("Nombre de facteurs manquants" = !missing(factors))
 factors <- sort(as.integer(factors))
 emv_crit <- function(k, ...){
@@ -130,14 +143,14 @@ eboulis <- function(object, which = 1:2){
          y = "valeurs propres",
          subtitle = "diagramme d'\u00e9boulis") +
     ggplot2::theme_classic()
-  g2 <-  ggplot2::ggplot(data = data.frame(y = cumsum(valpropres),
+  g2 <-  ggplot2::ggplot(data = data.frame(y = cumsum(valpropres)/sum(valpropres),
                                            x = seq_along(valpropres)),
                          mapping = ggplot2::aes_string(x = "x", y = "y")) +
     ggplot2::geom_line() +
     ggplot2::geom_point() +
     ggplot2::scale_x_continuous(breaks = seq_along(valpropres)) +
     ggplot2::labs(x = "nombre de composantes",
-                  y = "variance cumulative") +
+                  y = "variance cumulative (%)") +
     ggplot2::theme_classic()
   stopifnot(isTRUE(all(which %in% c(1, 2))))
   if(length(which) == 1){
