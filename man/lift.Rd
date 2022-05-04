@@ -19,7 +19,7 @@ lift(prob, resp, plot = TRUE, levels = seq(0.1, 0.9, by = 0.1))
 un graphique \code{ggplot} de la courbe lift et une base de données avec la valeur du lift
 }
 \description{
-Pour un vecteur de probabilitées (prédictions) d'un modèle, \code{prob},
+Pour un vecteur de probabilités estimées de succès d'un modèle \code{prob},
 et une variable binaire \code{resp}, calculer la courbe lift.
 }
 \details{

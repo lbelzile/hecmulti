@@ -11,8 +11,18 @@ logLik.factanal <- function(object, ...) {
   -n/2*(as.numeric(determinant(V, logarithm = TRUE)$modulus) + sum(diag(solve(V) %*% object$correlation)))
 }
 
+#' Coefficients du score pour analyse factorielle
+#'
+#' Calcul des coefficients de régression
+#' associés aux scores factoriels.
+#'
+#' @param object objet de class \code{factanal}
+#' @param ... actuellement ignoré
 #' @export
-coefscore.factanal <- function(object, ...){
+coefscore_factanal <- function(object, ...){
+  if(!isTRUE(inherits(object, what = "factanal"))){
+    stop("M\u00e9thode valide uniquement pour les objets de classe `factanal`")
+  }
   stopifnot(is.list(object),
             !is.null(object$correlation),
             !is.null(object$loadings))
@@ -47,16 +57,11 @@ BIC.factanal <- function(object, ...){
 #' @param x matrice de variables numériques
 #' @return alpha de Cronbach
 #' @export
-alpha <- function(x){
+alphaC <- function(x){
   S2 <- var(rowSums(x))
   ncol(x)/(ncol(x)-1)*(S2-sum(apply(x, 2, var)))/S2
 }
 
-#' @export
-#' @keywords internal
-alpha_Cronbach <- function(x){
-  alpha(x)
-}
 
 #' Correction de Bartlett pour analyse factorielle
 #'
@@ -94,7 +99,7 @@ list(statistic = as.numeric(lrt),
 #' @export
 #' @param factors le nombre de facteurs à ajuster (vecteur)
 #' @param ... autres arguments passés à factanal
-adjustement_factanal <- function(factors, ...){
+ajustement_factanal <- function(factors, ...){
  stopifnot("Nombre de facteurs manquants" = !missing(factors))
 factors <- sort(as.integer(factors))
 emv_crit <- function(k, ...){

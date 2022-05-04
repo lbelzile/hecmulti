@@ -64,8 +64,9 @@ extraire la log-vraisemblance et les critères d'information pour un modèle d'a
 
 ```{r tableau}
 # Tableau avec critères
-emv_crit <- crit_emv_factanal(x = factor, 
-                              factors = 1:5)
+emv_crit <- ajustement_factanal(
+   x = factor, 
+   factors = 1:5)
 emv_crit
 ```
 
@@ -123,9 +124,9 @@ ech_produit <- rowMeans(factor[,c("x3","x6","x9","x12")])
 ech_paiement <- rowMeans(factor[,c("x2","x7","x10")])
 ech_prix <- rowMeans(factor[,c("x1","x5")])
 # Cohérence interne (alpha de Cronbach)
-alpha_Cronbach(factor[,c("x4","x8","x11")])
-alpha_Cronbach(factor[,c("x3","x6","x9","x12")])
-alpha_Cronbach(factor[,c("x2","x7","x10")])
-alpha_Cronbach(factor[,c("x1","x5")])
+alphaC(factor[,c("x4","x8","x11")])
+alphaC(factor[,c("x3","x6","x9","x12")])
+alphaC(factor[,c("x2","x7","x10")])
+alphaC(factor[,c("x1","x5")])
 ```
 
