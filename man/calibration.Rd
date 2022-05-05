@@ -16,8 +16,8 @@ calibration(prob, resp, ...)
 \value{
 une liste avec éléments
 \itemize{
-\item{stat}{statistique du score}
-\item{pval}{valeur-p}
+\item{\code{stat}: }{statistique du score}
+\item{\code{pval}: }{valeur-p}
 }
 }
 \description{

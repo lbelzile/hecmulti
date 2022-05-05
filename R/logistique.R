@@ -123,8 +123,8 @@ print.hecmulti_roc <- function(x, digits = 3, ...){
 #' @param ... autres arguments, actuellement ignorés
 #' @return une liste avec éléments
 #' \itemize{
-#' \item{stat}{statistique du score}
-#' \item{pval}{valeur-p}
+#' \item{\code{stat}: }{statistique du score}
+#' \item{\code{pval}: }{valeur-p}
 #' }
 #' @export
 #' @author Leo Belzile
@@ -245,19 +245,22 @@ lift <- function(prob,
 
 
 #' Performance d'un modèle logistique
+#'
+#' Calculer les statistiques d'ajustement (sensibilité, spécificité, taux de bonne classification, etc.) en fonction de points de coupures
+#'
 #' @inheritParams lift
 #' @return une base de données avec les composantes suivantes:
 #' \itemize{
 #' \item{\code{coupe}}{points de coupe}
-#' \item{\code{VP}}{vrais positifs}
-#' \item{\code{VN}}{vrais négatifs}
-#' \item{\code{Fp}}{faux positifs}
-#' \item{\code{FN}}{faux négatifs}
-#' \item{\code{pcorrect}}{taux de bonne classification}
-#' \item{\code{sensi}}{sensibilité}
-#' \item{\code{speci}}{spécificité}
-#' \item{\code{fpos}}{taux de faux positifs}
-#' \item{\code{fneg}}{taux de faux négatifs}
+#' \item{\code{VP}: }{vrais positifs}
+#' \item{\code{VN}: }{vrais négatifs}
+#' \item{\code{FP}: }{faux positifs}
+#' \item{\code{FN}: }{faux négatifs}
+#' \item{\code{pcorrect}: }{taux de bonne classification}
+#' \item{\code{sensi}: }{sensibilité}
+#' \item{\code{speci}: }{spécificité}
+#' \item{\code{fpos}: }{taux de faux positifs}
+#' \item{\code{fneg}: }{taux de faux négatifs}
 #' }
 #' @export
 perfo_logistique <- function(prob, resp) {
@@ -292,24 +295,25 @@ perfo_logistique <- function(prob, resp) {
 }
 
 
-#' Point de coupure optimal
+#' Sélection du point de coupure selon gain
 #'
+#' La fonction calcule le gain pour une variable réponse binaire et calcule le gain (par défaut, le taux de bonne classification). Elle retourne le point de coupure optimal.
 #' La fonction prend comme argument un modèle de classe
 #' \code{glm} et réajuste le modèle de manière répétée pour
 #' calculer la performance par validation croisée.
-#' Le modèle est réajusté
+#' Le modèle est réajusté \code{nrep} fois.
 #'
-#' @param model modèle linéaire généralisé pour variables binaires
+#' @param modele modèle linéaire généralisé pour variables binaires
 #' @param c00 coût de classification pour vrai négatif
 #' @param c11 coût de classification pour vrai positif
 #' @param c01 coût de classification pour faux positif
 #' @param c10 coût de classification pour faux négatif
 #' @param plot booléen, si \code{TRUE}, produit un graphique du lift. La valeur par défaut est \code{FALSE}.
-#' @param nrep entier, nombre de réplication pour la validation croisée
-#' @param ncv entier, nombre de plis pour la validation croisée
+#' @param nrep entier, nombre de réplications pour la validation croisée
+#' @param ncv entier, nombre de groupes pour la validation croisée
 #' @return un graphique de la performance moyenne en fonction du point de coupure et une liste avec les points de coupure \code{ptcoupe}, la valeur optimale du point de coupure \code{opt} et la performance \code{performance}
 #' @export
-pcoupe <- function(model,
+select_pcoupe <- function(modele,
                    c00 = 1,
                    c11 = 1,
                    c01 = 0,
@@ -317,34 +321,39 @@ pcoupe <- function(model,
                    plot = FALSE,
                    nrep = 10L,
                    ncv = 10L) {
+
   nrep <- as.integer(nrep)
   ncv <- as.integer(ncv)
   stopifnot(nrep > 0, ncv > 1)
   # Vérifier qu'on modélise des données binaires
-  if (inherits(class(model), what = "glm")) {
-    if (!model$family$family == "binomial") {
+  if (inherits(modele, what = "glm")) {
+    if (family(modele)$family != "binomial") {
       stop(
-        "Mod\u00e8le lin\u00e9aire g\u00e9n\u00e9ralis\u00e9 n'a pas une variable r\u00e9ponse binomiale."
+        "La famille du mod\u00e8le lin\u00e9aire g\u00e9n\u00e9ralis\u00e9 (\"modele\") n'est pas ad\u00e9quate pour les donn\u00e9es binaires."
       )
     }
+    if(length(as.integer(unique(modele$y))) != 2L){
+      stop("Plus de deux modalit\u00e9s pour la variable r\u00e9ponse.")
+    }
   } else{
-    stop("Mod\u00e8le invalide.")
+    stop("Mod\u00e8le invalide: doit \u00eatre obtenu \u00e0 partir de la fonction \"glm\".")
   }
-  if (is.null(nrow(model$data))) {
+  if (is.null(nrow(modele$data))) {
     stop(
       "Mod\u00e8le ajust\u00e9 devrait contenir une base de donn\u00e9es `data` avec les variables explicatives."
     )
   }
-  model$data$y <-
-    model$data[, all.vars(formula(model))[attr(terms(formula(model)), "response")]]
-  stopifnot(length(unique(model$data$y)) != 2)
-  n <- nrow(model$data)
+  n <- nobs(modele)
+  stopifnot("Le nombre de r\u00e9plications doit \u00eatre positif." = nrep > 0,
+            "Le nombre de groupes pour la validation crois\u00e9e est nul ou n\u00e9gatif." = ncv > 0,
+            "Le nombre de groupes pour la validation crois\u00e9e est sup\u00e9rieur au nombre d'observations." = ncv <= nobs(modele))
   perfor_cv <- replicate(n = nrep, expr = {
     #Shuffle the indices
     inds <- sample.int(n = n,
                        size = n,
                        replace = FALSE)
-    #Split into K groups of ~ equal size (from https://stackoverflow.com/a/16275428)
+    # Split into K groups of ~ equal size
+    # (from https://stackoverflow.com/a/16275428)
     form_group <-
       function(x, n) {
         split(x, cut(seq_along(x), n, labels = FALSE))
@@ -354,33 +363,61 @@ pcoupe <- function(model,
     for (j in seq_len(ncv)) {
       probs[groups[[j]]] <- predict(
         glm(
-          model$formula,
-          family = model$family,
-          data = model$data[-groups[[j]], ]
+          modele$formula,
+          family = family(modele),
+          data = modele$data[-groups[[j]], ]
         ),
-        newdata = model$data[groups[[j]], ],
+        newdata = modele$data[groups[[j]], ],
         type = "response"
       )
     }
-    perfo <- perfo(probs, resp = model$y)
-    gain <-
-      perfo$c0 * c00 + perfo$c1 * c11 + perfo$i0 * c10 + perfo$i1 * c01
+    perfo <- perfo_logistique(prob = probs,
+                              resp = modele$y)
+    gain <- perfo$VN * c00 +
+      perfo$VP * c11 +
+      perfo$FN * c10 +
+      perfo$FP * c01
     gain
   })
   meanperfo <- rowMeans(perfor_cv)
   cut <- seq(from = 0.01, to = 0.99, by = 0.01)
-  if (plot) {
-    g1 <- ggplot2::ggplot(data = data.frame(x = cut,
-                                      y = meanperfo),
-                    mapping = ggplot2::aes_string(x = "x",
-                                                  y = "y")) +
-      ggplot2::geom_point() +
-      ggplot2::labs(x = "coupe",
-                    y = "gain moyen") +
-      ggplot2::theme_classic()
-    print(g1)
+  output <- list(optim = cut[which.max(meanperfo)],
+                 pcoupe = cut,
+                 gain = meanperfo,
+                 c00 = c00,
+                 c11 = c11,
+                 c01 = c01,
+                 c10 = c10
+                )
+  class(output) <- "hecmulti_ptcoupe"
+
+
+  if (isTRUE(plot)) {
+    autoplot(output)
   }
-  list(ptcoupe = cut,
-       performance = meanperfo,
-       opt = cut[which.max(meanperfo)])
+  return(invisible(output))
 }
+
+#' @export
+print.hecmulti_ptcoupe <- function(x, digits = 2, ...){
+  cat(paste("Point de coupure optimal:", round(x$optim, digits = 2),"\n"))
+}
+
+#' @export
+autoplot.hecmulti_ptcoupe <- function(x, ...){
+  graph <- ggplot2::ggplot(
+    data = data.frame(x = x$pcoup,
+                      y = x$gain),
+    mapping = ggplot2::aes_string(x = "x",
+                                  y = "y")) +
+    ggplot2::geom_line() +
+    ggplot2::geom_vline(xintercept = x$optim,
+                        alpha = 0.5,
+                        linetype = "dashed") +
+    ggplot2::labs(x = "point de coupe",
+                  y = "gain moyen") +
+    ggplot2::theme_classic()
+  print(graph)
+}
+
+

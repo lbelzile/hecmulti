@@ -15,17 +15,17 @@ perfo_logistique(prob, resp)
 une base de données avec les composantes suivantes:
 \itemize{
 \item{\code{coupe}}{points de coupe}
-\item{\code{VP}}{vrais positifs}
-\item{\code{VN}}{vrais négatifs}
-\item{\code{Fp}}{faux positifs}
-\item{\code{FN}}{faux négatifs}
-\item{\code{pcorrect}}{taux de bonne classification}
-\item{\code{sensi}}{sensibilité}
-\item{\code{speci}}{spécificité}
-\item{\code{fpos}}{taux de faux positifs}
-\item{\code{fneg}}{taux de faux négatifs}
+\item{\code{VP}: }{vrais positifs}
+\item{\code{VN}: }{vrais négatifs}
+\item{\code{FP}: }{faux positifs}
+\item{\code{FN}: }{faux négatifs}
+\item{\code{pcorrect}: }{taux de bonne classification}
+\item{\code{sensi}: }{sensibilité}
+\item{\code{speci}: }{spécificité}
+\item{\code{fpos}: }{taux de faux positifs}
+\item{\code{fneg}: }{taux de faux négatifs}
 }
 }
 \description{
-Performance d'un modèle logistique
+Calculer les statistiques d'ajustement (sensibilité, spécificité, taux de bonne classification, etc.) en fonction de points de coupures
 }
