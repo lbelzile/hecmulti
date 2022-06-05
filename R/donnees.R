@@ -191,7 +191,7 @@
 #'  \item{\code{x6}}{échelle, réputation}
 #'}
 #' @author Denis Larocque
-"cluster"
+"regroupements1"
 
 
 #' @title Données colinéaires
@@ -344,7 +344,7 @@
 #'  \item{\code{service}}{nombre de services en plus du cellulaire auquel le client est abonné parmi internet, téléphone fixe, télévision (câble ou antenne parabolique).}
 #'}
 #' @author Denis Larocque
-"survival1"
+"survie1"
 
 #' @title Profils de clients
 #' @description Quatre profils de clients pour le calcul de courbes de survie.
@@ -354,7 +354,7 @@
 #'  \item{\code{age}}{âge du client au début de l’abonnement}
 #'}
 #' @author Denis Larocque
-"survival2"
+"survie2"
 
 #' @title Temps d'abonnement avec changement de forfait
 #' @description Une entreprise oeuvrant dans le secteur des télécommunications s’intéresse aux facteurs influençant le temps qu’un client reste abonné à son service de téléphone cellulaire.
@@ -370,7 +370,7 @@
 #'  \item{\code{service_apres}}{nombre d’autres services auxquels le client est abonné à partir du temps \code{temps_ch}}
 #'}
 #' @author Denis Larocque
-"survival3"
+"survie3"
 
 #' @title Temps d'abonnement (risques compétitifs)
 #' @description Une entreprise oeuvrant dans le secteur des télécommunications s’intéresse aux facteurs influençant le temps qu’un client reste abonné à son service de téléphone cellulaire.
@@ -384,7 +384,7 @@
 #'  \item{\code{service}}{nombre de services en plus du cellulaire auquel le client est abonné parmi internet, téléphone fixe, télévision (câble ou antenne parabolique).}
 #'}
 #' @author Denis Larocque
-"survival4"
+"survie4"
 
 #' @title Recommendation du PRCA
 #' @description Les auteurs cherchent à voir si le fait qu’un produit soit recommandé par le Professional Rodeo Cowboys Association (PRCA) a un effet sur les intentions d’achats.
