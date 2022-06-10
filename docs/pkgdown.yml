@@ -1,9 +1,9 @@
-pandoc: 2.16.2
-pkgdown: 1.6.1
+pandoc: '2.18'
+pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
   analyse_factorielle: analyse_factorielle.html
-last_built: 2022-01-06T21:12Z
+last_built: 2022-06-10T19:09Z
 urls:
   reference: https://lbelzile.github.io/hecmulti/reference
   article: https://lbelzile.github.io/hecmulti/articles

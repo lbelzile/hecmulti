@@ -1,6 +1,27 @@
 url: https://lbelzile.github.io/hecmulti
 template:
+  bootstrap: 5
   params:
-    bootswatch: cerulean
+    bootswatch: flatly
+    noindex: true
+lang: fr  
 
-
+navbar:
+  title:
+  type: default
+  left:
+   - text: "Matériel pédagogique"
+     menu:
+     - text: "Analyse factorielle"
+       href: articles/analyse_factorielle.html
+   - text: "Références"
+     href: reference/index.html
+   - text: Notes de cours
+     href: https://lbelzile.github.io/math60602
+toc: 
+  depth: 0
+home:
+  sidebar: FALSE
+authors:
+  "Léo Belzile (HEC Montréal)":
+    href: https://lbelzile.bitbucket.io

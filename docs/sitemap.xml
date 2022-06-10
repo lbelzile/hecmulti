@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://lbelzile.github.io/hecmulti/404.html</loc>
+  </url>
+  <url>
+    <loc>https://lbelzile.github.io/hecmulti/articles/analyse_factorielle.html</loc>
+  </url>
+  <url>
+    <loc>https://lbelzile.github.io/hecmulti/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://lbelzile.github.io/hecmulti/authors.html</loc>
+  </url>
+  <url>
     <loc>https://lbelzile.github.io/hecmulti/index.html</loc>
   </url>
   <url>
@@ -11,6 +23,12 @@
   </url>
   <url>
     <loc>https://lbelzile.github.io/hecmulti/reference/aerien_facto.html</loc>
+  </url>
+  <url>
+    <loc>https://lbelzile.github.io/hecmulti/reference/ajustement_factanal.html</loc>
+  </url>
+  <url>
+    <loc>https://lbelzile.github.io/hecmulti/reference/alphaC.html</loc>
   </url>
   <url>
     <loc>https://lbelzile.github.io/hecmulti/reference/alpha_Cronbach.html</loc>
@@ -25,6 +43,9 @@
     <loc>https://lbelzile.github.io/hecmulti/reference/bjffacto.html</loc>
   </url>
   <url>
+    <loc>https://lbelzile.github.io/hecmulti/reference/calibration.html</loc>
+  </url>
+  <url>
     <loc>https://lbelzile.github.io/hecmulti/reference/chaussures.html</loc>
   </url>
   <url>
@@ -34,10 +55,16 @@
     <loc>https://lbelzile.github.io/hecmulti/reference/cluster.html</loc>
   </url>
   <url>
+    <loc>https://lbelzile.github.io/hecmulti/reference/coefscore_factanal.html</loc>
+  </url>
+  <url>
     <loc>https://lbelzile.github.io/hecmulti/reference/colinearite.html</loc>
   </url>
   <url>
     <loc>https://lbelzile.github.io/hecmulti/reference/college.html</loc>
+  </url>
+  <url>
+    <loc>https://lbelzile.github.io/hecmulti/reference/courbe_roc.html</loc>
   </url>
   <url>
     <loc>https://lbelzile.github.io/hecmulti/reference/crit_emv_factanal.html</loc>
@@ -49,6 +76,9 @@
     <loc>https://lbelzile.github.io/hecmulti/reference/dbm_manquantes.html</loc>
   </url>
   <url>
+    <loc>https://lbelzile.github.io/hecmulti/reference/dot-check_resp.html</loc>
+  </url>
+  <url>
     <loc>https://lbelzile.github.io/hecmulti/reference/eboulis.html</loc>
   </url>
   <url>
@@ -56,6 +86,9 @@
   </url>
   <url>
     <loc>https://lbelzile.github.io/hecmulti/reference/factor.html</loc>
+  </url>
+  <url>
+    <loc>https://lbelzile.github.io/hecmulti/reference/index.html</loc>
   </url>
   <url>
     <loc>https://lbelzile.github.io/hecmulti/reference/junkmail.html</loc>
@@ -85,10 +118,19 @@
     <loc>https://lbelzile.github.io/hecmulti/reference/perfo_logistique.html</loc>
   </url>
   <url>
+    <loc>https://lbelzile.github.io/hecmulti/reference/polynome.html</loc>
+  </url>
+  <url>
     <loc>https://lbelzile.github.io/hecmulti/reference/rc_hclust.html</loc>
   </url>
   <url>
+    <loc>https://lbelzile.github.io/hecmulti/reference/regroupements1.html</loc>
+  </url>
+  <url>
     <loc>https://lbelzile.github.io/hecmulti/reference/renfe.html</loc>
+  </url>
+  <url>
+    <loc>https://lbelzile.github.io/hecmulti/reference/select_pcoupe.html</loc>
   </url>
   <url>
     <loc>https://lbelzile.github.io/hecmulti/reference/selection1_train.html</loc>
@@ -101,6 +143,18 @@
   </url>
   <url>
     <loc>https://lbelzile.github.io/hecmulti/reference/sondage_manquantes.html</loc>
+  </url>
+  <url>
+    <loc>https://lbelzile.github.io/hecmulti/reference/survie1.html</loc>
+  </url>
+  <url>
+    <loc>https://lbelzile.github.io/hecmulti/reference/survie2.html</loc>
+  </url>
+  <url>
+    <loc>https://lbelzile.github.io/hecmulti/reference/survie3.html</loc>
+  </url>
+  <url>
+    <loc>https://lbelzile.github.io/hecmulti/reference/survie4.html</loc>
   </url>
   <url>
     <loc>https://lbelzile.github.io/hecmulti/reference/survival1.html</loc>
@@ -125,8 +179,5 @@
   </url>
   <url>
     <loc>https://lbelzile.github.io/hecmulti/reference/visaprem.html</loc>
-  </url>
-  <url>
-    <loc>https://lbelzile.github.io/hecmulti/articles/analyse_factorielle.html</loc>
   </url>
 </urlset>

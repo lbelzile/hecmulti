@@ -319,7 +319,7 @@
 #'  \item{\code{y}}{variable réponse}
 #'}
 #' @author Denis Larocque
-"selection1_train"
+"polynome"
 
 #' @title Promotion de produits
 #' @description Données simulées pour un cas fictif de promotion de produits.
