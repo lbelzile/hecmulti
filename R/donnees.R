@@ -337,7 +337,7 @@
 #' @format Une base de données avec 500 lignes et 6 variables:
 #' \describe{
 #'  \item{\code{temps}}{temps (en semaines) d'abonnement au service de téléphonie cellulaire}
-#'  \item{\code{censure}}{variable binaire qui indique si \code{temps} est censurée (\code{1} si le client est toujours abonné) ou non (\code{0}, la variable \code{temps} est la durée finale de l’abonnement)}
+#'  \item{\code{censure}}{variable binaire qui indique si \code{temps} est censurée (\code{0} si le client est toujours abonné) ou non (\code{1}, la variable \code{temps} est la durée finale de l’abonnement)}
 #'  \item{\code{age}}{âge du client au début de l’abonnement}
 #'  \item{\code{sexe}}{variable binaire, soit femme (\code{1}) ou homme (\code{0})}
 #'  \item{\code{region}}{région où habite le client en ce moment (valeurs entre 1 et 5)}
@@ -360,14 +360,14 @@
 #' @description Une entreprise oeuvrant dans le secteur des télécommunications s’intéresse aux facteurs influençant le temps qu’un client reste abonné à son service de téléphone cellulaire.
 #' @format Une base de données avec 500 lignes et 8 variables:
 #' \describe{
-#'  \item{\code{temps}}{temps (en semaines) d'abonnement au service de téléphonie cellulaire}
-#'  \item{\code{censure}}{variable binaire qui indique si \code{temps} est censurée (\code{1} si le client est toujours abonné) ou non (\code{0}, la variable \code{temps} est la durée finale de l’abonnement)}
+#'  \item{\code{id}}{entier; identifiant du client}
+#'  \item{\code{debut}}{début de la période (en semaines) d'abonnement au service de téléphonie cellulaire}
+#'  \item{\code{fin}}{fin de la période (en semaines) d'abonnement au service de téléphonie cellulaire selon l'ensemble de covariables}
+#' \item{\code{evenement}}{variable binaire qui indique si \code{temps} est censurée (\code{0} si le client est toujours abonné ou s'il change de nombre de service par la suite) ou non (\code{1}, la variable \code{temps} est la durée finale de l’abonnement)}
 #'  \item{\code{age}}{âge du client au début de l’abonnement}
 #'  \item{\code{sexe}}{variable binaire, soit femme (\code{1}) ou homme (\code{0})}
 #'  \item{\code{region}}{région où habite le client en ce moment (valeurs entre 1 et 5)}
-#'  \item{\code{service_avant}}{nombre d’autres services auxquels le client est abonné au début de son abonnement}
-#'  \item{\code{temps_ch}}{temps au moment où un changement est survenu quant au nombre d’autres services. En l’absence de changement, l’observation est remplacée par une valeur manquante}
-#'  \item{\code{service_apres}}{nombre d’autres services auxquels le client est abonné à partir du temps \code{temps_ch}}
+#'  \item{\code{service}}{nombre d’autres services auxquels le client est abonné}
 #'}
 #' @author Denis Larocque
 "survie3"

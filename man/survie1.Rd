@@ -8,7 +8,7 @@
 Une base de données avec 500 lignes et 6 variables:
 \describe{
  \item{\code{temps}}{temps (en semaines) d'abonnement au service de téléphonie cellulaire}
- \item{\code{censure}}{variable binaire qui indique si \code{temps} est censurée (\code{1} si le client est toujours abonné) ou non (\code{0}, la variable \code{temps} est la durée finale de l’abonnement)}
+ \item{\code{censure}}{variable binaire qui indique si \code{temps} est censurée (\code{0} si le client est toujours abonné) ou non (\code{1}, la variable \code{temps} est la durée finale de l’abonnement)}
  \item{\code{age}}{âge du client au début de l’abonnement}
  \item{\code{sexe}}{variable binaire, soit femme (\code{1}) ou homme (\code{0})}
  \item{\code{region}}{région où habite le client en ce moment (valeurs entre 1 et 5)}
