@@ -3,7 +3,6 @@
 \docType{data}
 \name{sondage}
 \alias{sondage}
-\alias{survey_sans_missing}
 \title{Données de sondage sans valeurs manquantes}
 \format{
 Une base de données avec 1842 lignes et 10 variables:
