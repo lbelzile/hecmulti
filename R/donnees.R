@@ -747,12 +747,15 @@
 #'
 #' @format Une base de données avec 5837 lignes et 10 variables:
 #' \describe{
+
+#' \item{\code{age}}{âge du participant}
 #' \item{\code{race}}{facteur, soit blanc (\code{Caucasien}), Afro-Américain (\code{Afro-Americain}), Hispanique (\code{Hispanique}) ou autre.}
 #' \item{\code{sexe}}{facteur, sexe de l'individu, \code{homme} ou \code{femme}}
 #' \item{\code{revenu}}{facteur, variable catégorielle pour la tranche de revenu déclarée}
 #' \item{\code{catvote}}{facteur ordonné, fréquence de vote, soit \code{toujours}, \code{sporadiquement}, soit \code{rarement/jamais}.}
 #' \item{\code{educ}}{facteur, niveau d'éducation de la personne}
 #' \item{\code{poids}}{pondération du sondage}
+#' \item{\code{affiliation}}{facteur, affiliation politique, soit Démocrate (\code{Dem}), Républicain(e) (\code{GOP}), soit non-réponse, indépendants, tiers parti ou aucune préférence (\code{autre})}
 #' }
 #' @source FiveThirtyEight, données \code{non-voters}
 #' @note Données partagées sous licence Creative Commons Attribution 4.0 International License
