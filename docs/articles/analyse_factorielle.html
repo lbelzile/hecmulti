@@ -27,7 +27,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">hecmulti</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2022.06.10</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2022.07.07</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Activer la navigation">
@@ -71,7 +71,7 @@
 
 
 <div class="row">
-  <main id="main"><div class="page-header">
+  <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Analyse factorielle</h1>
             
       
@@ -91,34 +91,34 @@ dans l’environnement, on remarque que toutes les variables correspondent
 nécessaire de standardiser les données (en travaillant avec la matrice
 de corrélation).</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lbelzile/hecmulti" class="external-link">hecmulti</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">factor</span>, package <span class="op">=</span> <span class="st">"hecmulti"</span><span class="op">)</span>
-<span class="co"># Statistiques descriptives</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">factor</span><span class="op">)</span>
-<span class="co">#&gt;        x1              x2             x3              x4             x5      </span>
-<span class="co">#&gt;  Min.   :1.000   Min.   :1.00   Min.   :1.000   Min.   :1.00   Min.   :1.00  </span>
-<span class="co">#&gt;  1st Qu.:1.000   1st Qu.:1.00   1st Qu.:2.000   1st Qu.:2.00   1st Qu.:3.00  </span>
-<span class="co">#&gt;  Median :2.000   Median :2.00   Median :3.000   Median :3.00   Median :4.00  </span>
-<span class="co">#&gt;  Mean   :2.255   Mean   :2.51   Mean   :3.005   Mean   :2.91   Mean   :3.55  </span>
-<span class="co">#&gt;  3rd Qu.:3.000   3rd Qu.:3.00   3rd Qu.:4.000   3rd Qu.:4.00   3rd Qu.:5.00  </span>
-<span class="co">#&gt;  Max.   :5.000   Max.   :5.00   Max.   :5.000   Max.   :5.00   Max.   :5.00  </span>
-<span class="co">#&gt;        x6             x7             x8              x9            x10      </span>
-<span class="co">#&gt;  Min.   :1.00   Min.   :1.00   Min.   :1.000   Min.   :1.00   Min.   :1.00  </span>
-<span class="co">#&gt;  1st Qu.:1.00   1st Qu.:1.00   1st Qu.:2.000   1st Qu.:2.00   1st Qu.:1.00  </span>
-<span class="co">#&gt;  Median :2.00   Median :1.00   Median :3.000   Median :3.00   Median :3.00  </span>
-<span class="co">#&gt;  Mean   :2.14   Mean   :1.82   Mean   :2.915   Mean   :3.04   Mean   :2.59  </span>
-<span class="co">#&gt;  3rd Qu.:3.00   3rd Qu.:3.00   3rd Qu.:4.000   3rd Qu.:4.00   3rd Qu.:4.00  </span>
-<span class="co">#&gt;  Max.   :5.00   Max.   :5.00   Max.   :5.000   Max.   :5.00   Max.   :5.00  </span>
-<span class="co">#&gt;       x11             x12      </span>
-<span class="co">#&gt;  Min.   :1.000   Min.   :1.00  </span>
-<span class="co">#&gt;  1st Qu.:2.000   1st Qu.:3.00  </span>
-<span class="co">#&gt;  Median :3.000   Median :3.00  </span>
-<span class="co">#&gt;  Mean   :2.985   Mean   :3.45  </span>
-<span class="co">#&gt;  3rd Qu.:4.000   3rd Qu.:4.00  </span>
-<span class="co">#&gt;  Max.   :5.000   Max.   :5.00</span>
-<span class="co"># Matrice de corrélation</span>
-<span class="va">cormat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">cor</a></span><span class="op">(</span><span class="va">factor</span>, method <span class="op">=</span> <span class="st">"pearson"</span><span class="op">)</span>
-<span class="fu">corrplot</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/corrplot/man/corrplot.html" class="external-link">corrplot</a></span><span class="op">(</span><span class="va">cormat</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lbelzile/hecmulti" class="external-link">hecmulti</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">factor</span>, package <span class="op">=</span> <span class="st">"hecmulti"</span><span class="op">)</span></span>
+<span><span class="co"># Statistiques descriptives</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">factor</span><span class="op">)</span></span>
+<span><span class="co">#&gt;        x1              x2             x3              x4             x5      </span></span>
+<span><span class="co">#&gt;  Min.   :1.000   Min.   :1.00   Min.   :1.000   Min.   :1.00   Min.   :1.00  </span></span>
+<span><span class="co">#&gt;  1st Qu.:1.000   1st Qu.:1.00   1st Qu.:2.000   1st Qu.:2.00   1st Qu.:3.00  </span></span>
+<span><span class="co">#&gt;  Median :2.000   Median :2.00   Median :3.000   Median :3.00   Median :4.00  </span></span>
+<span><span class="co">#&gt;  Mean   :2.255   Mean   :2.51   Mean   :3.005   Mean   :2.91   Mean   :3.55  </span></span>
+<span><span class="co">#&gt;  3rd Qu.:3.000   3rd Qu.:3.00   3rd Qu.:4.000   3rd Qu.:4.00   3rd Qu.:5.00  </span></span>
+<span><span class="co">#&gt;  Max.   :5.000   Max.   :5.00   Max.   :5.000   Max.   :5.00   Max.   :5.00  </span></span>
+<span><span class="co">#&gt;        x6             x7             x8              x9            x10      </span></span>
+<span><span class="co">#&gt;  Min.   :1.00   Min.   :1.00   Min.   :1.000   Min.   :1.00   Min.   :1.00  </span></span>
+<span><span class="co">#&gt;  1st Qu.:1.00   1st Qu.:1.00   1st Qu.:2.000   1st Qu.:2.00   1st Qu.:1.00  </span></span>
+<span><span class="co">#&gt;  Median :2.00   Median :1.00   Median :3.000   Median :3.00   Median :3.00  </span></span>
+<span><span class="co">#&gt;  Mean   :2.14   Mean   :1.82   Mean   :2.915   Mean   :3.04   Mean   :2.59  </span></span>
+<span><span class="co">#&gt;  3rd Qu.:3.00   3rd Qu.:3.00   3rd Qu.:4.000   3rd Qu.:4.00   3rd Qu.:4.00  </span></span>
+<span><span class="co">#&gt;  Max.   :5.00   Max.   :5.00   Max.   :5.000   Max.   :5.00   Max.   :5.00  </span></span>
+<span><span class="co">#&gt;       x11             x12      </span></span>
+<span><span class="co">#&gt;  Min.   :1.000   Min.   :1.00  </span></span>
+<span><span class="co">#&gt;  1st Qu.:2.000   1st Qu.:3.00  </span></span>
+<span><span class="co">#&gt;  Median :3.000   Median :3.00  </span></span>
+<span><span class="co">#&gt;  Mean   :2.985   Mean   :3.45  </span></span>
+<span><span class="co">#&gt;  3rd Qu.:4.000   3rd Qu.:4.00  </span></span>
+<span><span class="co">#&gt;  Max.   :5.000   Max.   :5.00</span></span>
+<span><span class="co"># Matrice de corrélation</span></span>
+<span><span class="va">cormat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">cor</a></span><span class="op">(</span><span class="va">factor</span>, method <span class="op">=</span> <span class="st">"pearson"</span><span class="op">)</span></span>
+<span><span class="fu">corrplot</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/corrplot/man/corrplot.html" class="external-link">corrplot</a></span><span class="op">(</span><span class="va">cormat</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
 <img src="analyse_factorielle_files/figure-html/dataload-1.png" alt="Matrice de corrélation" width="700"><p class="caption">
 Matrice de corrélation
@@ -150,28 +150,28 @@ modèle factoriel par maximum de vraisemblance. La fonction
 <code>factanal</code> sert à cette tâche, mais le paquet
 <code>psych</code> inclut plusieurs autres options.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">fa4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/factanal.html" class="external-link">factanal</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">factor</span>, factors <span class="op">=</span> <span class="fl">4L</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">fa4</span><span class="op">$</span><span class="va">loadings</span>, cutoff <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Loadings:</span>
-<span class="co">#&gt;     Factor1 Factor2 Factor3 Factor4</span>
-<span class="co">#&gt; x1                           0.992 </span>
-<span class="co">#&gt; x2                   0.665         </span>
-<span class="co">#&gt; x3           0.751                 </span>
-<span class="co">#&gt; x4   0.714                         </span>
-<span class="co">#&gt; x5                           0.373 </span>
-<span class="co">#&gt; x6           0.510                 </span>
-<span class="co">#&gt; x7                   0.754         </span>
-<span class="co">#&gt; x8   0.792                         </span>
-<span class="co">#&gt; x9           0.629                 </span>
-<span class="co">#&gt; x10                  0.659         </span>
-<span class="co">#&gt; x11  0.708                         </span>
-<span class="co">#&gt; x12          0.609                 </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;                Factor1 Factor2 Factor3 Factor4</span>
-<span class="co">#&gt; SS loadings      1.673   1.602   1.483   1.153</span>
-<span class="co">#&gt; Proportion Var   0.139   0.133   0.124   0.096</span>
-<span class="co">#&gt; Cumulative Var   0.139   0.273   0.396   0.493</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">fa4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/factanal.html" class="external-link">factanal</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">factor</span>, factors <span class="op">=</span> <span class="fl">4L</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">fa4</span><span class="op">$</span><span class="va">loadings</span>, cutoff <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Loadings:</span></span>
+<span><span class="co">#&gt;     Factor1 Factor2 Factor3 Factor4</span></span>
+<span><span class="co">#&gt; x1                           0.992 </span></span>
+<span><span class="co">#&gt; x2                   0.665         </span></span>
+<span><span class="co">#&gt; x3           0.751                 </span></span>
+<span><span class="co">#&gt; x4   0.714                         </span></span>
+<span><span class="co">#&gt; x5                           0.373 </span></span>
+<span><span class="co">#&gt; x6           0.510                 </span></span>
+<span><span class="co">#&gt; x7                   0.754         </span></span>
+<span><span class="co">#&gt; x8   0.792                         </span></span>
+<span><span class="co">#&gt; x9           0.629                 </span></span>
+<span><span class="co">#&gt; x10                  0.659         </span></span>
+<span><span class="co">#&gt; x11  0.708                         </span></span>
+<span><span class="co">#&gt; x12          0.609                 </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;                Factor1 Factor2 Factor3 Factor4</span></span>
+<span><span class="co">#&gt; SS loadings      1.673   1.602   1.483   1.153</span></span>
+<span><span class="co">#&gt; Proportion Var   0.139   0.133   0.124   0.096</span></span>
+<span><span class="co">#&gt; Cumulative Var   0.139   0.273   0.396   0.493</span></span></code></pre></div>
 <p>Par défaut, la solution retournée correspond à la rotation varimax.
 On imprime les chargements en omettant les valeurs inférieures à 0.3
 pour faciliter la visualisation.</p>
@@ -188,25 +188,25 @@ approximation si <span class="math inline">\(n\)</span> est plus grand
 que <span class="math inline">\(p\)</span>; ici, la différence est
 minime avec une valeur-<em>p</em> de 0.98.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">fa4</span><span class="op">$</span><span class="va">PVAL</span>
-<span class="co"># avec correction de Bartlett</span>
-<span class="fu"><a href="../reference/bartlettcorr_factanal.html">bartlettcorr_factanal</a></span><span class="op">(</span><span class="va">fa4</span><span class="op">)</span><span class="op">$</span><span class="va">pvalue</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">fa4</span><span class="op">$</span><span class="va">PVAL</span></span>
+<span><span class="co"># avec correction de Bartlett</span></span>
+<span><span class="fu"><a href="../reference/bartlettcorr_factanal.html">bartlettcorr_factanal</a></span><span class="op">(</span><span class="va">fa4</span><span class="op">)</span><span class="op">$</span><span class="va">pvalue</span></span></code></pre></div>
 <p>Le paquet <code>hecmulti</code> contient des méthodes pour extraire
 la log-vraisemblance et les critères d’information pour un modèle
 d’analyse factorielle (objet de classe “factanal”). On fait une boucle
 pour calculer les AIC, BIC et la valeur-<span class="math inline">\(p\)</span> du test d’adéquation.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Tableau avec critères</span>
-<span class="va">emv_crit</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ajustement_factanal.html">ajustement_factanal</a></span><span class="op">(</span>
-   x <span class="op">=</span> <span class="va">factor</span>, 
-   factors <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span>
-<span class="va">emv_crit</span>
-<span class="co">#&gt;   k      AIC      BIC    pval npar heywood</span>
-<span class="co">#&gt; 1 1 2267.138 2346.297 &lt; 2e-16   24       0</span>
-<span class="co">#&gt; 2 2 2137.869 2253.310 &lt; 2e-16   35       0</span>
-<span class="co">#&gt; 3 3 2017.188 2165.612 0.09604   45       0</span>
-<span class="co">#&gt; 4 4 2002.559 2180.668 0.97262   54       1</span>
-<span class="co">#&gt; 5 5 2012.696 2217.192 0.97445   62       1</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Tableau avec critères</span></span>
+<span><span class="va">emv_crit</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ajustement_factanal.html">ajustement_factanal</a></span><span class="op">(</span></span>
+<span>   x <span class="op">=</span> <span class="va">factor</span>, </span>
+<span>   factors <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span></span>
+<span><span class="va">emv_crit</span></span>
+<span><span class="co">#&gt;   k      AIC      BIC    pval npar heywood</span></span>
+<span><span class="co">#&gt; 1 1 2267.138 2346.297 &lt; 2e-16   24       0</span></span>
+<span><span class="co">#&gt; 2 2 2137.869 2253.310 &lt; 2e-16   35       0</span></span>
+<span><span class="co">#&gt; 3 3 2017.188 2165.612 0.09604   45       0</span></span>
+<span><span class="co">#&gt; 4 4 2002.559 2180.668 0.97262   54       1</span></span>
+<span><span class="co">#&gt; 5 5 2012.696 2217.192 0.97445   62       1</span></span></code></pre></div>
 <p>Le nombre de facteurs optimal selon les critères AIC et BIC est
 trois, et c’est également le nombre minimal de facteurs selon test du
 khi-deux qui donne une description adéquate de la matrice de
@@ -240,11 +240,11 @@ est faible).</p>
 mitaine pour ensuite extraire le nombre de valeurs propres supérieures à
 1.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">decomposition</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/eigen.html" class="external-link">eigen</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">cov</a></span><span class="op">(</span><span class="va">factor</span><span class="op">)</span><span class="op">)</span>
-<span class="va">valpropres</span> <span class="op">&lt;-</span> <span class="va">decomposition</span><span class="op">$</span><span class="va">values</span>
-<span class="va">critkaiser</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">valpropres</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span>
-<span class="co"># Diagramme d'éboulis</span>
-<span class="fu"><a href="../reference/eboulis.html">eboulis</a></span><span class="op">(</span><span class="va">decomposition</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">decomposition</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/eigen.html" class="external-link">eigen</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">cov</a></span><span class="op">(</span><span class="va">factor</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">valpropres</span> <span class="op">&lt;-</span> <span class="va">decomposition</span><span class="op">$</span><span class="va">values</span></span>
+<span><span class="va">critkaiser</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">valpropres</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co"># Diagramme d'éboulis</span></span>
+<span><span class="fu"><a href="../reference/eboulis.html">eboulis</a></span><span class="op">(</span><span class="va">decomposition</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
 <img src="analyse_factorielle_files/figure-html/eigendecomposition-1.png" alt="Diagramme d'éboulis" width="864"><p class="caption">
 Diagramme d’éboulis
@@ -266,48 +266,48 @@ matrice <span class="math inline">\(p \times k\)</span> avec les <span class="ma
 <span class="math inline">\(k \times k\)</span> de <span class="math inline">\(\boldsymbol{\Lambda}\)</span> contenant les <span class="math inline">\(k\)</span> plus grandes valeurs propres. Il suffit
 ensuite de calculer la rotation de cette racine.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">vecp</span> <span class="op">&lt;-</span> <span class="va">decomposition</span><span class="op">$</span><span class="va">vectors</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="va">critkaiser</span><span class="op">)</span><span class="op">]</span>
-<span class="va">diag_valp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="va">valpropres</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="va">critkaiser</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
-<span class="va">acp5</span> <span class="op">&lt;-</span>  <span class="va">vecp</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span> <span class="va">diag_valp</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/varimax.html" class="external-link">varimax</a></span><span class="op">(</span><span class="va">acp5</span><span class="op">)</span>
-<span class="co">#&gt; $loadings</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Loadings:</span>
-<span class="co">#&gt;       [,1]   [,2]   [,3]   [,4]   [,5]  </span>
-<span class="co">#&gt;  [1,]         0.109  0.129  0.883  0.281</span>
-<span class="co">#&gt;  [2,] -0.106 -0.981                0.204</span>
-<span class="co">#&gt;  [3,]               -0.995 -0.127       </span>
-<span class="co">#&gt;  [4,]  1.118                       0.349</span>
-<span class="co">#&gt;  [5,]                       1.009 -0.267</span>
-<span class="co">#&gt;  [6,]               -0.561         0.705</span>
-<span class="co">#&gt;  [7,]        -0.809                     </span>
-<span class="co">#&gt;  [8,]  1.122 -0.153                     </span>
-<span class="co">#&gt;  [9,]               -0.882              </span>
-<span class="co">#&gt; [10,]  0.132 -1.114 -0.111        -0.241</span>
-<span class="co">#&gt; [11,]  1.062  0.157 -0.169 -0.120 -0.413</span>
-<span class="co">#&gt; [12,]               -0.781         0.376</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;                 [,1]  [,2]  [,3]  [,4]  [,5]</span>
-<span class="co">#&gt; SS loadings    3.695 2.930 2.758 1.845 1.188</span>
-<span class="co">#&gt; Proportion Var 0.308 0.244 0.230 0.154 0.099</span>
-<span class="co">#&gt; Cumulative Var 0.308 0.552 0.782 0.936 1.035</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $rotmat</span>
-<span class="co">#&gt;            [,1]        [,2]       [,3]        [,4]        [,5]</span>
-<span class="co">#&gt; [1,] 0.90161230 -0.25071582 -0.2987722 -0.18256899  0.04050381</span>
-<span class="co">#&gt; [2,] 0.40028783  0.75379412  0.4624123  0.14189682 -0.19391818</span>
-<span class="co">#&gt; [3,] 0.09730667 -0.57630414  0.7796863 -0.05245829 -0.21850014</span>
-<span class="co">#&gt; [4,] 0.11946882 -0.18604744 -0.0657347  0.97002381  0.07646121</span>
-<span class="co">#&gt; [5,] 0.05588848  0.04686028  0.2909953 -0.05325221  0.95245291</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">vecp</span> <span class="op">&lt;-</span> <span class="va">decomposition</span><span class="op">$</span><span class="va">vectors</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="va">critkaiser</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="va">diag_valp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="va">valpropres</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="va">critkaiser</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">acp5</span> <span class="op">&lt;-</span>  <span class="va">vecp</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span> <span class="va">diag_valp</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/varimax.html" class="external-link">varimax</a></span><span class="op">(</span><span class="va">acp5</span><span class="op">)</span></span>
+<span><span class="co">#&gt; $loadings</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Loadings:</span></span>
+<span><span class="co">#&gt;       [,1]   [,2]   [,3]   [,4]   [,5]  </span></span>
+<span><span class="co">#&gt;  [1,]         0.109  0.129  0.883  0.281</span></span>
+<span><span class="co">#&gt;  [2,] -0.106 -0.981                0.204</span></span>
+<span><span class="co">#&gt;  [3,]               -0.995 -0.127       </span></span>
+<span><span class="co">#&gt;  [4,]  1.118                       0.349</span></span>
+<span><span class="co">#&gt;  [5,]                       1.009 -0.267</span></span>
+<span><span class="co">#&gt;  [6,]               -0.561         0.705</span></span>
+<span><span class="co">#&gt;  [7,]        -0.809                     </span></span>
+<span><span class="co">#&gt;  [8,]  1.122 -0.153                     </span></span>
+<span><span class="co">#&gt;  [9,]               -0.882              </span></span>
+<span><span class="co">#&gt; [10,]  0.132 -1.114 -0.111        -0.241</span></span>
+<span><span class="co">#&gt; [11,]  1.062  0.157 -0.169 -0.120 -0.413</span></span>
+<span><span class="co">#&gt; [12,]               -0.781         0.376</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;                 [,1]  [,2]  [,3]  [,4]  [,5]</span></span>
+<span><span class="co">#&gt; SS loadings    3.695 2.930 2.758 1.845 1.188</span></span>
+<span><span class="co">#&gt; Proportion Var 0.308 0.244 0.230 0.154 0.099</span></span>
+<span><span class="co">#&gt; Cumulative Var 0.308 0.552 0.782 0.936 1.035</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $rotmat</span></span>
+<span><span class="co">#&gt;            [,1]        [,2]       [,3]        [,4]        [,5]</span></span>
+<span><span class="co">#&gt; [1,] 0.90161230 -0.25071582 -0.2987722 -0.18256899  0.04050381</span></span>
+<span><span class="co">#&gt; [2,] 0.40028783  0.75379412  0.4624123  0.14189682 -0.19391818</span></span>
+<span><span class="co">#&gt; [3,] 0.09730667 -0.57630414  0.7796863 -0.05245829 -0.21850014</span></span>
+<span><span class="co">#&gt; [4,] 0.11946882 -0.18604744 -0.0657347  0.97002381  0.07646121</span></span>
+<span><span class="co">#&gt; [5,] 0.05588848  0.04686028  0.2909953 -0.05325221  0.95245291</span></span></code></pre></div>
 <p>Le paquet <code>psych</code> permet aussi l’estimation (plus directe)
 avec d’autres méthodes, notamment la méthode des composantes
 principales.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">fa_compprin</span> <span class="op">&lt;-</span> <span class="fu">psych</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/principal.html" class="external-link">principal</a></span><span class="op">(</span>r <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">cov</a></span><span class="op">(</span><span class="va">factor</span><span class="op">)</span>, 
-                                covar <span class="op">=</span> <span class="cn">TRUE</span>, 
-                                nfactors <span class="op">=</span> <span class="fl">5L</span>, 
-                                rotate <span class="op">=</span> <span class="st">"varimax"</span><span class="op">)</span>
-<span class="co"># covar = FALSE pour matrice de corrélation</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">fa_compprin</span> <span class="op">&lt;-</span> <span class="fu">psych</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/principal.html" class="external-link">principal</a></span><span class="op">(</span>r <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">cov</a></span><span class="op">(</span><span class="va">factor</span><span class="op">)</span>, </span>
+<span>                                covar <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>                                nfactors <span class="op">=</span> <span class="fl">5L</span>, </span>
+<span>                                rotate <span class="op">=</span> <span class="st">"varimax"</span><span class="op">)</span></span>
+<span><span class="co"># covar = FALSE pour matrice de corrélation</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -317,19 +317,19 @@ principales.</p>
 interne. La règle du pouce veut qu’on conserve les échelles si les
 variables qui les forment ont un <span class="math inline">\(\alpha\)</span> de Cronbach qui excède 0.6.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ech_service</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowMeans</a></span><span class="op">(</span><span class="va">factor</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x4"</span>,<span class="st">"x8"</span>,<span class="st">"x11"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>
-<span class="va">ech_produit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowMeans</a></span><span class="op">(</span><span class="va">factor</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x3"</span>,<span class="st">"x6"</span>,<span class="st">"x9"</span>,<span class="st">"x12"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>
-<span class="va">ech_paiement</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowMeans</a></span><span class="op">(</span><span class="va">factor</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x2"</span>,<span class="st">"x7"</span>,<span class="st">"x10"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>
-<span class="va">ech_prix</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowMeans</a></span><span class="op">(</span><span class="va">factor</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x1"</span>,<span class="st">"x5"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>
-<span class="co"># Cohérence interne (alpha de Cronbach)</span>
-<span class="fu"><a href="../reference/alphaC.html">alphaC</a></span><span class="op">(</span><span class="va">factor</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x4"</span>,<span class="st">"x8"</span>,<span class="st">"x11"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.7805243</span>
-<span class="fu"><a href="../reference/alphaC.html">alphaC</a></span><span class="op">(</span><span class="va">factor</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x3"</span>,<span class="st">"x6"</span>,<span class="st">"x9"</span>,<span class="st">"x12"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.7182528</span>
-<span class="fu"><a href="../reference/alphaC.html">alphaC</a></span><span class="op">(</span><span class="va">factor</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x2"</span>,<span class="st">"x7"</span>,<span class="st">"x10"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.7274919</span>
-<span class="fu"><a href="../reference/alphaC.html">alphaC</a></span><span class="op">(</span><span class="va">factor</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x1"</span>,<span class="st">"x5"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.5456338</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">ech_service</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowMeans</a></span><span class="op">(</span><span class="va">factor</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x4"</span>,<span class="st">"x8"</span>,<span class="st">"x11"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="va">ech_produit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowMeans</a></span><span class="op">(</span><span class="va">factor</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x3"</span>,<span class="st">"x6"</span>,<span class="st">"x9"</span>,<span class="st">"x12"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="va">ech_paiement</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowMeans</a></span><span class="op">(</span><span class="va">factor</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x2"</span>,<span class="st">"x7"</span>,<span class="st">"x10"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="va">ech_prix</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowMeans</a></span><span class="op">(</span><span class="va">factor</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x1"</span>,<span class="st">"x5"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co"># Cohérence interne (alpha de Cronbach)</span></span>
+<span><span class="fu"><a href="../reference/alphaC.html">alphaC</a></span><span class="op">(</span><span class="va">factor</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x4"</span>,<span class="st">"x8"</span>,<span class="st">"x11"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.7805243</span></span>
+<span><span class="fu"><a href="../reference/alphaC.html">alphaC</a></span><span class="op">(</span><span class="va">factor</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x3"</span>,<span class="st">"x6"</span>,<span class="st">"x9"</span>,<span class="st">"x12"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.7182528</span></span>
+<span><span class="fu"><a href="../reference/alphaC.html">alphaC</a></span><span class="op">(</span><span class="va">factor</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x2"</span>,<span class="st">"x7"</span>,<span class="st">"x10"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.7274919</span></span>
+<span><span class="fu"><a href="../reference/alphaC.html">alphaC</a></span><span class="op">(</span><span class="va">factor</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x1"</span>,<span class="st">"x5"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.5456338</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>Sur cette page</h2>
     </nav></aside>
@@ -344,8 +344,7 @@ variables qui les forment ont un <span class="math inline">\(\alpha\)</span> de 
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site créé avec <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.2.</p>
+<p>Site créé avec <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
     </footer>
