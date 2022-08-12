@@ -760,3 +760,27 @@
 #' @source FiveThirtyEight, données \code{non-voters}
 #' @note Données partagées sous licence Creative Commons Attribution 4.0 International License
 "vote"
+
+#' @title Dons à un organisme de charité
+#' @description Données simulées correspondant aux donations et sollications d'un organisme de charité auprès d'employés de compagnies associées à l'organisme.
+#' @format Une base de données avec 49730 lignes et 16 variables:
+#' \describe{
+#'   \item{\code{ndons}}{nombre de dons}
+#'   \item{\code{recence}}{nombre de mois depuis le dernier don, \code{NA} si la personne n'a jamais fait de dons}
+#'   \item{\code{anciennete}}{nombre de mois depuis le premier don, le cas échéant}
+#'   \item{\code{vdons}}{valeur monétaire de tous les dons, en dollars}
+#'   \item{\code{vdonsmax}}{don de valeur maximale}
+#'   \item{\code{vdonsmin}}{don de valeur minimale}
+#'   \item{\code{npromesse}}{nombre de promesses de dons}
+#'   \item{\code{vpromesse}}{valeur totale de promesse}
+#'   \item{\code{nradiations}}{nombre de radiations de promesses}
+#'   \item{\code{vradiations}}{valeur de la promesse non versée}
+#'   \item{\code{ddons}}{temps moyen écoulé (en mois) entre deux dons, si dons multiple}
+#'   \item{\code{ddonsmax}}{temps maximum écoulé entre deux dons (en mois)}
+#'   \item{\code{ddonsmin}}{temps minimum écoulé entre deux dons (en mois)}
+#'   \item{\code{nrefus}}{nombre de refus de donner}
+#'   \item{\code{nrefusconsec}}{nombre de refus consécutifs}
+#'   \item{\code{nindecis}}{nombre de décisions indécisives, mesurées à partir de formulaires partiellement complétés} 
+#'}
+"dons"
+
