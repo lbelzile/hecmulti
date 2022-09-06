@@ -55,6 +55,13 @@
 #' @description Sous-ensemble d'une base de données de
 #' @format Une base de données avec 129880 lignes et 13 variables:
 #' \describe{
+#'   \item{\code{id}}{facteur, identifiant du client}
+#'   \item{\code{sexe}}{facteur, sexe (\code{homme} ou \code{femme})}
+#'   \item{\code{loyaute_consommateur}}{facteur, est-ce que la personne a un compte fidélité}
+#'   \item{\code{age}}{entier, âge de la personne}
+#'   \item{\code{type_deplacement}}{facteur, motif du déplacement (\code{affaires} ou \code{personnel})}
+#'   \item{\code{classe}}{facteur, classe du vol (\code{affaire}, \code{eco} ou \code{ecoplus})}
+#'   \item{\code{distance_vol}}{double, distance du vol (en km)}
 #'   \item{\code{service_internet_en_vol}}{entier, niveau de satisfaction pour le service internet en vol (0 si pas applicable)}
 #'   \item{\code{temps_arrivee_depart_convenable}}{entier, niveau de satisfaction pour l’heure de départ et d’arrivée}
 #'   \item{\code{facilite_reservation_en_ligne}}{entier, niveau de satisfaction en rapport à la facilité d’utilisation du service de réservation en ligne}
@@ -68,6 +75,9 @@
 #'   \item{\code{service_enregistrement}}{entier, niveau de satisfaction lié au service d’enregistrement à la porte}
 #'   \item{\code{service_vol}}{entier, niveau de satisfaction en lien avec le service durant le vol}
 #'   \item{\code{proprete}}{entier, niveau de satisfaction pour la propreté de l’appareil}
+#'   \item{\code{delai_depart_min}}{entier, retard du vol au départ (en minutes)}
+#'   \item{\code{delai_arrivee_min}}{entier, retard du vol à l'arrivée (en minutes)}
+#'   \item{\code{satisfaction}}{facteur, indice binaire de satisfaction globale}
 #'}
 #'
 #' @details Les variables mesurent la satisfaction (mesurée par une échelle
@@ -78,7 +88,7 @@
 #' Les données sont mises à disposition sous licence CC0 (domaine public) issues de Kaggle.
 #' @author Sayantan Jana
 #' @references Kaggle \url{https://www.kaggle.com/sjleshrac/airlines-customer-satisfaction/}
-"aerien_facto"
+"aerien"
 
 
 #' @title Classement de bières
