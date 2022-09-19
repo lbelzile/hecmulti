@@ -7,7 +7,7 @@
 eboulis(object, which = 1:2)
 }
 \arguments{
-\item{object}{objet de classe \code{eigen}}
+\item{object}{objet de classe \code{eigen}, \code{princomp} ou \code{prcomp}}
 
 \item{which}{vecteur d'entiers indiquant quels graphiques imprimer, soit \code{1} pour le diagramme d'éboulis et \code{2} pour la variance cumulative}
 }
@@ -15,6 +15,5 @@ eboulis(object, which = 1:2)
 une matrice de deux objets \code{ggplot}
 }
 \description{
-Crée un diagramme d'éboulis pour les
-objets de class \code{eigen}
+Crée un diagramme d'éboulis représentant les valeurs propres d'une matrice de covariance, soit les ou les variances des variables, en ordre décroissant.
 }

@@ -52,10 +52,9 @@
 "abonnement"
 
 #' @title Enquête de satisfaction d'une compagnie aérienne
-#' @description Sous-ensemble d'une base de données de
-#' @format Une base de données avec 129880 lignes et 13 variables:
+#' @description Résultats d'une enquête de satisfaction sur des clients de compagnie aérienne. Les variables des colonnes 7 à 20 sont tirées des résultats du questionnaire, les autres encodent des informations démographiques sur les clients et sur le vol.
+#' @format Une base de données avec 129880 lignes et 23 variables:
 #' \describe{
-#'   \item{\code{id}}{facteur, identifiant du client}
 #'   \item{\code{sexe}}{facteur, sexe (\code{homme} ou \code{femme})}
 #'   \item{\code{loyaute_consommateur}}{facteur, est-ce que la personne a un compte fidélité}
 #'   \item{\code{age}}{entier, âge de la personne}
@@ -790,7 +789,7 @@
 #'   \item{\code{ddonsmin}}{temps minimum écoulé entre deux dons (en mois)}
 #'   \item{\code{nrefus}}{nombre de refus de donner}
 #'   \item{\code{nrefusconsec}}{nombre de refus consécutifs}
-#'   \item{\code{nindecis}}{nombre de décisions indécisives, mesurées à partir de formulaires partiellement complétés} 
+#'   \item{\code{nindecis}}{nombre de décisions indécisives, mesurées à partir de formulaires partiellement complétés}
 #'}
 "dons"
 

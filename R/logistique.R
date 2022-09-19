@@ -179,7 +179,7 @@ print.hecmulti_spiegelhalter <-
 #'
 #'@details Le nombre de données classifiées est arrondi, contrairement au graphique
 #' @export
-lift <- function(prob,
+courbelift <- function(prob,
                  resp,
                  plot = TRUE,
                  levels = seq(0.1, 0.9, by = 0.1)) {
@@ -248,7 +248,7 @@ lift <- function(prob,
 #'
 #' Calculer les statistiques d'ajustement (sensibilité, spécificité, taux de bonne classification, etc.) en fonction de points de coupures
 #'
-#' @inheritParams lift
+#' @inheritParams courbelift
 #' @return une base de données avec les composantes suivantes:
 #' \itemize{
 #' \item{\code{coupe}}{points de coupe}

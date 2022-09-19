@@ -123,21 +123,32 @@ data.frame(k = as.integer(res[,1]),
            heywood = res[,6])
 }
 
+
+
+
 #' Diagramme d'éboulis
 #'
-#' Crée un diagramme d'éboulis pour les
-#' objets de class \code{eigen}
+#' Crée un diagramme d'éboulis représentant les valeurs propres d'une matrice de covariance, soit les ou les variances des variables, en ordre décroissant.
 #' @export
 #' @import ggplot2 patchwork
-#' @param object objet de classe \code{eigen}
+#' @param object objet de classe \code{eigen}, \code{princomp} ou \code{prcomp}
 #' @param which vecteur d'entiers indiquant quels graphiques imprimer, soit \code{1} pour le diagramme d'éboulis et \code{2} pour la variance cumulative
 #' @return une matrice de deux objets \code{ggplot}
 eboulis <- function(object, which = 1:2){
-  stopifnot(isTRUE(inherits(x = object, what = "eigen")),
-            isTRUE(length(object$values) > 1))
-  valpropres <- object$values
+  if(isTRUE(inherits(x = object, what = "eigen"))){
+    stopifnot(isTRUE(length(object$values) > 1))
+    valpropres <- object$values
+  } else if(isTRUE(inherits(x = object, what = "princomp"))){
+    valpropres <-
+      as.numeric(object$sdev)^2*object$n.obs/(object$n.obs - 1L)
+  } else if(isTRUE(inherits(x = object, what = "prcomp"))){
+    valpropres <-  object$sdev^2
+  } else{
+    stop("Objet de classe inconnue.")
+  }
+
   df <- data.frame(y = valpropres,
-                  x = seq_along(valpropres))
+                   x = seq_along(valpropres))
   g1 <-  ggplot2::ggplot(data = df,
                 mapping = ggplot2::aes_string(x = "x",
                                               y = "y")) +
@@ -169,3 +180,59 @@ eboulis <- function(object, which = 1:2){
   }
 }
 
+#' Analyse factorielle avec composantes principales
+#'
+#' Cette fonction calcule une décomposition spectrale d'une matrice de corrélation ou de covariance des données et extrait les k premières composantes selon \code{nfact}, soit un entier ou le critère de Kaiser.
+#'
+#' @param x une matrice ou base de données
+#' @param covmat matrice de covariance
+#' @param cor logique; si \code{TRUE}, calculer la décomposition à partir de la matrice de corrélation plutôt que la matrice de covariance
+#' @param nfact entier pour le nombre de facteurs, ou chaîne de caractère \code{"kaiser"} pour le critère des valeurs propres.
+#' @return une liste avec composante \code{loadings} contenant les chargements et si le nombre de facteurs est supérieur à un, la matrice de rotation varimax.
+#' @examples
+#' factocp(covmat = cov(factor), nfact = 2)
+#' factocp(factor, nfact = "kaiser", cor = FALSE)
+factocp <- function(x,
+                    covmat = NULL,
+                    cor = TRUE,
+                    nfact = "kaiser"){
+  if(is.null(covmat)){
+    x <- try(as.matrix(x))
+    if(inherits(x, "try-error")){
+      stop("Argument invalide: pas de donn\u00e9es num\u00e9riques en intrant.")
+    }
+  if(isTRUE(cor)){
+    decompo <- eigen(cor(x))
+  } else{
+    decompo <- eigen(cov(x))
+  }
+  } else{
+
+    if(isTRUE(cor)){
+      covmat <- cov2cor(covmat)
+    }
+    decompo <- eigen(covmat)
+  }
+  if(nfact == "kaiser"){
+  # Extraire les valeurs propres
+  valpropres <- decompo$values
+  # Critère de Kaiser
+  nfact <- sum(valpropres > 1)
+  } else{
+    nfact <- as.integer(nfact)
+    if(nfact > length(valpropres) | nfact < 0){
+      stop("Nombre de facteurs invalide.")
+    }
+  }
+  # Extraire les premiers vecteurs propres
+  Gamma_est <- t(t(r.eigen$vectors[,seq_len(nfact), drop = FALSE]) * sqrt(r.eigen$values[seq_len(nfact)]))
+
+  # Solution (chargements) avec rotation varimax
+  facto_cp <- varimax(Gamma_est)
+  #Ne fonctionne pas avec vecteur (m=1)
+  if(nfact == 1L){
+    class(Gamma_est) <- "loadings"
+    facto_cp <- list(loadings = Gamma_est)
+  }
+  return(facto_cp)
+}

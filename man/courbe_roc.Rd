@@ -6,13 +6,6 @@
 \usage{
 courbe_roc(prob, resp, plot = TRUE)
 }
-\arguments{
-\item{prob}{vecteur de probabilités estimées}
-
-\item{resp}{variable réponse binaire}
-
-\item{plot}{logique; si \code{TRUE}, retourne un graphique de la courbe lift}
-}
 \description{
 Cette fonction calcule l'aire sous la courbe et
 crée un graphique de la fonction d'efficacité du

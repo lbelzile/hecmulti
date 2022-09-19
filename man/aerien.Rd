@@ -5,9 +5,8 @@
 \alias{aerien}
 \title{Enquête de satisfaction d'une compagnie aérienne}
 \format{
-Une base de données avec 129880 lignes et 13 variables:
+Une base de données avec 129880 lignes et 23 variables:
 \describe{
-  \item{\code{id}}{facteur, identifiant du client}
   \item{\code{sexe}}{facteur, sexe (\code{homme} ou \code{femme})}
   \item{\code{loyaute_consommateur}}{facteur, est-ce que la personne a un compte fidélité}
   \item{\code{age}}{entier, âge de la personne}
@@ -36,7 +35,7 @@ Une base de données avec 129880 lignes et 13 variables:
 aerien
 }
 \description{
-Sous-ensemble d'une base de données de
+Résultats d'une enquête de satisfaction sur des clients de compagnie aérienne. Les variables des colonnes 7 à 20 sont tirées des résultats du questionnaire, les autres encodent des informations démographiques sur les clients et sur le vol.
 }
 \details{
 Les variables mesurent la satisfaction (mesurée par une échelle

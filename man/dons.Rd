@@ -22,7 +22,7 @@ Une base de données avec 49730 lignes et 16 variables:
   \item{\code{ddonsmin}}{temps minimum écoulé entre deux dons (en mois)}
   \item{\code{nrefus}}{nombre de refus de donner}
   \item{\code{nrefusconsec}}{nombre de refus consécutifs}
-  \item{\code{nindecis}}{nombre de décisions indécisives, mesurées à partir de formulaires partiellement complétés} 
+  \item{\code{nindecis}}{nombre de décisions indécisives, mesurées à partir de formulaires partiellement complétés}
 }
 }
 \usage{
