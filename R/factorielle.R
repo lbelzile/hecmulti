@@ -189,6 +189,7 @@ eboulis <- function(object, which = 1:2){
 #' @param cor logique; si \code{TRUE}, calculer la décomposition à partir de la matrice de corrélation plutôt que la matrice de covariance
 #' @param nfact entier pour le nombre de facteurs, ou chaîne de caractère \code{"kaiser"} pour le critère des valeurs propres.
 #' @return une liste avec composante \code{loadings} contenant les chargements et si le nombre de facteurs est supérieur à un, la matrice de rotation varimax.
+#' @export
 #' @examples
 #' factocp(covmat = cov(factor), nfact = 2)
 #' factocp(factor, nfact = "kaiser", cor = FALSE)
@@ -213,9 +214,9 @@ factocp <- function(x,
     }
     decompo <- eigen(covmat)
   }
-  if(nfact == "kaiser"){
   # Extraire les valeurs propres
   valpropres <- decompo$values
+  if(nfact == "kaiser"){
   # Critère de Kaiser
   nfact <- sum(valpropres > 1)
   } else{
@@ -225,7 +226,7 @@ factocp <- function(x,
     }
   }
   # Extraire les premiers vecteurs propres
-  Gamma_est <- t(t(r.eigen$vectors[,seq_len(nfact), drop = FALSE]) * sqrt(r.eigen$values[seq_len(nfact)]))
+  Gamma_est <- t(t(decompo$vectors[,seq_len(nfact), drop = FALSE]) * sqrt(decompo$values[seq_len(nfact)]))
 
   # Solution (chargements) avec rotation varimax
   facto_cp <- varimax(Gamma_est)

@@ -34,7 +34,7 @@
 #'
 #' Cette fonction retourne une liste invisible avec des méthodes \code{S3}
 #' @export
-#' @inheritParams lift
+#' @inheritParams courbe_lift
 courbe_roc <-
   function(prob, resp, plot = TRUE){
     resp <- .check_resp(resp)
@@ -179,7 +179,7 @@ print.hecmulti_spiegelhalter <-
 #'
 #'@details Le nombre de données classifiées est arrondi, contrairement au graphique
 #' @export
-courbelift <- function(prob,
+courbe_lift <- function(prob,
                  resp,
                  plot = TRUE,
                  levels = seq(0.1, 0.9, by = 0.1)) {
@@ -248,7 +248,7 @@ courbelift <- function(prob,
 #'
 #' Calculer les statistiques d'ajustement (sensibilité, spécificité, taux de bonne classification, etc.) en fonction de points de coupures
 #'
-#' @inheritParams courbelift
+#' @inheritParams courbe_lift
 #' @return une base de données avec les composantes suivantes:
 #' \itemize{
 #' \item{\code{coupe}}{points de coupe}
