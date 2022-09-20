@@ -55,9 +55,13 @@ BIC.factanal <- function(object, ...){
 #' pour la création d'échelles
 #'
 #' @param x matrice de variables numériques
+#' @param na.rm logique; si \code{TRUE}, les valeurs manquantes sont enlevées avant le calcul
 #' @return alpha de Cronbach
 #' @export
-alphaC <- function(x){
+alphaC <- function(x, na.rm = FALSE){
+  if(isTRUE(na.rm[1])){
+    x <- na.omit(x)
+  }
   S2 <- var(rowSums(x))
   ncol(x)/(ncol(x)-1)*(S2-sum(apply(x, 2, var)))/S2
 }
@@ -197,7 +201,9 @@ factocp <- function(x,
                     covmat = NULL,
                     cor = TRUE,
                     nfact = "kaiser"){
+  col.names <- NULL
   if(is.null(covmat)){
+    col.names <- colnames(x)
     x <- try(as.matrix(x))
     if(inherits(x, "try-error")){
       stop("Argument invalide: pas de donn\u00e9es num\u00e9riques en intrant.")
@@ -227,7 +233,12 @@ factocp <- function(x,
   }
   # Extraire les premiers vecteurs propres
   Gamma_est <- t(t(decompo$vectors[,seq_len(nfact), drop = FALSE]) * sqrt(decompo$values[seq_len(nfact)]))
-
+  if(!is.null(col.names)){
+    stopifnot(length(col.names) == nrow(Gamma_est))
+    row.names(Gamma_est) <- col.names
+  }
+  colnames(Gamma_est) <-
+    paste0("F", seq_len(ncol(Gamma_est)))
   # Solution (chargements) avec rotation varimax
   facto_cp <- varimax(Gamma_est)
   #Ne fonctionne pas avec vecteur (m=1)

@@ -4,10 +4,12 @@
 \alias{alphaC}
 \title{Alpha de Cronbach}
 \usage{
-alphaC(x)
+alphaC(x, na.rm = FALSE)
 }
 \arguments{
 \item{x}{matrice de variables numériques}
+
+\item{na.rm}{logique; si \code{TRUE}, les valeurs manquantes sont enlevées avant le calcul}
 }
 \value{
 alpha de Cronbach

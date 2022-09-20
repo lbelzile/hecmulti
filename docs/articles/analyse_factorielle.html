@@ -266,42 +266,43 @@ matrice <span class="math inline">\(p \times k\)</span> avec les <span class="ma
 <span class="math inline">\(k \times k\)</span> de <span class="math inline">\(\boldsymbol{\Lambda}\)</span> contenant les <span class="math inline">\(k\)</span> plus grandes valeurs propres. Il suffit
 ensuite de calculer la rotation de cette racine.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">vecp</span> <span class="op">&lt;-</span> <span class="va">decomposition</span><span class="op">$</span><span class="va">vectors</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="va">critkaiser</span><span class="op">)</span><span class="op">]</span></span>
-<span><span class="va">diag_valp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="va">valpropres</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="va">critkaiser</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">acp5</span> <span class="op">&lt;-</span>  <span class="va">vecp</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span> <span class="va">diag_valp</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/varimax.html" class="external-link">varimax</a></span><span class="op">(</span><span class="va">acp5</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/factocp.html">factocp</a></span><span class="op">(</span><span class="va">factor</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $loadings</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Loadings:</span></span>
-<span><span class="co">#&gt;       [,1]   [,2]   [,3]   [,4]   [,5]  </span></span>
-<span><span class="co">#&gt;  [1,]         0.109  0.129  0.883  0.281</span></span>
-<span><span class="co">#&gt;  [2,] -0.106 -0.981                0.204</span></span>
-<span><span class="co">#&gt;  [3,]               -0.995 -0.127       </span></span>
-<span><span class="co">#&gt;  [4,]  1.118                       0.349</span></span>
-<span><span class="co">#&gt;  [5,]                       1.009 -0.267</span></span>
-<span><span class="co">#&gt;  [6,]               -0.561         0.705</span></span>
-<span><span class="co">#&gt;  [7,]        -0.809                     </span></span>
-<span><span class="co">#&gt;  [8,]  1.122 -0.153                     </span></span>
-<span><span class="co">#&gt;  [9,]               -0.882              </span></span>
-<span><span class="co">#&gt; [10,]  0.132 -1.114 -0.111        -0.241</span></span>
-<span><span class="co">#&gt; [11,]  1.062  0.157 -0.169 -0.120 -0.413</span></span>
-<span><span class="co">#&gt; [12,]               -0.781         0.376</span></span>
+<span><span class="co">#&gt;     F1     F2     F3     F4    </span></span>
+<span><span class="co">#&gt; x1  -0.107                0.812</span></span>
+<span><span class="co">#&gt; x2  -0.101        -0.791       </span></span>
+<span><span class="co">#&gt; x3          0.793        -0.122</span></span>
+<span><span class="co">#&gt; x4   0.821                     </span></span>
+<span><span class="co">#&gt; x5                        0.834</span></span>
+<span><span class="co">#&gt; x6          0.661              </span></span>
+<span><span class="co">#&gt; x7                -0.834       </span></span>
+<span><span class="co">#&gt; x8   0.851        -0.113       </span></span>
+<span><span class="co">#&gt; x9          0.751              </span></span>
+<span><span class="co">#&gt; x10  0.110        -0.787       </span></span>
+<span><span class="co">#&gt; x11  0.818         0.119       </span></span>
+<span><span class="co">#&gt; x12         0.731              </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;                 [,1]  [,2]  [,3]  [,4]  [,5]</span></span>
-<span><span class="co">#&gt; SS loadings    3.695 2.930 2.758 1.845 1.188</span></span>
-<span><span class="co">#&gt; Proportion Var 0.308 0.244 0.230 0.154 0.099</span></span>
-<span><span class="co">#&gt; Cumulative Var 0.308 0.552 0.782 0.936 1.035</span></span>
+<span><span class="co">#&gt;                   F1    F2    F3    F4</span></span>
+<span><span class="co">#&gt; SS loadings    2.116 2.175 1.991 1.388</span></span>
+<span><span class="co">#&gt; Proportion Var 0.176 0.181 0.166 0.116</span></span>
+<span><span class="co">#&gt; Cumulative Var 0.176 0.358 0.523 0.639</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $rotmat</span></span>
-<span><span class="co">#&gt;            [,1]        [,2]       [,3]        [,4]        [,5]</span></span>
-<span><span class="co">#&gt; [1,] 0.90161230 -0.25071582 -0.2987722 -0.18256899  0.04050381</span></span>
-<span><span class="co">#&gt; [2,] 0.40028783  0.75379412  0.4624123  0.14189682 -0.19391818</span></span>
-<span><span class="co">#&gt; [3,] 0.09730667 -0.57630414  0.7796863 -0.05245829 -0.21850014</span></span>
-<span><span class="co">#&gt; [4,] 0.11946882 -0.18604744 -0.0657347  0.97002381  0.07646121</span></span>
-<span><span class="co">#&gt; [5,] 0.05588848  0.04686028  0.2909953 -0.05325221  0.95245291</span></span></code></pre></div>
+<span><span class="co">#&gt;            [,1]       [,2]       [,3]       [,4]</span></span>
+<span><span class="co">#&gt; [1,]  0.5950592 0.64975633 -0.4001741 -0.2521546</span></span>
+<span><span class="co">#&gt; [2,] -0.6278786 0.74311099  0.2035721  0.1100589</span></span>
+<span><span class="co">#&gt; [3,]  0.4687427 0.14371169  0.8654577  0.1030060</span></span>
+<span><span class="co">#&gt; [4,]  0.1787550 0.07035431 -0.2222657  0.9558739</span></span></code></pre></div>
+<p>La fonction <code>factocp</code> dans <code>hecmulti</code> calcule
+directement le modèle, par défaut en utilisant le critère de Kaiser bien
+que <code>nfact</code> puisse accommoder un entier représentant le
+nombre de facteurs/composantes principales à conserver.</p>
 <p>Le paquet <code>psych</code> permet aussi l’estimation (plus directe)
 avec d’autres méthodes, notamment la méthode des composantes
-principales.</p>
+principales. Les estimations des chargements devrait être identique à
+celle obtenue avec <code>factocp</code>.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fa_compprin</span> <span class="op">&lt;-</span> <span class="fu">psych</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/principal.html" class="external-link">principal</a></span><span class="op">(</span>r <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">cov</a></span><span class="op">(</span><span class="va">factor</span><span class="op">)</span>, </span>
 <span>                                covar <span class="op">=</span> <span class="cn">TRUE</span>, </span>

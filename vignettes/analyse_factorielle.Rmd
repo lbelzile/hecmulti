@@ -97,13 +97,12 @@ On peut aussi tracer un diagramme d'éboulis, qui suggère cinq facteurs. Si on 
 La décomposition en vecteurs propres de la matrice de covariance est $\boldsymbol{S} = \boldsymbol{Q}\boldsymbol{\Lambda}\boldsymbol{Q}^{-1}$, où $\boldsymbol{Q}$ est la matrice $p \times p$ de vecteurs propres et $\boldsymbol{\Lambda}$ une matrice diagonale contenant les valeurs propres (ordonnées de la plus grande à la plus petite). L'analyse en composantes principales revient à conserver uniquement les $k$ premières composantes, d'où une racine avec $\boldsymbol{Q}_{(k)}\boldsymbol{\Lambda}_{(k)}^{1/2}$ où $\boldsymbol{Q}_{(k)}$ est une matrice $p \times k$ avec les $k$ premiers vecteurs propres et $\boldsymbol{\Lambda}_{k}$ la sous-matrice $k \times k$ de $\boldsymbol{\Lambda}$ contenant les $k$ plus grandes valeurs propres. Il suffit ensuite de calculer la rotation de cette racine.
 
 ```{r acp5}
-vecp <- decomposition$vectors[,seq_len(critkaiser)]
-diag_valp <- diag(sqrt(valpropres[seq_len(critkaiser)]))
-acp5 <-  vecp %*% diag_valp
-varimax(acp5)
+factocp(factor)
 ```
 
-Le paquet `psych` permet aussi l'estimation (plus directe) avec d'autres méthodes, notamment la méthode des composantes principales.
+La fonction `factocp` dans `hecmulti` calcule directement le modèle, par défaut en utilisant le critère de Kaiser bien que `nfact` puisse accommoder un entier représentant le nombre de facteurs/composantes principales à conserver.
+
+Le paquet `psych` permet aussi l'estimation (plus directe) avec d'autres méthodes, notamment la méthode des composantes principales. Les estimations des chargements devrait être identique à celle obtenue avec `factocp`.
 
 ```{r acppsych, eval = FALSE}
 fa_compprin <- psych::principal(r = cov(factor), 
