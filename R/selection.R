@@ -1,4 +1,3 @@
-
 #' Moyenne de modèles avec sélection séquentielle
 #'
 #' Cette fonction crée une copie du jeu de données par
@@ -9,7 +8,7 @@
 #' la valeur par défaut correspond au critère d'Akaike.
 #'
 #' @importFrom MASS stepAIC
-#'
+#' @export
 #' @param data base de données de type \code{data.frame}
 #' @param formula formule du modèle maximal considéré
 #' @param aic logique; si \code{TRUE}, retourner le modèle qui retourne le plus petit critère d'Akaike
@@ -105,17 +104,18 @@ moyenne_modeles_stepAIC <- function(
 #' calculer l'erreur quadratique moyenne de validation
 #' pour une base de données externe. Le modèle calcule
 #' la matrice du modèle pour extraire les colonnes.
-#'
+#' 
+#' @export 
 #' @param model objet de classe \code{regsubsets}
-#' @param select vecteur de caractères avec les noms des variables
+#' @param select vecteur des modèles sélectionnés
 #' @param formula formule désignant le modèle maximal ajusté par la procédure de sélection
 #' @param data base de données d'entraînement servant à l'ajustement des coefficients
 #' @param newdata base de données de validation pour le calcul de l'erreur moyenne quadratique
-#' @return estimation de l'erreur quadratique moyenne
-evaluer_EQM_regsubsets <-
+#' @return estimation de la racine de l'erreur quadratique moyenne
+eval_EQM_regsubsets <-
   function(
       model,
-      select,
+      select = c("AIC", "BIC"),
       formula,
       data,
       newdata){
@@ -126,12 +126,30 @@ evaluer_EQM_regsubsets <-
              inherits(newdata, "data.frame"),
              isTRUE(ncol(data) == ncol(newdata)),
              isTRUE(all(colnames(data) == colnames(newdata))))
-   select <- as.integer(select)
+     
+   if(isTRUE(any(!select %in% c("AIC", "BIC")))){
+      # Either we find the model with the smallest AIC and BIC
+      # Else evaluate particular models from the path
+      stopifnot(is.integer(select))
+      select_ic <- FALSE
+   }  else{
+      select_ic <- TRUE
+   }
    # Extraire matrice du modèle, plus variable réponse
    frame <- model.frame(formula, data = data)
-   response_name <- all.vars(formula)[attr(terms(formula), "response")]
+   response_name <- as.character(formula)[[2]]
    reponse <- get(pos = data, x = response_name)
    resume <- summary(model, matrix.logical = TRUE)
+
+   if(select_ic){
+      nobs <- model$nn
+      bic <- resume$bic
+      aic <- resume$bic - (log(nobs)+2)*rowSums(resume$which)
+      select_id <- c(which.min(aic), which.min(bic))[c("AIC" %in% select,"BIC" %in% select)]
+      select <- sort(select)
+   } else{
+      select_id <- select
+   }
    var_names <- colnames(resume$which)
    model_matrix <- as.data.frame(
       model.matrix(formula, data = data))
@@ -144,8 +162,9 @@ evaluer_EQM_regsubsets <-
              var_names[1] == "(Intercept)")
    model_matrix$reponse <- reponse
    eqm <- rep(0, length(select))
-   for(i in seq_along(select)){
-      vlist <- which(resume$which[select[i],])[-1]
+   names(eqm) <- select
+   for(i in seq_along(select_id)){
+      vlist <- which(resume$which[select_id[i],])[-1]
       new_formula <- paste0("reponse~",
                             paste(var_names[vlist],
                                   collapse = "+"))
@@ -155,5 +174,6 @@ evaluer_EQM_regsubsets <-
                       newdata = valid_matrix)
       eqm[i] <- mean(x = (valid_resp - pred)^2, na.rm = TRUE)
    }
-   return(eqm)
+   return(sqrt(eqm))
 }
+
