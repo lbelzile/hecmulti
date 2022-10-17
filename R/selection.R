@@ -177,3 +177,32 @@ eval_EQM_regsubsets <-
    return(sqrt(eqm))
 }
 
+#' Prédiction pour regsubsets
+#'
+#' Cette fonction calcule les prédictions d'un modèle linéaire ajusté
+#' contenant \code{id} variables et multiplie les coefficients par la matrice du modèle
+#' pour retourner des prédictions.
+#' @param object objet de classe \code{regsubsets}
+#' @param newdata base de données (\code{data.frame}) contenant les variables explicatives
+#' @param id [entier] numéro du modèle ajusté par \code{regsubsets} pour lequel obtenir des prédictions
+#' @return un vecteur de prédictions
+#' @author R. Jordan Crouser
+#' @export
+predict.regsubsets <- function(object, newdata, id, ...) {
+  id <- as.integer(id)
+  stopifnot(isTRUE(inherits(object, "regsubsets")),
+            isTRUE(inherits(newdata, "data.frame")),
+            id >= 1,
+            id <= object$nvmax)
+  form <- as.formula(get(object$call[[2]])) # Extract the formula used when we called regsubsets()
+  mat <- model.matrix(form, newdata)    # Build the model matrix
+  coefi <- coef(object, id = id)          # Extract the coefficients of the ith model
+  xvars <- names(coefi)                # Pull out the names of the predictors used in the ith model
+  pred <-
+    as.numeric(mat[, xvars] %*% coefi)        # Make predictions using matrix multiplication
+  if (isTRUE(any(is.na(pred)))) {
+    warning("Valeurs manquantes dans les pr\u00e9dictions")
+  }
+  return(pred)
+}
+

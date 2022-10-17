@@ -94,6 +94,9 @@
     <loc>https://lbelzile.github.io/hecmulti/reference/elnino.html</loc>
   </url>
   <url>
+    <loc>https://lbelzile.github.io/hecmulti/reference/evaluer_EQM_regsubsets.html</loc>
+  </url>
+  <url>
     <loc>https://lbelzile.github.io/hecmulti/reference/factocp.html</loc>
   </url>
   <url>
@@ -119,6 +122,9 @@
   </url>
   <url>
     <loc>https://lbelzile.github.io/hecmulti/reference/manquantes.html</loc>
+  </url>
+  <url>
+    <loc>https://lbelzile.github.io/hecmulti/reference/moyenne_modeles_stepAIC.html</loc>
   </url>
   <url>
     <loc>https://lbelzile.github.io/hecmulti/reference/multinom.html</loc>

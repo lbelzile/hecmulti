@@ -264,6 +264,16 @@ courbe_lift <- function(prob,
 #' }
 #' @export
 perfo_logistique <- function(prob, resp) {
+  # Gérer les facteurs
+  if(is.factor(resp)){
+    resp <- factor(resp) #retirer niveaux inutilises
+    warning("\"resp\" est un facteur: conversion binaire implicite.")
+    modalites <- levels(resp)
+    if(length(modalites) != 2L){
+      stop("Le nombre de niveaux de \"resp\" n'est pas deux.")
+    }
+    resp <- as.integer(factor(resp)) - 1L
+  }
   # VRAI == 1, FAUX == 0
   cuts <- seq(from = 0.01, to = 0.99, by = 0.01)
   nsucces <- sum(resp == 1)
@@ -379,7 +389,7 @@ select_pcoupe <- function(modele,
       perfo$FP * c01
     gain
   })
-  meanperfo <- rowMeans(perfor_cv)
+  meanperfo <- rowMeans(perfor_cv)/n
   cut <- seq(from = 0.01, to = 0.99, by = 0.01)
   output <- list(optim = cut[which.max(meanperfo)],
                  pcoupe = cut,
@@ -387,7 +397,8 @@ select_pcoupe <- function(modele,
                  c00 = c00,
                  c11 = c11,
                  c01 = c01,
-                 c10 = c10
+                 c10 = c10,
+                 probs = probs
                 )
   class(output) <- "hecmulti_ptcoupe"
 
