@@ -27,7 +27,7 @@ Une base de données avec 1014 lignes et 43 variables:
  \item{\code{facan}}{montant facturé dans l'année en francs}
  \item{\code{lgagt}}{engagement long terme}
  \item{\code{vienb}}{nombre de produits contrats vie}
- \item{\code{viemt}}{ontant des produits contrats vie en francs}
+ \item{\code{viemt}}{montant des produits contrats vie en francs}
  \item{\code{uemnb}}{nombre de produits épargne monétaire}
  \item{\code{uemmts}}{montant des produits d'épargne monétaire en francs}
  \item{\code{xlgnb}}{nombre de produits d'épargne logement}

@@ -94,6 +94,9 @@
     <loc>https://lbelzile.github.io/hecmulti/reference/elnino.html</loc>
   </url>
   <url>
+    <loc>https://lbelzile.github.io/hecmulti/reference/eval_EQM_regsubsets.html</loc>
+  </url>
+  <url>
     <loc>https://lbelzile.github.io/hecmulti/reference/evaluer_EQM_regsubsets.html</loc>
   </url>
   <url>
@@ -137,6 +140,12 @@
   </url>
   <url>
     <loc>https://lbelzile.github.io/hecmulti/reference/polynome.html</loc>
+  </url>
+  <url>
+    <loc>https://lbelzile.github.io/hecmulti/reference/predict.regsubsets.html</loc>
+  </url>
+  <url>
+    <loc>https://lbelzile.github.io/hecmulti/reference/predvc.html</loc>
   </url>
   <url>
     <loc>https://lbelzile.github.io/hecmulti/reference/rc_hclust.html</loc>

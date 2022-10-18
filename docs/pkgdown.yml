@@ -3,7 +3,7 @@ pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   analyse_factorielle: analyse_factorielle.html
-last_built: 2022-10-17T00:47Z
+last_built: 2022-10-18T02:53Z
 urls:
   reference: https://lbelzile.github.io/hecmulti/reference
   article: https://lbelzile.github.io/hecmulti/articles

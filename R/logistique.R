@@ -433,16 +433,17 @@ autoplot.hecmulti_ptcoupe <- function(x, ...){
 
 
 #' Prédictions par validation croisée répétée
-#' 
+#'
 #' Le modèle est ajusté de manière répété sur chaque pli à l'aide de \code{update} avec \code{predict}.
 #' Le code est conçu pour les modèles linéaires généralisés, mais devrait fonctionner avec tout modèle qui définit des génériques S3.
 #' @author Léo Belzile
 #' @param modele un modèle ajusté de type \code{lm} ou \code{glm}
-#' @param data \code{NULL} une base de données \code{data.frame} si \code{modele} n'inclut pas de slot \code{data]
+#' @param data \code{NULL} une base de données \code{data.frame} si la liste \code{modele} n'inclut pas \code{data} parmi ses éléments
 #' @param K entier, nombre de plis pour la validation croisée
 #' @param nrep nombre de réplications
-#' @return vecteur de prédictions moyennes
-cvpred <- function(modele, data = NULL, K = 10L, nrep = 10L){
+#' @return vecteur de prédictions
+#' @export
+predvc <- function(modele, data = NULL, K = 10L, nrep = 10L){
   if(!is.null(data)){
     stopifnot(is.data.frame(data))
   } else{
