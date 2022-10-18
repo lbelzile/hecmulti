@@ -289,8 +289,8 @@ perfo_logistique <- function(prob, resp) {
                       c(
                         VP = c1,
                         VN = c0,
-                        FP = i1,
-                        FN = i0,
+                        FP = i0,
+                        FN = i1,
                         pcorrect = 100 * (c0 + c1) / n,
                         sensi = 100 * c1 / (c1 + i1),
                         # Y=1 & Yhat=1 / # Y=1
@@ -432,3 +432,34 @@ autoplot.hecmulti_ptcoupe <- function(x, ...){
 }
 
 
+#' Prédictions par validation croisée répétée
+#' 
+#' Le modèle est ajusté de manière répété sur chaque pli à l'aide de \code{update} avec \code{predict}.
+#' Le code est conçu pour les modèles linéaires généralisés, mais devrait fonctionner avec tout modèle qui définit des génériques S3.
+#' @author Léo Belzile
+#' @param modele un modèle ajusté de type \code{lm} ou \code{glm}
+#' @param data \code{NULL} une base de données \code{data.frame} si \code{modele} n'inclut pas de slot \code{data]
+#' @param K entier, nombre de plis pour la validation croisée
+#' @param nrep nombre de réplications
+#' @return vecteur de prédictions moyennes
+cvpred <- function(modele, data = NULL, K = 10L, nrep = 10L){
+  if(!is.null(data)){
+    stopifnot(is.data.frame(data))
+  } else{
+    stopifnot(!is.null(modele$data))
+    data <- modele$data
+  }
+  n <- nrow(data)
+  cvpred <- matrix(nrow = n, ncol = nrep)
+  for(i in seq_len(nrep)){
+    inds <- sample.int(n = n, size = n, replace = FALSE)
+    form_group <- function(x, n) {
+      split(x, cut(seq_along(x), n, labels = FALSE))
+    }
+    groups <- form_group(x = inds, n = K)
+    for (j in seq_len(K)) {
+      cvpred[groups[[j]], i] <- predict(update(modele, data = data[-groups[[j]],]), newdata = data[groups[[j]], ], type = "response")
+    }
+  }
+  return(rowMeans(cvpred))
+}
