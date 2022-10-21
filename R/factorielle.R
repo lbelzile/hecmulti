@@ -202,6 +202,7 @@ factocp <- function(x,
                     cor = TRUE,
                     nfact = "kaiser"){
   col.names <- NULL
+  std <- TRUE
   if(is.null(covmat)){
     col.names <- colnames(x)
     x <- try(as.matrix(x))
@@ -219,9 +220,12 @@ factocp <- function(x,
       covmat <- cov2cor(covmat)
     }
     decompo <- eigen(covmat)
+    etype <- sqrt(diag(covmat))
+    std <- FALSE
   }
   # Extraire les valeurs propres
   valpropres <- decompo$values
+  variance_cumu <- cumsum(valpropres)/sum(valpropres)
   if(nfact == "kaiser"){
   # Critère de Kaiser
   nfact <- sum(valpropres > 1)
@@ -246,5 +250,24 @@ factocp <- function(x,
     class(Gamma_est) <- "loadings"
     facto_cp <- list(loadings = Gamma_est)
   }
+  if(!std){
+    # Si matrice de covariance,
+    # standardiser les chargements pour qu'on obtienne
+    # néanmoins la corrélation entre facteurs
+    # et variables explicatives
+    facto_cp$loadings <- facto_cp$loadings / etype
+  }
+  facto_cp$var_cumul <- variance_cumu
+  class(facto_cp) <- "factanalcp"
   return(facto_cp)
+}
+
+#' @export
+print.factanalcp <- function(x, ...){
+  args <- list(...)
+  cutoff <- args$cutoff
+  if(is.null(cutoff)){
+    cutoff <- 0.3
+  }
+  print(x$loadings, cutoff = cutoff)
 }

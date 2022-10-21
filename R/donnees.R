@@ -124,7 +124,7 @@
 #'  \item{\code{strong}}{entier, échelle de Likert pour fort(e)}
 #'  \item{\code{guilty}}{entier, échelle de Likert pour coupable}
 #'  \item{\code{scared}}{entier, échelle de Likert pour effrayé(e)}
-#'  \item{\code{hostile}}{entier, échelle de Likert pour hostirle}
+#'  \item{\code{hostile}}{entier, échelle de Likert pour hostile}
 #'  \item{\code{enthusiastic}}{entier, échelle de Likert pour enthousiaste}
 #'  \item{\code{proud}}{entier, échelle de Likert pour fier/fière}
 #'  \item{\code{irritable}}{entier, échelle de Likert pour irritable}
