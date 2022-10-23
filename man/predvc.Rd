@@ -4,7 +4,7 @@
 \alias{predvc}
 \title{Prédictions par validation croisée répétée}
 \usage{
-predvc(modele, data = NULL, K = 10L, nrep = 10L)
+predvc(modele, data = NULL, K = 10L, nrep = 10L, type = NULL)
 }
 \arguments{
 \item{modele}{un modèle ajusté de type \code{lm} ou \code{glm}}
@@ -14,6 +14,8 @@ predvc(modele, data = NULL, K = 10L, nrep = 10L)
 \item{K}{entier, nombre de plis pour la validation croisée}
 
 \item{nrep}{nombre de réplications}
+
+\item{type}{type de prédiction; si \code{NULL}, la valeur par défaut est employée. S'assurer que la valeur est à une échelle logique pour le calcul de moyennes.}
 }
 \value{
 vecteur de prédictions

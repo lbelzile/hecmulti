@@ -128,7 +128,7 @@ print.hecmulti_roc <- function(x, digits = 3, ...){
 #' }
 #' @export
 #' @author Leo Belzile
-#' @references D.J. Spiegelhalter (1986). \emph{Probabilistic prediction in patient management and clinical trials}, Statistics in Medecine, \bold{5}(5), pp. 421-433, \doi{doi.org/10.1002/sim.4780050506}.
+#' @references D.J. Spiegelhalter (1986). \emph{Probabilistic prediction in patient management and clinical trials}, Statistics in Medecine, \bold{5}(5), pp. 421-433, \doi{10.1002/sim.4780050506}.
 calibration <- function(
     prob,
     resp,
@@ -141,7 +141,7 @@ stopifnot(isTRUE(all(prob >= 0)),
           )
 	Bmoy <- mean((resp-prob)^2)
 	E0 <- mean(prob*(1-prob))
-	var0 <- sum(prob*(1-prob)*(1-2*prob))/length(prob)^2
+	var0 <- sum(prob*(1-prob)*((1-2*prob)^2))/length(prob)^2
 	Z <- (Bmoy - E0)/sqrt(var0)
 	pval <- 2*pnorm(abs(Z), lower.tail = FALSE)
 	result <- list(stat = Z, pval = pval)
@@ -441,9 +441,10 @@ autoplot.hecmulti_ptcoupe <- function(x, ...){
 #' @param data \code{NULL} une base de données \code{data.frame} si la liste \code{modele} n'inclut pas \code{data} parmi ses éléments
 #' @param K entier, nombre de plis pour la validation croisée
 #' @param nrep nombre de réplications
+#' @param type type de prédiction; si \code{NULL}, la valeur par défaut est employée. S'assurer que la valeur est à une échelle logique pour le calcul de moyennes.
 #' @return vecteur de prédictions
 #' @export
-predvc <- function(modele, data = NULL, K = 10L, nrep = 10L){
+predvc <- function(modele, data = NULL, K = 10L, nrep = 10L, type = NULL){
   if(!is.null(data)){
     stopifnot(is.data.frame(data))
   } else{
@@ -459,7 +460,18 @@ predvc <- function(modele, data = NULL, K = 10L, nrep = 10L){
     }
     groups <- form_group(x = inds, n = K)
     for (j in seq_len(K)) {
-      cvpred[groups[[j]], i] <- predict(update(modele, data = data[-groups[[j]],]), newdata = data[groups[[j]], ], type = "response")
+      if(!is.null(type)){
+      cvpred[groups[[j]], i] <- predict(
+        update(modele,
+               data = data[-groups[[j]],]),
+        newdata = data[groups[[j]], ],
+        type = type)
+      } else{ #use default prediction type
+        cvpred[groups[[j]], i] <- predict(
+          update(modele,
+                 data = data[-groups[[j]],]),
+          newdata = data[groups[[j]], ])
+      }
     }
   }
   return(rowMeans(cvpred))
