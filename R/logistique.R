@@ -444,12 +444,26 @@ autoplot.hecmulti_ptcoupe <- function(x, ...){
 #' @param type type de prédiction; si \code{NULL}, la valeur par défaut est employée. S'assurer que la valeur est à une échelle logique pour le calcul de moyennes.
 #' @return vecteur de prédictions
 #' @export
-predvc <- function(modele, data = NULL, K = 10L, nrep = 10L, type = NULL){
+predvc <- function(
+    modele,
+    data = NULL,
+    K = 10L,
+    nrep = 10L,
+    type = NULL){
   if(!is.null(data)){
     stopifnot(is.data.frame(data))
   } else{
     stopifnot(!is.null(modele$data))
     data <- modele$data
+  }
+  if(is.null(type)){
+    if(inherits(modele, "glm")){
+      type <- "response"
+    } else if(inherits(modele, "lm")){
+      type <- "response"
+    } else if(inherits(modele, "train")){
+      type <- "raw"
+    }
   }
   n <- nrow(data)
   cvpred <- matrix(nrow = n, ncol = nrep)
