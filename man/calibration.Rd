@@ -27,7 +27,7 @@ standard normal en grand échantillon et
  critère de score.
 }
 \references{
-D.J. Spiegelhalter (1986). \emph{Probabilistic prediction in patient management and clinical trials}, Statistics in Medecine, \bold{5}(5), pp. 421-433, \doi{doi.org/10.1002/sim.4780050506}.
+D.J. Spiegelhalter (1986). \emph{Probabilistic prediction in patient management and clinical trials}, Statistics in Medecine, \bold{5}(5), pp. 421-433, \doi{10.1002/sim.4780050506}.
 }
 \author{
 Leo Belzile

@@ -793,3 +793,88 @@
 #'}
 "dons"
 
+
+#' @title Étude sur le comportement d'investisseurs
+#' @description Données tirées d'un article scientifique visant à établir
+#' les différences de comportement d'investisseur(e)s en fonction de la
+#' façon dont sont présentées les données. Les données proviennent de l'étude 4A,
+#' une série de question sur des choix (prendre 50$ maintenant ou avoir 50%
+#' de chance de gagner 150$ si la prédiction /
+#' s'avère correcte). Les participant(e)s devaient
+#' prédire si le niveau de retour de l'action
+#' d'Apple dépasserait celui du S&P500; ils et elles
+#' voyaient des chartes montrant une augmentation,
+#' diminution ou un niveau constant des actions.
+#' Une question préliminaire a permis de déterminer
+#' un profil de risque de l'investisseur, sur une
+#' échelle de 1 à 4 (les valeurs plus faibles
+#' indiquant une aversion au risque). La perception
+#' du risque a été mesurée à l'aide du questionnaire Epistemic-Aleatory Rating Scale (EARS).
+#'
+#' Les participant(e)s ont été recruté(e)s sur Amazon MTurk et le devis et les conclusions ne sont pas causales.
+#' @format Une base de données avec 564 lignes et 4 variables:
+#' \describe{
+#'   \item{\code{choix}}{[entier] décision d'investissement incertain, soit oui (\code{1}, 150$ si la prédiction est correcte et 0 sinon) ou non (\code{0}, recevoir 50$ pour sûr)}
+#'   \item{\code{risque}}{[entier] score de 1 à 4 pour l'aversion au risque, avec 1 (forte aversion) et 4 (en quête de risque) adapté d'une échelle de Barsky et al. (1997)}
+#'   \item{\code{epistemique}}{échelle pour le score moyen, basé sur 3 items du EARS sur le risque épistémique allant de 1 (pas du tout) à 7 (beaucoup)}
+#'   \item{\code{aleatoire}}{échelle pour le score moyen, basé sur 3 items du EARS sur le risque aléatoire allant de 1 (pas du tout) à 7 (beaucoup)}
+#'}
+#' @author Léo Belzile
+#' @references Walters, D.J., G. Ulkumen, D. Tannenbaum,C. Erner and C.R. Fox, (2022). Investor Behavior Under Epistemic versus Aleatory Uncertainty, \url{http://dx.doi.org/10.2139/ssrn.3695316}
+#' @source Données extraites de ResearchBox 180, \url{https://researchbox.org/180}
+"compinvest"
+
+
+#' @title Résultats de la LNH, 2021-2022
+#' @description Cette base de données contient les résultats des 32 équipes de la Ligue national de hockey (LNH) pour chaque partie avec le nombre de but par équipe.
+#' @format Une base de données avec 1312 lignes et 6 variables:
+#' \describe{
+#'   \item{\code{date}}{[Date] date de la partie}
+#'   \item{\code{domicile}}{[facteur] nom de l'équipe jouant à domicile}
+#'   \item{\code{visiteur}}{[facteur] nom de l'équipe en visite}
+#'   \item{\code{but_domicile}}{[entier] nombre de buts de l'équipe à domicile}
+#'   \item{\code{but_visiteur}}{[entier]  nombre de buts de l'équipe en visite}
+#'   \item{\code{type}}{[facteur] type de partie, soit \code{regulier}, soit temps supplémentaire si le match va en prolongation (\code{temps supp.}, soit \code{tirs au but} si l'égalité est brisée en tirs de barrage).}
+#'}
+#' @source Données extraites de \url{https://www.hockey-reference.com/leagues/NHL_2022_games.html} le 21 octobre 2022.
+"lnh"
+
+#' @title Résultats de la LNH, format Bradley-Terry
+#' @description Transformation des données \link{lnh} pour l'ajustement d'un modèle de Bradley-Terry. La base de données ne contient que l'indicateur de l'équipe et une variable binaire indiquant l'équipe gagnante.
+#' @format Une base de données avec 1312 lignes et 32 variables:
+#' \describe{
+#'   \item{\code{vainqueur}}{[logique] variable binaire, \code{TRUE} si l'équipe à domicile remporte la partie}
+#'   \item{\code{Arizona Coyotes}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+#'   \item{\code{Boston Bruins}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+#'   \item{\code{Buffalo Sabres}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+#'   \item{\code{Calgary Flames}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+#'   \item{\code{Carolina Hurricanes}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+#'   \item{\code{Chicago Blackhawks}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+#'   \item{\code{Colorado Avalanche}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+#'   \item{\code{Columbus Blue Jackets}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+#'   \item{\code{Dallas Stars}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+#'   \item{\code{Detroit Red Wings}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+#'   \item{\code{Edmonton Oilers}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+#'   \item{\code{Florida Panthers}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+#'   \item{\code{Los Angeles Kings}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+#'   \item{\code{Minnesota Wild}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+#'   \item{\code{Montreal Canadiens}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+#'   \item{\code{Nashville Predators}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+#'   \item{\code{New Jersey Devils}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+#'   \item{\code{New York Islanders}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+#'   \item{\code{New York Rangers}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+#'   \item{\code{Ottawa Senators}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+#'   \item{\code{Philadelphia Flyers}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+#'   \item{\code{Pittsburgh Penguins}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+#'   \item{\code{San Jose Sharks}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+#'   \item{\code{Seattle Kraken}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+#'   \item{\code{St. Louis Blues}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+#'   \item{\code{Tampa Bay Lightning}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+#'   \item{\code{Toronto Maple Leafs}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+#'   \item{\code{Vancouver Canucks}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+#'   \item{\code{Vegas Golden Knights}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+#'   \item{\code{Washington Capitals}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+#'   \item{\code{Winnipeg Jets}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+#'}
+#' @author Léo Belzile
+"lnh_BT"
