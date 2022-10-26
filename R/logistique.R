@@ -5,12 +5,20 @@
 #' @return un message d'erreur ou vecteur entier avec valeurs 0L ou 1L
 #' @keywords internal
 .check_resp <- function(resp){
-  if(is.factor(resp)){
-    if(isTRUE(all(levels(resp) %in% c("0","1")))){
+  if(is.character(resp)){
+    if(isTRUE(all(resp %in% c("0","1")))){
       resp <- ifelse(resp == "1", 1L, 0L)
     } else{
-      stop("Niveaux inconnus pour le facteur \"resp\".")
+      stop("Niveaux inconnus pour \"resp\".")
     }
+  } else if(is.factor(resp)){
+     resp <- factor(resp) #retirer niveaux inutilises
+     warning("\"resp\" est un facteur: conversion binaire implicite.")
+     modalites <- levels(resp)
+     if(length(modalites) != 2L){
+        stop("Le nombre de niveaux de \"resp\" n'est pas deux.")
+     }
+     resp <- as.integer(factor(resp)) - 1L
   } else{
     stopifnot("\"resp\" doit \u00eatre un vecteur num\u00e9rique ou entier." =
                 isTRUE(any(is.numeric(resp),
@@ -264,17 +272,9 @@ courbe_lift <- function(prob,
 #' }
 #' @export
 perfo_logistique <- function(prob, resp) {
+   resp <- .check_resp(resp)
   # Gérer les facteurs
-  if(is.factor(resp)){
-    resp <- factor(resp) #retirer niveaux inutilises
-    warning("\"resp\" est un facteur: conversion binaire implicite.")
-    modalites <- levels(resp)
-    if(length(modalites) != 2L){
-      stop("Le nombre de niveaux de \"resp\" n'est pas deux.")
-    }
-    resp <- as.integer(factor(resp)) - 1L
-  }
-  # VRAI == 1, FAUX == 0
+    # VRAI == 1, FAUX == 0
   cuts <- seq(from = 0.01, to = 0.99, by = 0.01)
   nsucces <- sum(resp == 1)
   nechec <- length(resp) - nsucces
