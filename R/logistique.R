@@ -397,8 +397,7 @@ select_pcoupe <- function(modele,
                  c00 = c00,
                  c11 = c11,
                  c01 = c01,
-                 c10 = c10,
-                 probs = probs
+                 c10 = c10
                 )
   class(output) <- "hecmulti_ptcoupe"
 
