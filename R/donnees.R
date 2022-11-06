@@ -142,8 +142,7 @@
 "bjffacto"
 
 #' @title Ventes d'un magasin de chaussures
-#' @description Données simulées d'inventaire de chaussures d'un magasin montréalais. Les modèles invendus après 40 mois en magasins sont passés aux pertes et profits. Pour éliminer les invendus lors de l’arrivée de nouveaux modèles, l’entreprise offre une réduction
-#' de 20% après 15 mois.
+#' @description Données simulées d'inventaire de chaussures d'un magasin montréalais. Les modèles invendus après 40 mois en magasins sont passés aux pertes et profits. Pour éliminer les invendus lors de l’arrivée de nouveaux modèles, l’entreprise offre une réduction de 20 pourcent après 15 mois.
 #' @format Une base de données avec 6807 lignes et 4 variables:
 #' \describe{
 #'  \item{\code{statut}}{entier, variable catégorielle valant 0 si les chaussures sont vendues, 1 si elles sont toujours en stock, 2 si elles sont déstockées.}
