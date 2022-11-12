@@ -8,37 +8,37 @@
 Une base de données avec 1312 lignes et 32 variables:
 \describe{
   \item{\code{vainqueur}}{[logique] variable binaire, \code{TRUE} si l'équipe à domicile remporte la partie}
-  \item{\code{Arizona Coyotes}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
-  \item{\code{Boston Bruins}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
-  \item{\code{Buffalo Sabres}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
-  \item{\code{Calgary Flames}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
-  \item{\code{Carolina Hurricanes}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
-  \item{\code{Chicago Blackhawks}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
-  \item{\code{Colorado Avalanche}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
-  \item{\code{Columbus Blue Jackets}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
-  \item{\code{Dallas Stars}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
-  \item{\code{Detroit Red Wings}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
-  \item{\code{Edmonton Oilers}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
-  \item{\code{Florida Panthers}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
-  \item{\code{Los Angeles Kings}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
-  \item{\code{Minnesota Wild}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
-  \item{\code{Montreal Canadiens}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
-  \item{\code{Nashville Predators}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
-  \item{\code{New Jersey Devils}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
-  \item{\code{New York Islanders}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
-  \item{\code{New York Rangers}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
-  \item{\code{Ottawa Senators}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
-  \item{\code{Philadelphia Flyers}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
-  \item{\code{Pittsburgh Penguins}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
-  \item{\code{San Jose Sharks}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
-  \item{\code{Seattle Kraken}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
-  \item{\code{St. Louis Blues}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
-  \item{\code{Tampa Bay Lightning}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
-  \item{\code{Toronto Maple Leafs}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
-  \item{\code{Vancouver Canucks}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
-  \item{\code{Vegas Golden Knights}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
-  \item{\code{Washington Capitals}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
-  \item{\code{Winnipeg Jets}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+  \item{\code{Arizona_Coyotes}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+  \item{\code{Boston_Bruins}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+  \item{\code{Buffalo_Sabres}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+  \item{\code{Calgary_Flames}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+  \item{\code{Carolina_Hurricanes}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+  \item{\code{Chicago_Blackhawks}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+  \item{\code{Colorado_Avalanche}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+  \item{\code{Columbus_Blue Jackets}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+  \item{\code{Dallas_Stars}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+  \item{\code{Detroit_Red_Wings}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+  \item{\code{Edmonton_Oilers}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+  \item{\code{Florida_Panthers}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+  \item{\code{Los_Angeles_Kings}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+  \item{\code{Minnesota_Wild}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+  \item{\code{Montreal_Canadiens}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+  \item{\code{Nashville_Predators}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+  \item{\code{New_Jersey_Devils}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+  \item{\code{New_York_Islanders}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+  \item{\code{New_York_Rangers}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+  \item{\code{Ottawa_Senators}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+  \item{\code{Philadelphia_Flyers}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+  \item{\code{Pittsburgh_Penguins}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+  \item{\code{San_Jose_Sharks}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+  \item{\code{Seattle_Kraken}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+  \item{\code{St._Louis_Blues}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+  \item{\code{Tampa_Bay_Lightning}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+  \item{\code{Toronto_Maple_Leafs}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+  \item{\code{Vancouver_Canucks}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+  \item{\code{Vegas_Golden_Knights}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+  \item{\code{Washington_Capitals}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
+  \item{\code{Winnipeg_Jets}}{[entier] 1 si l'équipe joue à domicile, -1 si elle joue à l'extérieur, 0 sinon.}
 }
 }
 \usage{
