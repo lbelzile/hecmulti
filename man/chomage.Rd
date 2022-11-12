@@ -31,7 +31,7 @@ Dans le cadre d’un programme gouvernemental,
 
  La base de données contient
  un échantillon fictif de 2 500 personnes inscrites
- à l’assurance emploi entre janvier et novembre 2022
+ à l’assurance emploi entre mars 2020 et décembre 2021.
 }
 \author{
 Léo Belzile

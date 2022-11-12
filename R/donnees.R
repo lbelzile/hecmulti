@@ -163,7 +163,7 @@
 #'
 #'  La base de données contient
 #'  un échantillon fictif de 2 500 personnes inscrites
-#'  à l’assurance emploi entre janvier et novembre 2022
+#'  à l’assurance emploi entre mars 2020 et décembre 2021.
 #' @format Une base de données avec 2500 lignes et 8 variables:
 #' \describe{
 #' \item{\code{duree}}{double, nombre de semaines d'inscription au programme d’assurance emploi.}
