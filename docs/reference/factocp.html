@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">hecmulti</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2022.10.17</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2022.11.16</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Activer la navigation">
@@ -88,18 +88,17 @@
     <div class="section level2">
     <h2 id="ref-examples">Exemples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">factocp</span><span class="op">(</span>covmat <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">cov</a></span><span class="op">(</span><span class="va">factor</span><span class="op">)</span>, nfact <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $loadings</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Loadings:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       F1     F2    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1,] -0.346       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [2,]  0.281  0.128</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3,]  0.156  0.779</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [2,]              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3,]         0.779</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [4,]  0.731       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5,] -0.225       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5,]              </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [6,]         0.660</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [7,]  0.405       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8,]  0.784 -0.104</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8,]  0.784       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [9,]         0.737</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [10,]  0.457       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [11,]  0.673       </span>
@@ -109,43 +108,27 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> SS loadings    2.263 2.163</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Proportion Var 0.189 0.180</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Cumulative Var 0.189 0.369</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $rotmat</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            [,1]      [,2]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]  0.7853218 0.6190878</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2,] -0.6190878 0.7853218</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu">factocp</span><span class="op">(</span><span class="va">factor</span>, nfact <span class="op">=</span> <span class="st">"kaiser"</span>, cor <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $loadings</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Loadings:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     F1     F2     F3     F4     F5    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x1          0.109  0.129  0.883  0.281</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x2  -0.106 -0.981                0.204</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x3                -0.995 -0.127       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x1                        0.883       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x2         -0.981                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x3                -0.995              </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> x4   1.118                       0.349</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x5                        1.009 -0.267</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x5                        1.009       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> x6                -0.561         0.705</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> x7         -0.809                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x8   1.122 -0.153                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x8   1.122                            </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> x9                -0.882              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x10  0.132 -1.114 -0.111        -0.241</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x11  1.062  0.157 -0.169 -0.120 -0.413</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x10        -1.114                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x11  1.062                      -0.413</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> x12               -0.781         0.376</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                   F1    F2    F3    F4    F5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> SS loadings    3.695 2.930 2.758 1.845 1.188</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Proportion Var 0.308 0.244 0.230 0.154 0.099</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Cumulative Var 0.308 0.552 0.782 0.936 1.035</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $rotmat</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            [,1]        [,2]       [,3]        [,4]        [,5]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.90161230 -0.25071582 -0.2987722 -0.18256899  0.04050381</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2,] 0.40028783  0.75379412  0.4624123  0.14189682 -0.19391818</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3,] 0.09730667 -0.57630414  0.7796863 -0.05245829 -0.21850014</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4,] 0.11946882 -0.18604744 -0.0657347  0.97002381  0.07646121</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5,] 0.05588848  0.04686028  0.2909953 -0.05325221  0.95245291</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>Sur cette page</h2>
