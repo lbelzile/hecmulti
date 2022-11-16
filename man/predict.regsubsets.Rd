@@ -12,6 +12,8 @@
 \item{newdata}{base de données (\code{data.frame}) contenant les variables explicatives}
 
 \item{id}{[entier] numéro du modèle ajusté par \code{regsubsets} pour lequel obtenir des prédictions}
+
+\item{...}{autres arguments, actuellement ignorés}
 }
 \value{
 un vecteur de prédictions

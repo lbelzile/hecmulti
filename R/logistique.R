@@ -85,8 +85,8 @@ autoplot.hecmulti_roc <- function(x, ...){
   graph <- ggplot2::ggplot(
     data = data.frame(x = rev(1-x$specif),
                       y = rev(x$sensib)),
-    mapping = ggplot2::aes_string(x = "x",
-                                  y = "y")) +
+    mapping = ggplot2::aes(x = .data$x,
+                           y = .data$y)) +
     ggplot2::geom_abline(slope = 1,
                          intercept = 0,
                          alpha = 0.5,
@@ -210,8 +210,8 @@ courbe_lift <- function(prob,
         x = 100 * prand / sum(resp),
         y = 100 * cumsum(resp) / sum(resp)
       ),
-      mapping = ggplot2::aes_string(x = "x",
-                                    y = "y")
+      mapping = ggplot2::aes(x = .data$x,
+                             y = .data$y)
     ) +
       ggplot2::geom_abline(slope = 1,
                            intercept = 0,
@@ -418,8 +418,8 @@ autoplot.hecmulti_ptcoupe <- function(x, ...){
   graph <- ggplot2::ggplot(
     data = data.frame(x = x$pcoup,
                       y = x$gain),
-    mapping = ggplot2::aes_string(x = "x",
-                                  y = "y")) +
+    mapping = ggplot2::aes(x = .data$x,
+                           y = .data$y)) +
     ggplot2::geom_line() +
     ggplot2::geom_vline(xintercept = x$optim,
                         alpha = 0.5,
