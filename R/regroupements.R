@@ -14,13 +14,16 @@
 #' \item{\code{Rcsp}}{critère du R-carré semi-partiel}
 #'}
 rc_hclust <- function(x, hc, kmax = 10L) {
+  if(is.null(x)){
+    stop("Pas de base de donn\u00e9es fournies.")
+  }
   stopifnot(inherits(hc, "hclust"))
   if(!hc$method %in% c("ward", "ward.D", "ward.D2")){
     stop("Crit\u00e8re pas pertinent avec la m\u00e9thode choisie: seule la m\u00e9thode de Ward utilise l'homog\u00e9n\u00e9it.")
   }
   # doit être un object de classe hclust
   k <- as.integer(kmax)
-  stopifnot(k > 2, nrow(x) < kmax)
+  stopifnot(k > 2, nrow(x) >= kmax)
   groups <- cutree(hc, k = seq_len(k))
   TSS <- function(x, g) {
     sum(aggregate(x, by = list(g), function(x)
@@ -31,7 +34,7 @@ rc_hclust <- function(x, hc, kmax = 10L) {
   data.frame(index = 1:kmax,
              SCD = TSS.all,
              Rc = 1 - TSS.all / TSS.all[1],
-             Rcsp = c(0, -diff(TSS.all) / TSS.all[1]))
+             Rcsp = c(-diff(TSS.all) / TSS.all[1], NA))
 }
 
 #' @export
@@ -65,7 +68,7 @@ homogeneite <- function(
             ngroupes > 1)
 # Méthodes pour hclust
 if(!is.null(rhier)){
-  if(!is.null(data)){
+  if(is.null(data)){
     stop("Argument \"data\" manquant.")
   }
   df <- rc_hclust(
@@ -98,6 +101,7 @@ g1 <-  ggplot2::ggplot(
   ggplot2::scale_x_continuous(breaks = seq_len(ngroupes)) +
   ggplot2::scale_y_continuous(
     limits = c(0,1),
+    expand = c(0,0),
     breaks = c(0,0.25,0.5,0.75,1),
     labels = c("0", "0.25", "0.5", "0.75", "1")) +
   ggplot2::labs(x = "nombre de regroupements",
@@ -114,6 +118,7 @@ g2 <-  ggplot2::ggplot(
     breaks = seq_len(ngroupes)) +
   ggplot2::scale_y_continuous(
     limits = c(0,1),
+    expand = c(0,0),
     breaks = c(0,0.25,0.5,0.75,1),
     labels = c("0", "0.25", "0.5", "0.75", "1")) +
   ggplot2::labs(x = "nombre de regroupements",

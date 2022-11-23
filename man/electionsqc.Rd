@@ -5,20 +5,7 @@
 \alias{electionsqc}
 \title{Élections générales québécoises}
 \format{
-Une base de données avec  125 rows et 11 variables:
-\describe{
-  \item{\code{circonscription}}{nom de la circonscription électorale}
-  \item{\code{CAQ_2022}}{pourcentage des suffrages exprimés pour la Coalition Avenir Québec en 2022}
-  \item{\code{PLQ_2022}}{pourcentage des suffrages exprimés pour le Parti Libéral du Québec en 2022}
-  \item{\code{QS_2022}}{pourcentage des suffrages exprimés pour Québec Solidaire en 2022}
-  \item{\code{PQ_2022}}{pourcentage des suffrages exprimés pour le Parti Québécois en 2022}
-  \item{\code{PCQ_2022}}{pourcentage des suffrages exprimés pour le Parti Conservateur du Québec en 2022}
-  \item{\code{CAQ_2018}}{pourcentage des suffrages exprimés pour la Coalition Avenir Québec en 2018}
-  \item{\code{PLQ_2018}}{pourcentage des suffrages exprimés pour le Parti Libéral du Québec en 2018}
-  \item{\code{QS_2018}}{pourcentage des suffrages exprimés pour Québec Solidaire en 2018}
-  \item{\code{PQ_2018}}{pourcentage des suffrages exprimés pour le Parti Québécois en 2018}
-  \item{\code{PCQ_2018}}{pourcentage des suffrages exprimés pour le Parti Conservateur du Québec en 2018}
-}
+
 }
 \source{
 Données ouvertes extraites du site du Directeur général des élections du Québec, licence \url{https://www.dgeq.org/licence.html}.
@@ -27,7 +14,7 @@ Données ouvertes extraites du site du Directeur général des élections du Qu�
 electionsqc
 }
 \description{
-Résultat électoraux pour les élections de 2018 et 2022 par circonscription en format large (parti, année).
+Résultat électoraux pour les élections de 2018 et 2022 par circonscription en format large (parti, année). Les informations sociodémographiques sont basées sur les données du Recensement 2021 de Statistique Canada.
 }
 \details{
 Comprend des données ouvertes octroyées sous la licence d'utilisation des données ouvertes du directeur général des élections disponible à l'adresse Web \url{dgeq.org}. L'octroi de la licence n'implique aucune approbation par le directeur général des élections de l'utilisation des données ouvertes qui en est faite.
