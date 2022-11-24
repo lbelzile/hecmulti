@@ -137,3 +137,19 @@ if(length(which) == 1){
 }
 return(invisible(df))
 }
+
+
+#' Indice de Rand
+#' 
+#' Calcul de la similarité; chaque paire est réduite à un index binaire (0 si les observations sont des regroupements différents, 1 si elles sont classées dans le même). Ces paires sont comptabilisées dans un tableau de contingence; l'indice de Rand est le taux de bonne classification.
+#' @param x vecteur d'étiquettes A
+#' @param y vecteur d'étiquettes B
+#' @export
+#' @importFrom cluster daisy
+rand <- function(x, y){
+# x et y sont des étiquettes
+stopifnot(length(x) == length(y))
+dx <- cluster::daisy(x = data.frame(x = factor(x)), metric = "gower")
+dy <- cluster::daisy(x = data.frame(x = factor(y)), metric = "gower")
+mean(dx == dy)
+}
