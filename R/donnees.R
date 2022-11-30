@@ -897,7 +897,6 @@
 #'   \item{\code{QS_2018}}{pourcentage des suffrages exprimés pour Québec Solidaire en 2018}
 #'   \item{\code{PQ_2018}}{pourcentage des suffrages exprimés pour le Parti Québécois en 2018}
 #'   \item{\code{PCQ_2018}}{pourcentage des suffrages exprimés pour le Parti Conservateur du Québec en 2018}
-#'}
 #'   \item{\code{partici_2018}}{taux de participation (en pourcentage) en 2018}
 #'   \item{\code{partici_2022}}{taux de participation (en pourcentage) en 2022}
 #'   \item{\code{age_30_59}}{pourcentage de la population totale âgée de 30 à 59 ans}

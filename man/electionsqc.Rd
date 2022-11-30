@@ -5,7 +5,30 @@
 \alias{electionsqc}
 \title{Élections générales québécoises}
 \format{
-
+Une base de données avec 125 lignes et 21 variables:
+\describe{
+  \item{\code{circonscription}}{nom de la circonscription électorale en 2022}
+  \item{\code{CAQ_2022}}{pourcentage des suffrages exprimés pour la Coalition Avenir Québec en 2022}
+  \item{\code{PLQ_2022}}{pourcentage des suffrages exprimés pour le Parti Libéral du Québec en 2022}
+  \item{\code{QS_2022}}{pourcentage des suffrages exprimés pour Québec Solidaire en 2022}
+  \item{\code{PQ_2022}}{pourcentage des suffrages exprimés pour le Parti Québécois en 2022}
+  \item{\code{PCQ_2022}}{pourcentage des suffrages exprimés pour le Parti Conservateur du Québec en 2022}
+  \item{\code{CAQ_2018}}{pourcentage des suffrages exprimés pour la Coalition Avenir Québec en 2018}
+  \item{\code{PLQ_2018}}{pourcentage des suffrages exprimés pour le Parti Libéral du Québec en 2018}
+  \item{\code{QS_2018}}{pourcentage des suffrages exprimés pour Québec Solidaire en 2018}
+  \item{\code{PQ_2018}}{pourcentage des suffrages exprimés pour le Parti Québécois en 2018}
+  \item{\code{PCQ_2018}}{pourcentage des suffrages exprimés pour le Parti Conservateur du Québec en 2018}
+  \item{\code{partici_2018}}{taux de participation (en pourcentage) en 2018}
+  \item{\code{partici_2022}}{taux de participation (en pourcentage) en 2022}
+  \item{\code{age_30_59}}{pourcentage de la population totale âgée de 30 à 59 ans}
+  \item{\code{age_60p}}{pourcentage de la population totale âgée de 60 ans et plus}
+  \item{\code{age_med}}{âge médian}
+  \item{\code{taille_famille}}{taille moyenne de la famille}
+  \item{\code{fra}}{pourcentage de la population totale de langue maternelle française}
+  \item{\code{ang}}{pourcentage de la population totale de langue maternelle anglaise}
+  \item{\code{rev_tot_med}}{revenu total (avant impôts) médian}
+  \item{\code{faible_rev}}{pourcentage de la population de plus de 18 ans à faible revenu (population applicable)}
+}
 }
 \source{
 Données ouvertes extraites du site du Directeur général des élections du Québec, licence \url{https://www.dgeq.org/licence.html}.
