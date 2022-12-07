@@ -774,7 +774,7 @@
 
 #' @title Dons à un organisme de charité
 #' @description Données simulées correspondant aux donations et sollications d'un organisme de charité auprès d'employés de compagnies associées à l'organisme.
-#' @format Une base de données avec 49730 lignes et 16 variables:
+#' @format Une base de données avec 19353 lignes et 16 variables:
 #' \describe{
 #'   \item{\code{ndons}}{nombre de dons}
 #'   \item{\code{recence}}{nombre de mois depuis le dernier don, \code{NA} si la personne n'a jamais fait de dons}
