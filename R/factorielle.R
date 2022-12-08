@@ -154,8 +154,8 @@ eboulis <- function(object, which = 1:2){
   df <- data.frame(y = valpropres,
                    x = seq_along(valpropres))
   g1 <-  ggplot2::ggplot(data = df,
-                mapping = ggplot2::aes_string(x = "x",
-                                              y = "y")) +
+                mapping = ggplot2::aes(x = .data$x,
+                                              y = .data$y)) +
     ggplot2::geom_line() +
     ggplot2::geom_point() +
     ggplot2::scale_x_continuous(breaks = seq_along(valpropres)) +
@@ -165,7 +165,7 @@ eboulis <- function(object, which = 1:2){
     ggplot2::theme_classic()
   g2 <-  ggplot2::ggplot(data = data.frame(y = cumsum(valpropres)/sum(valpropres),
                                            x = seq_along(valpropres)),
-                         mapping = ggplot2::aes_string(x = "x", y = "y")) +
+                         mapping = ggplot2::aes(x = .data$x, y = .data$y)) +
     ggplot2::geom_line() +
     ggplot2::geom_point() +
     ggplot2::scale_x_continuous(breaks = seq_along(valpropres)) +

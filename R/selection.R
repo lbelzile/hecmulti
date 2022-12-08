@@ -104,8 +104,8 @@ moyenne_modeles_stepAIC <- function(
 #' calculer l'erreur quadratique moyenne de validation
 #' pour une base de données externe. Le modèle calcule
 #' la matrice du modèle pour extraire les colonnes.
-#' 
-#' @export 
+#'
+#' @export
 #' @param model objet de classe \code{regsubsets}
 #' @param select vecteur des modèles sélectionnés
 #' @param formula formule désignant le modèle maximal ajusté par la procédure de sélection
@@ -126,7 +126,7 @@ eval_EQM_regsubsets <-
              inherits(newdata, "data.frame"),
              isTRUE(ncol(data) == ncol(newdata)),
              isTRUE(all(colnames(data) == colnames(newdata))))
-     
+
    if(isTRUE(any(!select %in% c("AIC", "BIC")))){
       # Either we find the model with the smallest AIC and BIC
       # Else evaluate particular models from the path
@@ -185,6 +185,7 @@ eval_EQM_regsubsets <-
 #' @param object objet de classe \code{regsubsets}
 #' @param newdata base de données (\code{data.frame}) contenant les variables explicatives
 #' @param id [entier] numéro du modèle ajusté par \code{regsubsets} pour lequel obtenir des prédictions
+#' @param ... autres arguments, actuellement ignorés
 #' @return un vecteur de prédictions
 #' @author R. Jordan Crouser
 #' @export
