@@ -27,7 +27,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">hecmulti</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2022.10.17</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2022.11.12</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Activer la navigation">
@@ -267,34 +267,26 @@ matrice <span class="math inline">\(p \times k\)</span> avec les <span class="ma
 ensuite de calculer la rotation de cette racine.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/factocp.html">factocp</a></span><span class="op">(</span><span class="va">factor</span><span class="op">)</span></span>
-<span><span class="co">#&gt; $loadings</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Loadings:</span></span>
 <span><span class="co">#&gt;     F1     F2     F3     F4    </span></span>
-<span><span class="co">#&gt; x1  -0.107                0.812</span></span>
-<span><span class="co">#&gt; x2  -0.101        -0.791       </span></span>
-<span><span class="co">#&gt; x3          0.793        -0.122</span></span>
+<span><span class="co">#&gt; x1                        0.812</span></span>
+<span><span class="co">#&gt; x2                -0.791       </span></span>
+<span><span class="co">#&gt; x3          0.793              </span></span>
 <span><span class="co">#&gt; x4   0.821                     </span></span>
 <span><span class="co">#&gt; x5                        0.834</span></span>
 <span><span class="co">#&gt; x6          0.661              </span></span>
 <span><span class="co">#&gt; x7                -0.834       </span></span>
-<span><span class="co">#&gt; x8   0.851        -0.113       </span></span>
+<span><span class="co">#&gt; x8   0.851                     </span></span>
 <span><span class="co">#&gt; x9          0.751              </span></span>
-<span><span class="co">#&gt; x10  0.110        -0.787       </span></span>
-<span><span class="co">#&gt; x11  0.818         0.119       </span></span>
+<span><span class="co">#&gt; x10               -0.787       </span></span>
+<span><span class="co">#&gt; x11  0.818                     </span></span>
 <span><span class="co">#&gt; x12         0.731              </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;                   F1    F2    F3    F4</span></span>
 <span><span class="co">#&gt; SS loadings    2.116 2.175 1.991 1.388</span></span>
 <span><span class="co">#&gt; Proportion Var 0.176 0.181 0.166 0.116</span></span>
-<span><span class="co">#&gt; Cumulative Var 0.176 0.358 0.523 0.639</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $rotmat</span></span>
-<span><span class="co">#&gt;            [,1]       [,2]       [,3]       [,4]</span></span>
-<span><span class="co">#&gt; [1,]  0.5950592 0.64975633 -0.4001741 -0.2521546</span></span>
-<span><span class="co">#&gt; [2,] -0.6278786 0.74311099  0.2035721  0.1100589</span></span>
-<span><span class="co">#&gt; [3,]  0.4687427 0.14371169  0.8654577  0.1030060</span></span>
-<span><span class="co">#&gt; [4,]  0.1787550 0.07035431 -0.2222657  0.9558739</span></span></code></pre></div>
+<span><span class="co">#&gt; Cumulative Var 0.176 0.358 0.523 0.639</span></span></code></pre></div>
 <p>La fonction <code>factocp</code> dans <code>hecmulti</code> calcule
 directement le modèle, par défaut en utilisant le critère de Kaiser bien
 que <code>nfact</code> puisse accommoder un entier représentant le
