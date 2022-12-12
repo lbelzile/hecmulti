@@ -189,20 +189,22 @@ eboulis <- function(object, which = 1:2){
 #' Cette fonction calcule une décomposition spectrale d'une matrice de corrélation ou de covariance des données et extrait les k premières composantes selon \code{nfact}, soit un entier ou le critère de Kaiser.
 #'
 #' @param x une matrice ou base de données
-#' @param covmat matrice de covariance
-#' @param cor logique; si \code{TRUE}, calculer la décomposition à partir de la matrice de corrélation plutôt que la matrice de covariance
 #' @param nfact entier pour le nombre de facteurs, ou chaîne de caractère \code{"kaiser"} pour le critère des valeurs propres.
+#' @param covmat matrice de covariance
+#' @param cor logique; si \code{TRUE}, calculer la décomposition à partir de la matrice de corrélation plutôt que la matrice de covariance. Il est fortement conseillé de ne pas toucher à cet argument (voir Détails).
+#' @details Puisque les facteurs sont dérivés à partir des composantes principales, les facteurs avant rotation sont en ordre décroissant de variance. Ce n'est plus le cas si on fait la rotation varimax. La sortie retourne les composantes permutées (mais les étiquettes sont arbitraires).
+#'
+#' Il est aussi important de noter que, si l'on peut effectuer une décomposition en valeurs propres et vecteurs propres de la matrice de covariance et effectuer une rotation varimax subséquente, les chargements ne correspondent plus à des corrélations et sont difficilement interprétables.
 #' @return une liste avec composante \code{loadings} contenant les chargements et si le nombre de facteurs est supérieur à un, la matrice de rotation varimax.
 #' @export
 #' @examples
-#' factocp(covmat = cov(factor), nfact = 2)
-#' factocp(factor, nfact = "kaiser", cor = FALSE)
+#' factocp(covmat = cov(fact), nfact = 2)
+#' factocp(factor, nfact = "kaiser")
 factocp <- function(x,
+                    nfact = "kaiser",
                     covmat = NULL,
-                    cor = TRUE,
-                    nfact = "kaiser"){
+                    cor = TRUE){
   col.names <- NULL
-  std <- TRUE
   if(is.null(covmat)){
     col.names <- colnames(x)
     x <- try(as.matrix(x))
@@ -215,13 +217,10 @@ factocp <- function(x,
     decompo <- eigen(cov(x))
   }
   } else{
-
     if(isTRUE(cor)){
       covmat <- cov2cor(covmat)
     }
     decompo <- eigen(covmat)
-    etype <- sqrt(diag(covmat))
-    std <- FALSE
   }
   # Extraire les valeurs propres
   valpropres <- decompo$values
@@ -237,6 +236,7 @@ factocp <- function(x,
   }
   # Extraire les premiers vecteurs propres
   Gamma_est <- t(t(decompo$vectors[,seq_len(nfact), drop = FALSE]) * sqrt(decompo$values[seq_len(nfact)]))
+
   if(!is.null(col.names)){
     stopifnot(length(col.names) == nrow(Gamma_est))
     row.names(Gamma_est) <- col.names
@@ -245,19 +245,16 @@ factocp <- function(x,
     paste0("F", seq_len(ncol(Gamma_est)))
   # Solution (chargements) avec rotation varimax
   facto_cp <- varimax(Gamma_est)
+  # Réordonner en ordre décroissant de variance
+  od <- order(colSums(facto_cp$loadings^2),
+              decreasing = TRUE)
+  facto_cp$loadings <- facto_cp$loadings[,od]
   #Ne fonctionne pas avec vecteur (m=1)
   if(nfact == 1L){
-    class(Gamma_est) <- "loadings"
     facto_cp <- list(loadings = Gamma_est)
   }
-  if(!std){
-    # Si matrice de covariance,
-    # standardiser les chargements pour qu'on obtienne
-    # néanmoins la corrélation entre facteurs
-    # et variables explicatives
-    facto_cp$loadings <- facto_cp$loadings / etype
-  }
   facto_cp$var_cumul <- variance_cumu
+  class(facto_cp$loadings) <- "loadings"
   class(facto_cp) <- "factanalcp"
   return(facto_cp)
 }

@@ -4,16 +4,16 @@
 \alias{factocp}
 \title{Analyse factorielle avec composantes principales}
 \usage{
-factocp(x, covmat = NULL, cor = TRUE, nfact = "kaiser")
+factocp(x, nfact = "kaiser", covmat = NULL, cor = TRUE)
 }
 \arguments{
 \item{x}{une matrice ou base de données}
 
+\item{nfact}{entier pour le nombre de facteurs, ou chaîne de caractère \code{"kaiser"} pour le critère des valeurs propres.}
+
 \item{covmat}{matrice de covariance}
 
-\item{cor}{logique; si \code{TRUE}, calculer la décomposition à partir de la matrice de corrélation plutôt que la matrice de covariance}
-
-\item{nfact}{entier pour le nombre de facteurs, ou chaîne de caractère \code{"kaiser"} pour le critère des valeurs propres.}
+\item{cor}{logique; si \code{TRUE}, calculer la décomposition à partir de la matrice de corrélation plutôt que la matrice de covariance. Il est fortement conseillé de ne pas toucher à cet argument (voir Détails).}
 }
 \value{
 une liste avec composante \code{loadings} contenant les chargements et si le nombre de facteurs est supérieur à un, la matrice de rotation varimax.
@@ -21,7 +21,12 @@ une liste avec composante \code{loadings} contenant les chargements et si le nom
 \description{
 Cette fonction calcule une décomposition spectrale d'une matrice de corrélation ou de covariance des données et extrait les k premières composantes selon \code{nfact}, soit un entier ou le critère de Kaiser.
 }
+\details{
+Puisque les facteurs sont dérivés à partir des composantes principales, les facteurs avant rotation sont en ordre décroissant de variance. Ce n'est plus le cas si on fait la rotation varimax. La sortie retourne les composantes permutées (mais les étiquettes sont arbitraires).
+
+Il est aussi important de noter que, si l'on peut effectuer une décomposition en valeurs propres et vecteurs propres de la matrice de covariance et effectuer une rotation varimax subséquente, les chargements ne correspondent plus à des corrélations et sont difficilement interprétables.
+}
 \examples{
-factocp(covmat = cov(factor), nfact = 2)
-factocp(factor, nfact = "kaiser", cor = FALSE)
+factocp(covmat = cov(fact), nfact = 2)
+factocp(factor, nfact = "kaiser")
 }
