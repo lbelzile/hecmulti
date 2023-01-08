@@ -385,8 +385,8 @@ select_pcoupe <- function(modele,
                               resp = modele$y)
     gain <- perfo$VN * c00 +
       perfo$VP * c11 +
-      perfo$FN * c10 +
-      perfo$FP * c01
+      perfo$FN * c01 +
+      perfo$FP * c10
     gain
   })
   meanperfo <- rowMeans(perfor_cv)/n
