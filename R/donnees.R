@@ -441,59 +441,58 @@
 #' @aliases missing1
 "manquantes"
 
-
-#' @title Données bancaires et solde de la carte Visa Premier
-#' @description La liste des variables est issue d'une base de données retraçant l'historique mensuel bancaire et les caractéristiques de tous les clients. Un sondage a été réalisé afin d'alléger les traitements ainsi qu'une première sélection de variables.
-#' @format Une base de données avec 1014 lignes et 43 variables:
-#' \describe{
-#'  \item{\code{matric}}{identifiant client}
-#'  \item{\code{age}}{âge (en années)}
-#'  \item{\code{famiq}}{situation familiale, soit en couple (\code{cou}) ou seul (\code{seu})}
-#'  \item{\code{relat}}{ancienneté de la relation (en mois)}
-#'  \item{\code{pcspq}}{catégorie socio-professionnelle (code numérique de l'INSEE)}
-#'  \item{\code{rejets}}{montant total des rejets en francs}
-#'  \item{\code{opgnb}}{nombre d'opérations par guichet dans le mois}
-#'  \item{\code{moyrv}}{moyenne des mouvements nets créditeurs des 3 mois en milliers de francs}
-#'  \item{\code{tavep}}{total des avoirs épargne monétaire en francs}
-#'  \item{\code{endet}}{taux d'endettement}
-#'  \item{\code{gaget}}{total des engagements en francs}
-#'  \item{\code{gagec}}{total des engagements court terme en francs}
-#'  \item{\code{gagem}}{total des engagements moyen terme en francs}
-#'  \item{\code{kvunb}}{nombre de comptes à vue}
-#'  \item{\code{qsmoy}}{moyenne des soldes moyens sur 3 mois}
-#'  \item{\code{qcred}}{moyenne des mouvements créditeurs en milliers de francs}
-#'  \item{\code{boppn}}{nombre d'opérations dans le mois précédent }
-#'  \item{\code{facan}}{montant facturé dans l'année en francs}
-#'  \item{\code{lgagt}}{engagement long terme}
-#'  \item{\code{vienb}}{nombre de produits contrats vie}
-#'  \item{\code{viemt}}{montant des produits contrats vie en francs}
-#'  \item{\code{uemnb}}{nombre de produits épargne monétaire}
-#'  \item{\code{uemmts}}{montant des produits d'épargne monétaire en francs}
-#'  \item{\code{xlgnb}}{nombre de produits d'épargne logement}
-#'  \item{\code{xlgmt}}{montant des produits d'épargne logement en francs}
-#'  \item{\code{ylvnb}}{nombre de comptes sur livret}
-#'  \item{\code{ylvmt}}{montant des comptes sur livret en francs}
-#'  \item{\code{nbelts}}{nombre de produits d'épargne long terme}
-#'  \item{\code{mtelts}}{montant des produits d'épargne long terme en francs}
-#'  \item{\code{nbcats}}{nombre de produits épargne à terme}
-#'  \item{\code{mtcats}}{montant des produits épargne à terme}
-#'  \item{\code{nbbecs}}{nombre de produits bons et certificats}
-#'  \item{\code{mtbecs}}{montant des produits bons et certificats en francs}
-#'  \item{\code{zocnb}}{nombre d'opérations par cartes}
-#'  \item{\code{ntcas}}{nombre total de cartes}
-#'  \item{\code{nptag}}{nombre de cartes point argentN}
-#'  \item{\code{segv2s}}{segmentation version 2}
-#'  \item{\code{itavc}}{total des avoirs sur tous les comptes}
-#'  \item{\code{havef}}{total des avoirs épargne financière en francs}
-#'  \item{\code{carvp}}{possession de la carte \code{Visa} Premier, soit oui (\code{1}) ou non (\code{0})}
-#'  \item{\code{sexe}}{sexe, \code{0} pour homme, \code{1} pour femme}
-#'  \item{\code{nbjd}}{nombre de jours à débit dans les trois mois précédents}
-#'  \item{\code{credm}}{montant de la carte de crédit Visa Premier}
-#'}
-#' @details Creative Commons Paternity 3.0 France, pas d'utilisation commerciale - partage avec des conditions initiales à l'identique.
-#' @author Philippe Besse, Wikistat
-#'
-"visacredm"
+# #' @title Données bancaires et solde de la carte Visa Premier
+# #' @description La liste des variables est issue d'une base de données retraçant l'historique mensuel bancaire et les caractéristiques de tous les clients. Un sondage a été réalisé afin d'alléger les traitements ainsi qu'une première sélection de variables.
+# #' @format Une base de données avec 1014 lignes et 43 variables:
+# #' \describe{
+# #'  \item{\code{matric}}{identifiant client}
+# #'  \item{\code{age}}{âge (en années)}
+# #'  \item{\code{famiq}}{situation familiale, soit en couple (\code{cou}) ou seul (\code{seu})}
+# #'  \item{\code{relat}}{ancienneté de la relation (en mois)}
+# #'  \item{\code{pcspq}}{catégorie socio-professionnelle (code numérique de l'INSEE)}
+# #'  \item{\code{rejets}}{montant total des rejets en francs}
+# #'  \item{\code{opgnb}}{nombre d'opérations par guichet dans le mois}
+# #'  \item{\code{moyrv}}{moyenne des mouvements nets créditeurs des 3 mois en milliers de francs}
+# #'  \item{\code{tavep}}{total des avoirs épargne monétaire en francs}
+# #'  \item{\code{endet}}{taux d'endettement}
+# #'  \item{\code{gaget}}{total des engagements en francs}
+# #'  \item{\code{gagec}}{total des engagements court terme en francs}
+# #'  \item{\code{gagem}}{total des engagements moyen terme en francs}
+# #'  \item{\code{kvunb}}{nombre de comptes à vue}
+# #'  \item{\code{qsmoy}}{moyenne des soldes moyens sur 3 mois}
+# #'  \item{\code{qcred}}{moyenne des mouvements créditeurs en milliers de francs}
+# #'  \item{\code{boppn}}{nombre d'opérations dans le mois précédent }
+# #'  \item{\code{facan}}{montant facturé dans l'année en francs}
+# #'  \item{\code{lgagt}}{engagement long terme}
+# #'  \item{\code{vienb}}{nombre de produits contrats vie}
+# #'  \item{\code{viemt}}{montant des produits contrats vie en francs}
+# #'  \item{\code{uemnb}}{nombre de produits épargne monétaire}
+# #'  \item{\code{uemmts}}{montant des produits d'épargne monétaire en francs}
+# #'  \item{\code{xlgnb}}{nombre de produits d'épargne logement}
+# #'  \item{\code{xlgmt}}{montant des produits d'épargne logement en francs}
+# #'  \item{\code{ylvnb}}{nombre de comptes sur livret}
+# #'  \item{\code{ylvmt}}{montant des comptes sur livret en francs}
+# #'  \item{\code{nbelts}}{nombre de produits d'épargne long terme}
+# #'  \item{\code{mtelts}}{montant des produits d'épargne long terme en francs}
+# #'  \item{\code{nbcats}}{nombre de produits épargne à terme}
+# #'  \item{\code{mtcats}}{montant des produits épargne à terme}
+# #'  \item{\code{nbbecs}}{nombre de produits bons et certificats}
+# #'  \item{\code{mtbecs}}{montant des produits bons et certificats en francs}
+# #'  \item{\code{zocnb}}{nombre d'opérations par cartes}
+# #'  \item{\code{ntcas}}{nombre total de cartes}
+# #'  \item{\code{nptag}}{nombre de cartes point argent}
+# #'  \item{\code{segv2s}}{segmentation version 2}
+# #'  \item{\code{itavc}}{total des avoirs sur tous les comptes}
+# #'  \item{\code{havef}}{total des avoirs épargne financière en francs}
+# #'  \item{\code{carvp}}{possession de la carte \code{Visa} Premier, soit oui (\code{1}) ou non (\code{0})}
+# #'  \item{\code{sexe}}{sexe, \code{0} pour homme, \code{1} pour femme}
+# #'  \item{\code{nbjd}}{nombre de jours à débit dans les trois mois précédents}
+# #'  \item{\code{promo}}{montant de la carte de crédit Visa Premier}
+# #'}
+# #' @details Creative Commons Paternity 3.0 France, pas d'utilisation commerciale - partage avec des conditions initiales à l'identique.
+# #' @author Philippe Besse, Wikistat
+# #' @keywords internal
+# "visacredm"
 
 #' @title Données bancaires
 #' @description Une base de données retraçant l'historique mensuel bancaire et les caractéristiques de clients d'une institution bancaire
@@ -549,6 +548,63 @@
 #' @details Creative Commons Paternity 3.0 France, pas d'utilisation commerciale - partage avec des conditions initiales à l'identique.
 #' @author Philippe Besse, Wikistat
 "visaprem"
+
+
+
+#' @title Données bancaires avec offre promotionnelle
+#' @description Une base de données retraçant l'historique mensuel bancaire et les caractéristiques de clients d'une institution bancaire
+#' @format Une base de données avec 1255 lignes et 45 variables:
+#' \describe{
+#'  \item{\code{matric}}{identifiant client}
+#'  \item{\code{age}}{âge (en années)}
+#'  \item{\code{famiq}}{situation familiale: un parmi mariée (\code{mar}), célibataire (\code{cel}), divorcée (\code{div}), union libre (\code{uli}),  séparée (\code{sep}) ou veuve (\code{veu})}
+#'  \item{\code{relat}}{ancienneté de la relation (en mois)}
+#'  \item{\code{pcspq}}{catégorie socio-professionnelle (code numérique de l'INSEE)}
+#'  \item{\code{rejets}}{montant total des rejets en francs}
+#'  \item{\code{opgnb}}{nombre d'opérations par guichet dans le mois}
+#'  \item{\code{moyrv}}{moyenne des mouvements nets créditeurs des 3 mois en milliers de francs}
+#'  \item{\code{tavep}}{total des avoirs épargne monétaire en francs}
+#'  \item{\code{endet}}{taux d'endettement}
+#'  \item{\code{gaget}}{total des engagements en francs}
+#'  \item{\code{gagec}}{total des engagements court terme en francs}
+#'  \item{\code{gagem}}{total des engagements moyen terme en francs}
+#'  \item{\code{kvunb}}{nombre de comptes à vue}
+#'  \item{\code{qsmoy}}{moyenne des soldes moyens sur 3 mois}
+#'  \item{\code{qcred}}{moyenne des mouvements créditeurs en milliers de francs}
+#'  \item{\code{boppn}}{nombre d'opérations dans le mois précédent }
+#'  \item{\code{facan}}{montant facturé dans l'année en francs}
+#'  \item{\code{lgagt}}{engagement long terme}
+#'  \item{\code{vienb}}{nombre de produits contrats vie}
+#'  \item{\code{viemt}}{montant des produits contrats vie en francs}
+#'  \item{\code{uemnb}}{nombre de produits épargne monétaire}
+#'  \item{\code{uemmts}}{montant des produits d'épargne monétaire en francs}
+#'  \item{\code{xlgnb}}{nombre de produits d'épargne logement}
+#'  \item{\code{xlgmt}}{montant des produits d'épargne logement en francs}
+#'  \item{\code{ylvnb}}{nombre de comptes sur livret}
+#'  \item{\code{ylvmt}}{montant des comptes sur livret en francs}
+#'  \item{\code{nbelts}}{nombre de produits d'épargne long terme}
+#'  \item{\code{mtelts}}{montant des produits d'épargne long terme en francs}
+#'  \item{\code{nbcats}}{nombre de produits épargne à terme}
+#'  \item{\code{mtcats}}{montant des produits épargne à terme}
+#'  \item{\code{nbbecs}}{nombre de produits bons et certificats}
+#'  \item{\code{mtbecs}}{montant des produits bons et certificats en francs}
+#'  \item{\code{zocnb}}{nombre d'opérations par cartes}
+#'  \item{\code{ntcas}}{nombre total de cartes}
+#'  \item{\code{nptag}}{nombre de cartes point argent}
+#'  \item{\code{itavc}}{total des avoirs sur tous les comptes}
+#'  \item{\code{havef}}{total des avoirs épargne financière en francs}
+#'  \item{\code{carvp}}{possession de la carte \code{Visa} Premier, soit oui (\code{1}) ou non (\code{0})}
+#'  \item{\code{sexe}}{sexe, \code{0} pour homme, \code{1} pour femme}
+#'  \item{\code{nbjd1s}}{nombre de jours à débit dans le mois précédent}
+#'  \item{\code{nbjd2s}}{nombre de jours à débit il y a deux mois}
+#'  \item{\code{nbjd3s}}{nombre de jours à débit il y a trois mois}
+#'  \item{\code{credm}}{montant de la carte de crédit Visa Premier}
+#'  \item{\code{impnbs}}{nombre d'impayés en cours}
+#'  \item{\code{promo}}{offre promotionnelle acceptée, oui (\code{1}) ou non (\code{0})}
+#'}
+#' @details Creative Commons Paternity 3.0 France, pas d'utilisation commerciale - partage avec des conditions initiales à l'identique.
+#' @author Philippe Besse, Wikistat
+"visapromo"
 
 
 #' @title Analyse factorielle des données bancaires
@@ -647,7 +703,7 @@
 
 
 #' @title Données bancaires (régression logistique)
-#' @description Base de données de relations bancaires (voir \link{visacredm}) transformées pour le chapitre sur la régression logistique
+#' @description Base de données de relations bancaires (voir \link{visaprem}) transformées pour le chapitre sur la régression logistique
 #' @format Une base de données avec 1027 lignes et 24 variables:
 #' \describe{
 #'  \item{\code{matric}}{identifiant client}
@@ -674,7 +730,6 @@
 #'  \item{\code{gagel}}{log du total des engagements en francs}
 #'  \item{\code{role}}{facteur, étiquette pour données d'entraînement, de validation et de test}
 #'}
-#' @seealso \link{visacredm}
 "visalogist"
 
 

@@ -36,9 +36,6 @@ Une base de données avec 1027 lignes et 24 variables:
 visalogist
 }
 \description{
-Base de données de relations bancaires (voir \link{visacredm}) transformées pour le chapitre sur la régression logistique
-}
-\seealso{
-\link{visacredm}
+Base de données de relations bancaires (voir \link{visaprem}) transformées pour le chapitre sur la régression logistique
 }
 \keyword{datasets}
