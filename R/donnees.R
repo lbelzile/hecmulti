@@ -966,3 +966,25 @@
 #' @source Données ouvertes extraites du site du Directeur général des élections du Québec, licence \url{https://www.dgeq.org/licence.html}.
 #' @details Comprend des données ouvertes octroyées sous la licence d'utilisation des données ouvertes du directeur général des élections disponible à l'adresse Web \url{dgeq.org}. L'octroi de la licence n'implique aucune approbation par le directeur général des élections de l'utilisation des données ouvertes qui en est faite.
 "electionsqc"
+
+
+#' Discrimination salariale dans un collège
+#'
+#' Une étude a été effectuée dans un collège américain pour explorer
+#' la distribution des salaires et vérifier s'il existe des
+#' inégalités salariales entre hommes et femmes.
+#'
+#' @docType data
+#' @format Une base de données de 397 observations contenant les variables suivantes
+#' \describe{
+#' \item{\code{annees}}{nombre d'années depuis l'obtention du doctorat.}
+#' \item{\code{service}}{nombre d'années de service.}
+#' \item{\code{salaire}}{salaire de professeurs pendant l'année académique 2008--2009 (en milliers de dollars USD).}
+#' \item{\code{echelon}}{échelon académique, soit adjoint (\code{adjoint}), aggrégé (\code{aggrege}) ou titulaire (\code{titulaire}).}
+#' \item{\code{domaine}}{variable catégorielle indiquant le champ d'expertise du professeur, soit appliqué (\code{applique}) ou théorique (\code{theoretique}).}
+#' \item{\code{sexe}}{indicateur binaire pour le sexe, \code{homme} ou \code{femme}.}
+#' }
+#'
+#' @source Fox J. and Weisberg, S. (2019) \emph{An R Companion to Applied Regression}, Third Edition, Sage.
+#' @seealso \link[carData]{Salaries}
+"salaireprof"
