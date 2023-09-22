@@ -98,7 +98,7 @@ moyenne_modeles_stepAIC <- function(
 
 
 
-#' Calcul de l'erreur moyenne quadratique
+#' Calcul de la racine de l'erreur moyenne quadratique
 #'
 #' Pour un objet de class \code{regsubsets},
 #' calculer l'erreur quadratique moyenne de validation
@@ -207,3 +207,59 @@ predict.regsubsets <- function(object, newdata, id, ...) {
   return(pred)
 }
 
+#' Critère d'information d'Akaike
+#'
+#' Cette fonction retourne le critère d'information, tel que calculé pour le BIC
+#' pour un objet de classe \code{regsubsets}, en supposant que tous les modèles de
+#' 1 à \code{nvmax} variables sont retournés.
+#'
+#' @param object un objet de classe \code{regsubsets}
+#' @param ... arguments additionnels, actuellement ignorés
+#' @param k valeur de pénalité, défaut à 2 par paramètres
+#' @returns vecteur avec critère d'information pour chaque modèle
+#' @export
+AIC.regsubsets <- function(object, ..., k = 2){
+  if(inherits(object, "regsubsets")){
+    s <- summary(object)
+  }
+  AIC(object = s, k = 2)
+}
+
+#' Critère d'information AIC
+#'
+#' Cette fonction retourne le critère d'information, tel que calculé pour le BIC
+#' pour un objet de classe \code{regsubsets}, en supposant que tous les modèles de
+#' 1 à \code{nvmax} variables sont retournés.
+#'
+#' @inheritParams AIC.regsubsets
+#' @returns vecteur avec critère d'information pour chaque modèle
+#' @export
+AIC.summary.regsubsets <- function(object, ..., k = 2){
+  stopifnot(inherits(object, "summary.regsubsets"))
+  ll <- object$obj
+  ll$nn*(log(object$rss)-log(ll$nullrss)) + k* ll$first:min(ll$last, ll$nvmax)
+}
+
+#' Critère d'information BIC
+#'
+#' Cette fonction retourne le critère d'information BIC
+#'
+#' @inheritParams AIC.regsubsets
+#' @returns vecteur avec critère d'information pour chaque modèle
+#' @export
+BIC.regsubsets <- function(object, ...){
+  s <- summary(object)
+  AIC(object = s, k = log(s$obj$nn))
+}
+
+#' Critère d'information BIC
+#'
+#' Cette fonction retourne le critère d'information BIC
+#'
+#' @inheritParams AIC.regsubsets
+#' @returns vecteur avec critère d'information pour chaque modèle
+#' @export
+BIC.summary.regsubsets <- function(object, ...){
+  stopifnot(inherits(object, "summary.regsubsets"))
+  AIC(object = object, k = log(object$obj$nn))
+}
