@@ -2,7 +2,7 @@
 % Please edit documentation in R/selection.R
 \name{eval_EQM_regsubsets}
 \alias{eval_EQM_regsubsets}
-\title{Calcul de l'erreur moyenne quadratique}
+\title{Calcul de la racine de l'erreur moyenne quadratique}
 \usage{
 eval_EQM_regsubsets(model, select = c("AIC", "BIC"), formula, data, newdata)
 }
