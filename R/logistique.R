@@ -305,7 +305,7 @@ perfo_logistique <- function(prob, resp) {
 }
 
 
-#' Sélection du point de coupure selon gain
+#' Sélection du point de coupure selon le gain
 #'
 #' La fonction calcule le gain pour une variable réponse binaire et calcule le gain (par défaut, le taux de bonne classification). Elle retourne le point de coupure optimal.
 #' La fonction prend comme argument un modèle de classe
@@ -321,7 +321,17 @@ perfo_logistique <- function(prob, resp) {
 #' @param plot booléen, si \code{TRUE}, produit un graphique du lift. La valeur par défaut est \code{FALSE}.
 #' @param nrep entier, nombre de réplications pour la validation croisée
 #' @param ncv entier, nombre de groupes pour la validation croisée
-#' @return un graphique de la performance moyenne en fonction du point de coupure et une liste avec les points de coupure \code{ptcoupe}, la valeur optimale du point de coupure \code{opt} et la performance \code{performance}
+#' @return un graphique de la performance moyenne en fonction du point de coupure et une liste avec les éléments suivants:
+#' \itemize{
+#' \item{\code{optim}: }{point de coupure qui maximise le gain}
+#' \item{\code{gainmax}: }{gain maximal enregistré}
+#' \item{\code{pcoupe}}{points de coupe}
+#' \item{\code{gain}}{gain moyen pour chaque point de coupe}
+#' \item{\code{c00}: }{poids associé aux vrais négatifs}
+#' \item{\code{c11}: }{poids associé aux  vrais positifs}
+#' \item{\code{c01}: }{poids associé aux faux négatifs}
+#' \item{\code{c10}: }{poids associé aux faux positifs}
+#' }
 #' @export
 select_pcoupe <- function(modele,
                    c00 = 1,
@@ -392,6 +402,7 @@ select_pcoupe <- function(modele,
   meanperfo <- rowMeans(perfor_cv)/n
   cut <- seq(from = 0.01, to = 0.99, by = 0.01)
   output <- list(optim = cut[which.max(meanperfo)],
+                 gainmax = meanperfo[which.max(meanperfo)],
                  pcoupe = cut,
                  gain = meanperfo,
                  c00 = c00,
@@ -424,8 +435,9 @@ autoplot.hecmulti_ptcoupe <- function(x, ...){
     ggplot2::geom_vline(xintercept = x$optim,
                         alpha = 0.5,
                         linetype = "dashed") +
-    ggplot2::labs(x = "point de coupe",
-                  y = "gain moyen") +
+    ggplot2::labs(x = "point de coupure",
+                  y = "",
+                  subtitle = "gain moyen") +
     ggplot2::theme_classic()
   print(graph)
 }
@@ -447,7 +459,7 @@ predvc <- function(
     modele,
     data = NULL,
     K = 10L,
-    nrep = 10L,
+    nrep = 1L,
     type = NULL){
   if(!is.null(data)){
     stopifnot(is.data.frame(data))

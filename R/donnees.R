@@ -449,7 +449,7 @@
 # #'  \item{\code{age}}{âge (en années)}
 # #'  \item{\code{famiq}}{situation familiale, soit en couple (\code{cou}) ou seul (\code{seu})}
 # #'  \item{\code{relat}}{ancienneté de la relation (en mois)}
-# #'  \item{\code{pcspq}}{catégorie socio-professionnelle (code numérique de l'INSEE)}
+# #'  \item{\code{pcspq}}{catégorie socio-professionnelle \href{https://www.insee.fr/fr/metadonnees/pcs2003/categorieSocioprofessionnelleAgregee/1?champRecherche=false}{(code numérique de l'INSEE)}}
 # #'  \item{\code{rejets}}{montant total des rejets en francs}
 # #'  \item{\code{opgnb}}{nombre d'opérations par guichet dans le mois}
 # #'  \item{\code{moyrv}}{moyenne des mouvements nets créditeurs des 3 mois en milliers de francs}
@@ -501,8 +501,8 @@
 #'  \item{\code{matric}}{identifiant client}
 #'  \item{\code{age}}{âge (en années)}
 #'  \item{\code{famiq}}{situation familiale: un parmi mariée (\code{mar}), célibataire (\code{cel}), divorcée (\code{div}), union libre (\code{uli}),  séparée (\code{sep}) ou veuve (\code{veu})}
-#'  \item{\code{relat}}{ancienneté de la relation (en mois)}
-#'  \item{\code{pcspq}}{catégorie socio-professionnelle (code numérique de l'INSEE)}
+#'  \item{\code{relat}}{ancienneté de la relation avec la banque (en mois)}
+#'  \item{\code{pcspq}}{catégorie socio-professionnelle \href{https://www.insee.fr/fr/metadonnees/pcs2003/categorieSocioprofessionnelleAgregee/1?champRecherche=false}{(code numérique de l'INSEE)}}
 #'  \item{\code{rejets}}{montant total des rejets en francs}
 #'  \item{\code{opgnb}}{nombre d'opérations par guichet dans le mois}
 #'  \item{\code{moyrv}}{moyenne des mouvements nets créditeurs des 3 mois en milliers de francs}
@@ -558,8 +558,8 @@
 #'  \item{\code{matric}}{identifiant client}
 #'  \item{\code{age}}{âge (en années)}
 #'  \item{\code{famiq}}{situation familiale: un parmi mariée (\code{mar}), célibataire (\code{cel}), divorcée (\code{div}), union libre (\code{uli}),  séparée (\code{sep}) ou veuve (\code{veu})}
-#'  \item{\code{relat}}{ancienneté de la relation (en mois)}
-#'  \item{\code{pcspq}}{catégorie socio-professionnelle (code numérique de l'INSEE)}
+#'  \item{\code{relat}}{ancienneté de la relation avec la banque (en mois)}
+#'  \item{\code{pcspq}}{catégorie socio-professionnelle \href{https://www.insee.fr/fr/metadonnees/pcs2003/categorieSocioprofessionnelleAgregee/1?champRecherche=false}{(code numérique de l'INSEE)}}
 #'  \item{\code{rejets}}{montant total des rejets en francs}
 #'  \item{\code{opgnb}}{nombre d'opérations par guichet dans le mois}
 #'  \item{\code{moyrv}}{moyenne des mouvements nets créditeurs des 3 mois en milliers de francs}
@@ -987,3 +987,49 @@
 #' @source Fox J. and Weisberg, S. (2019) \emph{An R Companion to Applied Regression}, Third Edition, Sage.
 #' @seealso \link[carData]{Salaries}
 "salaireprof"
+
+#' Échelles d'avarice
+#'
+#' Résultats d'un questionnaire auprès de 300 participants
+#' administré par Mechanical Turks. Les questions 12, 13 et 25
+#' sont inversées par rapport aux autres questions.
+#' Les scores sont mesurés à l'aide d'échelles de Likert qui vont
+#'  de fortement en désaccord (1) à fortement en accord (5).
+#' @format Une base de données avec 300 lignes et 32 variables:
+#' \describe{
+#'   \item{\code{q1}}{Q1: I always want more}
+#'   \item{\code{q2}}{Q2. Actually, I'm kind of greedy}
+#'   \item{\code{q3}}{Q3: One can never have too much money}
+#'   \item{\code{q4}}{Q4. As soon as I have acquired something, I start to think about the next thing I want}
+#'   \item{\code{q5}}{Q5. It doesn't matter how much I have, I'm never completely satisfied}
+#'   \item{\code{q6}}{Q6. My life motto is 'more is better'}
+#'   \item{\code{q7}}{Q7. I can't imagine having  too  many things}
+#'   \item{\code{q8}}{Q8. No matter how much I have of something, I always want more}
+#'   \item{\code{q9}}{Q9. One can never have enough}
+#'   \item{\code{q10}}{Q10. Even when I am fulfilled, I often seek more}
+#'   \item{\code{q11}}{Q11. The pursuit of more and better is an important goal in life for me}
+#'   \item{\code{q12}}{Q12. A simple basic life is sufficient for me}
+#'   \item{\code{q13}}{Q13. I am easily satisfied with what I have got}
+#'   \item{\code{q14}}{Q14. When I think about all the things I have, my first thought is about what I would like to have next}
+#'   \item{\code{q15}}{Q15. My actions are strongly focused on material things}
+#'   \item{\code{q16}}{Q16. Sometimes I feel a real urge to possess something}
+#'   \item{\code{q17}}{Q17. When something is being shared, I try to get as big a share as possible}
+#'   \item{\code{q18}}{Q18. In order to get what I want, I can accept the fact that other people may suffer damage}
+#'   \item{\code{q19}}{Q19. I get the most fun out of buying myself all sorts of things}
+#'   \item{\code{q20}}{Q20. When I play on my own, I sometimes cheat a little}
+#'   \item{\code{q21}}{Q21. I enjoy being a part of exclusive clubs or groups that are not open to everyone}
+#'   \item{\code{q22}}{Q22. I do not enjoy sharing positions of power}
+#'   \item{\code{q23}}{Q23. I like to collect expensive things}
+#'   \item{\code{q24}}{Q24. At work/school, I keep good ideas to myself so that only I can get credit for them in the long run}
+#'   \item{\code{q25}}{Q25. Financially supporting the less fortunate is a priority for me}
+#'   \item{\code{q26}}{Q26. I believe that money is essential; friends are replaceable}
+#'   \item{\code{q27}}{Q27. Being financially wealthy is my number one goal.}
+#'   \item{\code{q28}}{Q28. I consider myself successful if I have a job that pays a lot of money}
+#'   \item{\code{q29}}{Q29. No matter how much I have, I always want more}
+#'   \item{\code{q30}}{Q30. "I want it all" would be a good motto for me}
+#'   \item{\code{age}}{âge}
+#'   \item{\code{genre}}{genre de la personne, soit \code{homme} ou \code{femme}}
+#'}
+#' @source ResearchBox 159, \url{https://researchbox.org/159}, licence CC-BY-NC 4.0
+#' @references Zeelenberg M, Seuntjens TG, van de Ven, N et S.M. Breugelmans (2021). \emph{Dispositional Greed Scales}. European Journal of Psychological Assessment. 1-10, \code{doi: 10.1027/1015-5759/a000647}
+"avarice"

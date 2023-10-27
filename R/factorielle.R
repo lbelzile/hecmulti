@@ -132,7 +132,7 @@ data.frame(k = as.integer(res[,1]),
 
 #' Diagramme d'éboulis
 #'
-#' Crée un diagramme d'éboulis représentant les valeurs propres d'une matrice de covariance, soit les ou les variances des variables, en ordre décroissant.
+#' Crée un diagramme d'éboulis représentant les valeurs propres d'une matrice de covariance, soit les corrélations ou les variances des variables, en ordre décroissant.
 #' @export
 #' @import ggplot2 patchwork
 #' @param object objet de classe \code{eigen}, \code{princomp} ou \code{prcomp}

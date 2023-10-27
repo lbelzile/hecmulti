@@ -16,6 +16,18 @@
     <loc>https://lbelzile.github.io/hecmulti/index.html</loc>
   </url>
   <url>
+    <loc>https://lbelzile.github.io/hecmulti/reference/AIC.regsubsets.html</loc>
+  </url>
+  <url>
+    <loc>https://lbelzile.github.io/hecmulti/reference/AIC.summary.regsubsets.html</loc>
+  </url>
+  <url>
+    <loc>https://lbelzile.github.io/hecmulti/reference/BIC.regsubsets.html</loc>
+  </url>
+  <url>
+    <loc>https://lbelzile.github.io/hecmulti/reference/BIC.summary.regsubsets.html</loc>
+  </url>
+  <url>
     <loc>https://lbelzile.github.io/hecmulti/reference/aapl.html</loc>
   </url>
   <url>
@@ -152,6 +164,9 @@
   </url>
   <url>
     <loc>https://lbelzile.github.io/hecmulti/reference/renfe.html</loc>
+  </url>
+  <url>
+    <loc>https://lbelzile.github.io/hecmulti/reference/salaireprof.html</loc>
   </url>
   <url>
     <loc>https://lbelzile.github.io/hecmulti/reference/select_pcoupe.html</loc>
