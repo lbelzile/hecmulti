@@ -27,7 +27,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">hecmulti</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2023.10.27</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2023.10.26</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Activer la navigation">
@@ -69,7 +69,8 @@
 
 
 
-<script src="analyse_factorielle_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+
+<div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Analyse factorielle</h1>
             
@@ -83,7 +84,12 @@
 <div class="section level2">
 <h2 id="introduction-à-lanalyse-factorielle">Introduction à l’analyse factorielle<a class="anchor" aria-label="anchor" href="#introduction-%C3%A0-lanalyse-factorielle"></a>
 </h2>
-<p>L’analyse factorielle consiste à résumer une matrice de covariance à l’aide d’un plus petit nombre de paramètres. Si on charge les données dans l’environnement, on remarque que toutes les variables correspondent à des échelles de Likert allant de un à cinq. Il n’est donc pas nécessaire de standardiser les données (en travaillant avec la matrice de corrélation).</p>
+<p>L’analyse factorielle consiste à résumer une matrice de covariance à
+l’aide d’un plus petit nombre de paramètres. Si on charge les données
+dans l’environnement, on remarque que toutes les variables correspondent
+à des échelles de Likert allant de un à cinq. Il n’est donc pas
+nécessaire de standardiser les données (en travaillant avec la matrice
+de corrélation).</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lbelzile/hecmulti" class="external-link">hecmulti</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">factor</span>, package <span class="op">=</span> <span class="st">"hecmulti"</span><span class="op">)</span></span>
@@ -124,14 +130,25 @@ Matrice de corrélation
 </h2>
 <p>Il y a deux méthodes principales d’estimation:</p>
 <ul>
-<li>la méthode du maximum de vraisemblance, qui suppose que les facteurs et les aléas sont gaussiens et indépendants; cela donne naissance à une fonction de vraisemblance pour la matrice de covariance empirique (Wishart)</li>
-<li>la méthode des composantes principales: on retient uniquement <span class="math inline">\(k\)</span> vecteurs propres de la matrice de covariance</li>
+<li>la méthode du maximum de vraisemblance, qui suppose que les facteurs
+et les aléas sont gaussiens et indépendants; cela donne naissance à une
+fonction de vraisemblance pour la matrice de covariance empirique
+(Wishart)</li>
+<li>la méthode des composantes principales: on retient uniquement <span class="math inline">\(k\)</span> vecteurs propres de la matrice de
+covariance</li>
 </ul>
-<p>Dans les deux cas, la solution est identifiable à rotation orthogonale près. Le but de l’analyse factorielle est d’obtenir une solution facilement identifiable: on choisit souvent une rotation varimax, qui tend à donner des chargements qui sont larges ou quasi-nuls.</p>
+<p>Dans les deux cas, la solution est identifiable à rotation
+orthogonale près. Le but de l’analyse factorielle est d’obtenir une
+solution facilement identifiable: on choisit souvent une rotation
+varimax, qui tend à donner des chargements qui sont larges ou
+quasi-nuls.</p>
 <div class="section level3">
 <h3 id="estimation-par-maximum-de-vraisemblance">Estimation par maximum de vraisemblance<a class="anchor" aria-label="anchor" href="#estimation-par-maximum-de-vraisemblance"></a>
 </h3>
-<p>La méthode de base dans <strong>R</strong> consiste à ajuster le modèle factoriel par maximum de vraisemblance. La fonction <code>factanal</code> sert à cette tâche, mais le paquet <code>psych</code> inclut plusieurs autres options.</p>
+<p>La méthode de base dans <strong>R</strong> consiste à ajuster le
+modèle factoriel par maximum de vraisemblance. La fonction
+<code>factanal</code> sert à cette tâche, mais le paquet
+<code>psych</code> inclut plusieurs autres options.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fa4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/factanal.html" class="external-link">factanal</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">factor</span>, factors <span class="op">=</span> <span class="fl">4L</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">fa4</span><span class="op">$</span><span class="va">loadings</span>, cutoff <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span>
@@ -155,14 +172,29 @@ Matrice de corrélation
 <span><span class="co">#&gt; SS loadings      1.673   1.602   1.483   1.153</span></span>
 <span><span class="co">#&gt; Proportion Var   0.139   0.133   0.124   0.096</span></span>
 <span><span class="co">#&gt; Cumulative Var   0.139   0.273   0.396   0.493</span></span></code></pre></div>
-<p>Par défaut, la solution retournée correspond à la rotation varimax. On imprime les chargements en omettant les valeurs inférieures à 0.3 pour faciliter la visualisation.</p>
-<p>Puisqu’on ajuste le modèle par maximum de vraisemblance, la sortie inclut un test d’hypothèse que le modèle à <span class="math inline">\(k\)</span> facteurs pour la matrice de covariance est une simplification adéquate du modèle avec toutes les <span class="math inline">\(p\)</span> variables originales.</p>
-<p>La valeur-<em>p</em> pour le test du rapport de vraisemblance (adéquation de la structure de corrélation paramétrique) basée sur la loi asymptotique khi-carrée est enregistrée dans la liste; avec une valeur-<em>p</em> de 0.97, on a aucune preuve contre l’hypothèse nulle de l’adéquation du modèle de covariance. Une approximation de Bartlett à la statistique du rapport de vraisemblance fournit une meilleure approximation si <span class="math inline">\(n\)</span> est plus grand que <span class="math inline">\(p\)</span>; ici, la différence est minime avec une valeur-<em>p</em> de 0.98.</p>
+<p>Par défaut, la solution retournée correspond à la rotation varimax.
+On imprime les chargements en omettant les valeurs inférieures à 0.3
+pour faciliter la visualisation.</p>
+<p>Puisqu’on ajuste le modèle par maximum de vraisemblance, la sortie
+inclut un test d’hypothèse que le modèle à <span class="math inline">\(k\)</span> facteurs pour la matrice de covariance
+est une simplification adéquate du modèle avec toutes les <span class="math inline">\(p\)</span> variables originales.</p>
+<p>La valeur-<em>p</em> pour le test du rapport de vraisemblance
+(adéquation de la structure de corrélation paramétrique) basée sur la
+loi asymptotique khi-carrée est enregistrée dans la liste; avec une
+valeur-<em>p</em> de 0.97, on a aucune preuve contre l’hypothèse nulle
+de l’adéquation du modèle de covariance. Une approximation de Bartlett à
+la statistique du rapport de vraisemblance fournit une meilleure
+approximation si <span class="math inline">\(n\)</span> est plus grand
+que <span class="math inline">\(p\)</span>; ici, la différence est
+minime avec une valeur-<em>p</em> de 0.98.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fa4</span><span class="op">$</span><span class="va">PVAL</span></span>
 <span><span class="co"># avec correction de Bartlett</span></span>
 <span><span class="fu"><a href="../reference/bartlettcorr_factanal.html">bartlettcorr_factanal</a></span><span class="op">(</span><span class="va">fa4</span><span class="op">)</span><span class="op">$</span><span class="va">pvalue</span></span></code></pre></div>
-<p>Le paquet <code>hecmulti</code> contient des méthodes pour extraire la log-vraisemblance et les critères d’information pour un modèle d’analyse factorielle (objet de classe “factanal”). On fait une boucle pour calculer les AIC, BIC et la valeur-<span class="math inline">\(p\)</span> du test d’adéquation.</p>
+<p>Le paquet <code>hecmulti</code> contient des méthodes pour extraire
+la log-vraisemblance et les critères d’information pour un modèle
+d’analyse factorielle (objet de classe “factanal”). On fait une boucle
+pour calculer les AIC, BIC et la valeur-<span class="math inline">\(p\)</span> du test d’adéquation.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Tableau avec critères</span></span>
 <span><span class="va">emv_crit</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ajustement_factanal.html">ajustement_factanal</a></span><span class="op">(</span></span>
@@ -175,15 +207,38 @@ Matrice de corrélation
 <span><span class="co">#&gt; 3 3 2017.188 2165.612 0.09604   45       0</span></span>
 <span><span class="co">#&gt; 4 4 2002.559 2180.668 0.97262   54       1</span></span>
 <span><span class="co">#&gt; 5 5 2012.696 2217.192 0.97445   62       1</span></span></code></pre></div>
-<p>Le nombre de facteurs optimal selon les critères AIC et BIC est trois, et c’est également le nombre minimal de facteurs selon test du khi-deux qui donne une description adéquate de la matrice de covariance.</p>
-<p>La variance des aléas (l’unicité, ou <em>uniqueness</em>) est un indicateur de la fiabilité du modèle ajusté par la méthode du maximum de vraisemblance. Une valeur près de 1 (à 0.005) indique que la solution est un cas de Heywood On voit qu’avec quatre ou cinq facteurs, le modèle correspond à un cas de Heywood et la solution est invalide. Cela peut-être dû à plusieurs causes: colinéarité, facteur redondant (avec une corrélation de un avec une des variables), trop grand nombre ou trop petit nombre de facteurs, etc.</p>
+<p>Le nombre de facteurs optimal selon les critères AIC et BIC est
+trois, et c’est également le nombre minimal de facteurs selon test du
+khi-deux qui donne une description adéquate de la matrice de
+covariance.</p>
+<p>La variance des aléas (l’unicité, ou <em>uniqueness</em>) est un
+indicateur de la fiabilité du modèle ajusté par la méthode du maximum de
+vraisemblance. Une valeur près de 1 (à 0.005) indique que la solution
+est un cas de Heywood On voit qu’avec quatre ou cinq facteurs, le modèle
+correspond à un cas de Heywood et la solution est invalide. Cela
+peut-être dû à plusieurs causes: colinéarité, facteur redondant (avec
+une corrélation de un avec une des variables), trop grand nombre ou trop
+petit nombre de facteurs, etc.</p>
 </div>
 <div class="section level3">
 <h3 id="estimation-par-composantes-principales">Estimation par composantes principales<a class="anchor" aria-label="anchor" href="#estimation-par-composantes-principales"></a>
 </h3>
-<p>On peut effectuer une analyse en composantes principales et faire une rotation subséquente des valeurs propres: la décomposition en valeurs propres/vecteurs propres est la même peut importe le nombre de facteurs retenus, le coût est donc moindre à l’autre méthode d’estimation. La solution retournée est également toujours valide si on n’a pas de valeurs manquantes, puisque les corrélations retournées sont positives.</p>
-<p>Le choix du nombre de facteurs est moins facile. Deux critères sont employés en pratique: le critère de Kaiser (retenir autant de facteurs qu’il n’y a de valeurs propres de la matrice de corrélation supérieures à 1) et le critère du coude (trouver un nombre de facteurs dans un diagramme d’éboulis à partir duquel le pourcentage de variance exprimée est faible).</p>
-<p>On fait la décomposition en valeurs propres/vecteurs propres à la mitaine pour ensuite extraire le nombre de valeurs propres supérieures à 1.</p>
+<p>On peut effectuer une analyse en composantes principales et faire une
+rotation subséquente des valeurs propres: la décomposition en valeurs
+propres/vecteurs propres est la même peut importe le nombre de facteurs
+retenus, le coût est donc moindre à l’autre méthode d’estimation. La
+solution retournée est également toujours valide si on n’a pas de
+valeurs manquantes, puisque les corrélations retournées sont
+positives.</p>
+<p>Le choix du nombre de facteurs est moins facile. Deux critères sont
+employés en pratique: le critère de Kaiser (retenir autant de facteurs
+qu’il n’y a de valeurs propres de la matrice de corrélation supérieures
+à 1) et le critère du coude (trouver un nombre de facteurs dans un
+diagramme d’éboulis à partir duquel le pourcentage de variance exprimée
+est faible).</p>
+<p>On fait la décomposition en valeurs propres/vecteurs propres à la
+mitaine pour ensuite extraire le nombre de valeurs propres supérieures à
+1.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">decomposition</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/eigen.html" class="external-link">eigen</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">cov</a></span><span class="op">(</span><span class="va">factor</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">valpropres</span> <span class="op">&lt;-</span> <span class="va">decomposition</span><span class="op">$</span><span class="va">values</span></span>
@@ -195,8 +250,21 @@ Matrice de corrélation
 Diagramme d’éboulis
 </p>
 </div>
-<p>On peut aussi tracer un diagramme d’éboulis, qui suggère cinq facteurs. Si on extrait les cinq premières composantes principales et qu’on effectue une rotation varimax, on recouvre le modèle d’analyse factorielle avec cinq facteurs.</p>
-<p>La décomposition en vecteurs propres de la matrice de covariance est <span class="math inline">\(\boldsymbol{S} = \boldsymbol{Q}\boldsymbol{\Lambda}\boldsymbol{Q}^{-1}\)</span>, où <span class="math inline">\(\boldsymbol{Q}\)</span> est la matrice <span class="math inline">\(p \times p\)</span> de vecteurs propres et <span class="math inline">\(\boldsymbol{\Lambda}\)</span> une matrice diagonale contenant les valeurs propres (ordonnées de la plus grande à la plus petite). L’analyse en composantes principales revient à conserver uniquement les <span class="math inline">\(k\)</span> premières composantes, d’où une racine avec <span class="math inline">\(\boldsymbol{Q}_{(k)}\boldsymbol{\Lambda}_{(k)}^{1/2}\)</span> où <span class="math inline">\(\boldsymbol{Q}_{(k)}\)</span> est une matrice <span class="math inline">\(p \times k\)</span> avec les <span class="math inline">\(k\)</span> premiers vecteurs propres et <span class="math inline">\(\boldsymbol{\Lambda}_{k}\)</span> la sous-matrice <span class="math inline">\(k \times k\)</span> de <span class="math inline">\(\boldsymbol{\Lambda}\)</span> contenant les <span class="math inline">\(k\)</span> plus grandes valeurs propres. Il suffit ensuite de calculer la rotation de cette racine.</p>
+<p>On peut aussi tracer un diagramme d’éboulis, qui suggère cinq
+facteurs. Si on extrait les cinq premières composantes principales et
+qu’on effectue une rotation varimax, on recouvre le modèle d’analyse
+factorielle avec cinq facteurs.</p>
+<p>La décomposition en vecteurs propres de la matrice de covariance est
+<span class="math inline">\(\boldsymbol{S} =
+\boldsymbol{Q}\boldsymbol{\Lambda}\boldsymbol{Q}^{-1}\)</span>, où <span class="math inline">\(\boldsymbol{Q}\)</span> est la matrice <span class="math inline">\(p \times p\)</span> de vecteurs propres et <span class="math inline">\(\boldsymbol{\Lambda}\)</span> une matrice
+diagonale contenant les valeurs propres (ordonnées de la plus grande à
+la plus petite). L’analyse en composantes principales revient à
+conserver uniquement les <span class="math inline">\(k\)</span>
+premières composantes, d’où une racine avec <span class="math inline">\(\boldsymbol{Q}_{(k)}\boldsymbol{\Lambda}_{(k)}^{1/2}\)</span>
+où <span class="math inline">\(\boldsymbol{Q}_{(k)}\)</span> est une
+matrice <span class="math inline">\(p \times k\)</span> avec les <span class="math inline">\(k\)</span> premiers vecteurs propres et <span class="math inline">\(\boldsymbol{\Lambda}_{k}\)</span> la sous-matrice
+<span class="math inline">\(k \times k\)</span> de <span class="math inline">\(\boldsymbol{\Lambda}\)</span> contenant les <span class="math inline">\(k\)</span> plus grandes valeurs propres. Il suffit
+ensuite de calculer la rotation de cette racine.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/factocp.html">factocp</a></span><span class="op">(</span><span class="va">factor</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -219,8 +287,14 @@ Diagramme d’éboulis
 <span><span class="co">#&gt; SS loadings    2.175 2.116 1.991 1.388</span></span>
 <span><span class="co">#&gt; Proportion Var 0.181 0.176 0.166 0.116</span></span>
 <span><span class="co">#&gt; Cumulative Var 0.181 0.358 0.523 0.639</span></span></code></pre></div>
-<p>La fonction <code>factocp</code> dans <code>hecmulti</code> calcule directement le modèle, par défaut en utilisant le critère de Kaiser bien que <code>nfact</code> puisse accommoder un entier représentant le nombre de facteurs/composantes principales à conserver.</p>
-<p>Le paquet <code>psych</code> permet aussi l’estimation (plus directe) avec d’autres méthodes, notamment la méthode des composantes principales. Les estimations des chargements devrait être identique à celle obtenue avec <code>factocp</code>.</p>
+<p>La fonction <code>factocp</code> dans <code>hecmulti</code> calcule
+directement le modèle, par défaut en utilisant le critère de Kaiser bien
+que <code>nfact</code> puisse accommoder un entier représentant le
+nombre de facteurs/composantes principales à conserver.</p>
+<p>Le paquet <code>psych</code> permet aussi l’estimation (plus directe)
+avec d’autres méthodes, notamment la méthode des composantes
+principales. Les estimations des chargements devrait être identique à
+celle obtenue avec <code>factocp</code>.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fa_compprin</span> <span class="op">&lt;-</span> <span class="fu">psych</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/principal.html" class="external-link">principal</a></span><span class="op">(</span>r <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">cov</a></span><span class="op">(</span><span class="va">factor</span><span class="op">)</span>, </span>
 <span>                                covar <span class="op">=</span> <span class="cn">TRUE</span>, </span>
@@ -232,7 +306,9 @@ Diagramme d’éboulis
 <div class="section level2">
 <h2 id="création-déchelles">Création d’échelles<a class="anchor" aria-label="anchor" href="#cr%C3%A9ation-d%C3%A9chelles"></a>
 </h2>
-<p>On calcule simplement les moyennes et on vérifie la cohérence interne. La règle du pouce veut qu’on conserve les échelles si les variables qui les forment ont un <span class="math inline">\(\alpha\)</span> de Cronbach qui excède 0.6.</p>
+<p>On calcule simplement les moyennes et on vérifie la cohérence
+interne. La règle du pouce veut qu’on conserve les échelles si les
+variables qui les forment ont un <span class="math inline">\(\alpha\)</span> de Cronbach qui excède 0.6.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ech_service</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowMeans</a></span><span class="op">(</span><span class="va">factor</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x4"</span>,<span class="st">"x8"</span>,<span class="st">"x11"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="va">ech_produit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowMeans</a></span><span class="op">(</span><span class="va">factor</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x3"</span>,<span class="st">"x6"</span>,<span class="st">"x9"</span>,<span class="st">"x12"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>

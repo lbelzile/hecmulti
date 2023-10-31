@@ -46,10 +46,11 @@ Une base de données avec 1255 lignes et 45 variables:
  \item{\code{itavc}}{total des avoirs sur tous les comptes}
  \item{\code{havef}}{total des avoirs épargne financière en francs}
  \item{\code{carvp}}{possession de la carte \code{Visa} Premier, soit oui (\code{1}) ou non (\code{0})}
- \item{\code{sexe}}{sexe de la personne, \code{homme}, \code{femme} ou \code{inc} pour inconnu}
+ \item{\code{sexe}}{sexe, \code{0} pour homme, \code{1} pour femme}
  \item{\code{nbjd1s}}{nombre de jours à débit dans le mois précédent}
  \item{\code{nbjd2s}}{nombre de jours à débit il y a deux mois}
  \item{\code{nbjd3s}}{nombre de jours à débit il y a trois mois}
+ \item{\code{credm}}{montant de la carte de crédit Visa Premier}
  \item{\code{impnbs}}{nombre d'impayés en cours}
  \item{\code{promo}}{offre promotionnelle acceptée, oui (\code{1}) ou non (\code{0})}
 }

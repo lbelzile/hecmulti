@@ -449,7 +449,7 @@
 # #'  \item{\code{age}}{âge (en années)}
 # #'  \item{\code{famiq}}{situation familiale, soit en couple (\code{cou}) ou seul (\code{seu})}
 # #'  \item{\code{relat}}{ancienneté de la relation (en mois)}
-# #'  \item{\code{pcspq}}{catégorie socio-professionnelle \href{https://www.insee.fr/fr/metadonnees/pcs2003/categorieSocioprofessionnelleAgregee/1?champRecherche=false}{(code numérique de l'INSEE)}}
+# #'  \item{\code{pcspq}}{catégorie socio-professionnelle \href{https://fr.wikipedia.org/wiki/Professions_et_cat%C3%A9gories_socioprofessionnelles_en_France}{(code numérique de l'INSEE)}}
 # #'  \item{\code{rejets}}{montant total des rejets en francs}
 # #'  \item{\code{opgnb}}{nombre d'opérations par guichet dans le mois}
 # #'  \item{\code{moyrv}}{moyenne des mouvements nets créditeurs des 3 mois en milliers de francs}
