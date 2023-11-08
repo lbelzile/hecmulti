@@ -10,8 +10,8 @@ Une base de données avec 1255 lignes et 45 variables:
  \item{\code{matric}}{identifiant client}
  \item{\code{age}}{âge (en années)}
  \item{\code{famiq}}{situation familiale: un parmi mariée (\code{mar}), célibataire (\code{cel}), divorcée (\code{div}), union libre (\code{uli}),  séparée (\code{sep}) ou veuve (\code{veu})}
- \item{\code{relat}}{ancienneté de la relation (en mois)}
- \item{\code{pcspq}}{catégorie socio-professionnelle (code numérique de l'INSEE)}
+ \item{\code{relat}}{ancienneté de la relation avec la banque (en mois)}
+ \item{\code{pcspq}}{catégorie socio-professionnelle \href{https://www.insee.fr/fr/metadonnees/pcs2003/categorieSocioprofessionnelleAgregee/1?champRecherche=false}{(code numérique de l'INSEE)}}
  \item{\code{rejets}}{montant total des rejets en francs}
  \item{\code{opgnb}}{nombre d'opérations par guichet dans le mois}
  \item{\code{moyrv}}{moyenne des mouvements nets créditeurs des 3 mois en milliers de francs}
@@ -46,11 +46,10 @@ Une base de données avec 1255 lignes et 45 variables:
  \item{\code{itavc}}{total des avoirs sur tous les comptes}
  \item{\code{havef}}{total des avoirs épargne financière en francs}
  \item{\code{carvp}}{possession de la carte \code{Visa} Premier, soit oui (\code{1}) ou non (\code{0})}
- \item{\code{sexe}}{sexe, \code{0} pour homme, \code{1} pour femme}
+ \item{\code{sexe}}{sexe de la personne, \code{homme}, \code{femme} ou \code{inc} pour inconnu}
  \item{\code{nbjd1s}}{nombre de jours à débit dans le mois précédent}
  \item{\code{nbjd2s}}{nombre de jours à débit il y a deux mois}
  \item{\code{nbjd3s}}{nombre de jours à débit il y a trois mois}
- \item{\code{credm}}{montant de la carte de crédit Visa Premier}
  \item{\code{impnbs}}{nombre d'impayés en cours}
  \item{\code{promo}}{offre promotionnelle acceptée, oui (\code{1}) ou non (\code{0})}
 }

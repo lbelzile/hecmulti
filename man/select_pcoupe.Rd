@@ -2,7 +2,7 @@
 % Please edit documentation in R/logistique.R
 \name{select_pcoupe}
 \alias{select_pcoupe}
-\title{Sélection du point de coupure selon gain}
+\title{Sélection du point de coupure selon le gain}
 \usage{
 select_pcoupe(
   modele,
@@ -33,7 +33,17 @@ select_pcoupe(
 \item{ncv}{entier, nombre de groupes pour la validation croisée}
 }
 \value{
-un graphique de la performance moyenne en fonction du point de coupure et une liste avec les points de coupure \code{ptcoupe}, la valeur optimale du point de coupure \code{opt} et la performance \code{performance}
+un graphique de la performance moyenne en fonction du point de coupure et une liste avec les éléments suivants:
+\itemize{
+\item{\code{optim}: }{point de coupure qui maximise le gain}
+\item{\code{gainmax}: }{gain maximal enregistré}
+\item{\code{pcoupe}}{points de coupe}
+\item{\code{gain}}{gain moyen pour chaque point de coupe}
+\item{\code{c00}: }{poids associé aux vrais négatifs}
+\item{\code{c11}: }{poids associé aux  vrais positifs}
+\item{\code{c01}: }{poids associé aux faux négatifs}
+\item{\code{c10}: }{poids associé aux faux positifs}
+}
 }
 \description{
 La fonction calcule le gain pour une variable réponse binaire et calcule le gain (par défaut, le taux de bonne classification). Elle retourne le point de coupure optimal.

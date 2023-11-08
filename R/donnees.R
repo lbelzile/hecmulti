@@ -1033,3 +1033,15 @@
 #' @source ResearchBox 159, \url{https://researchbox.org/159}, licence CC-BY-NC 4.0
 #' @references Zeelenberg M, Seuntjens TG, van de Ven, N et S.M. Breugelmans (2021). \emph{Dispositional Greed Scales}. European Journal of Psychological Assessment. 1-10, \code{doi: 10.1027/1015-5759/a000647}
 "avarice"
+
+#' @title Billets pour soutien TI
+#' @description Cette base de données contient des données simulées pour des temps de résolutions de problèmes TI, selon le niveau de complexité de la requête, le type de demande.
+#' @format Une base de données avec 279 observations et 5 variables:
+#' \describe{
+#'   \item{\code{duree}}{[entier] nombre d'heures (jours ouvrables) entre l'ouverture du billet et la fermeture ou la période de fin de collecte}
+#'   \item{\code{statut}}{[facteur] statut de la requête, soit \code{ouvert} ou \code{ferme}}
+#'   \item{\code{type}}{[facteur] type de demande, soit requête pour services (\code{requete}), soit un problème informatique ou bogue (\code{probleme})}
+#'   \item{\code{niveau}}{[entier] niveau de difficulté assigné, une valeur plus élevée requiert des compétences plus importantes}
+#'   \item{\code{ncommentaires}}{[entier] nombre de commentaires dans le suivi}
+#'}
+"tisupport"

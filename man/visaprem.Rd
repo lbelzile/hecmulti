@@ -10,8 +10,8 @@ Une base de données avec 1294 lignes et 45 variables:
  \item{\code{matric}}{identifiant client}
  \item{\code{age}}{âge (en années)}
  \item{\code{famiq}}{situation familiale: un parmi mariée (\code{mar}), célibataire (\code{cel}), divorcée (\code{div}), union libre (\code{uli}),  séparée (\code{sep}) ou veuve (\code{veu})}
- \item{\code{relat}}{ancienneté de la relation (en mois)}
- \item{\code{pcspq}}{catégorie socio-professionnelle (code numérique de l'INSEE)}
+ \item{\code{relat}}{ancienneté de la relation avec la banque (en mois)}
+ \item{\code{pcspq}}{catégorie socio-professionnelle \href{https://www.insee.fr/fr/metadonnees/pcs2003/categorieSocioprofessionnelleAgregee/1?champRecherche=false}{(code numérique de l'INSEE)}}
  \item{\code{rejets}}{montant total des rejets en francs}
  \item{\code{opgnb}}{nombre d'opérations par guichet dans le mois}
  \item{\code{moyrv}}{moyenne des mouvements nets créditeurs des 3 mois en milliers de francs}

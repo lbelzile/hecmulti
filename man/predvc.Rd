@@ -4,7 +4,7 @@
 \alias{predvc}
 \title{Prédictions par validation croisée répétée}
 \usage{
-predvc(modele, data = NULL, K = 10L, nrep = 10L, type = NULL)
+predvc(modele, data = NULL, K = 10L, nrep = 1L, type = NULL)
 }
 \arguments{
 \item{modele}{un modèle ajusté de type \code{lm} ou \code{glm}}

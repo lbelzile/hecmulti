@@ -15,5 +15,5 @@ eboulis(object, which = 1:2)
 une matrice de deux objets \code{ggplot}
 }
 \description{
-Crée un diagramme d'éboulis représentant les valeurs propres d'une matrice de covariance, soit les ou les variances des variables, en ordre décroissant.
+Crée un diagramme d'éboulis représentant les valeurs propres d'une matrice de covariance, soit les corrélations ou les variances des variables, en ordre décroissant.
 }
