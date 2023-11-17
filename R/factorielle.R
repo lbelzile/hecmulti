@@ -112,7 +112,7 @@ emv_crit <- function(k, ...){
   c(k,
     AIC(fai),
     BIC = BIC(fai),
-    as.numeric(fai$PVAL),
+    bartlettcorr_factanal(fai)$pvalue,# as.numeric(fai$PVAL),
     nobs(fai),
     isTRUE(any(fai$uniquenesses == 0.005)))
 }
@@ -124,7 +124,7 @@ data.frame(k = as.integer(res[,1]),
            BIC = res[,3],
            pval = base::format.pval(res[,4], digits = 4),
            npar = as.integer(res[,5]),
-           heywood = res[,6])
+           heywood = ifelse(res[,6] == 1, "oui", "non"))
 }
 
 
@@ -210,6 +210,8 @@ factocp <- function(x,
     x <- try(as.matrix(x))
     if(inherits(x, "try-error")){
       stop("Argument invalide: pas de donn\u00e9es num\u00e9riques en intrant.")
+    } else{
+      col.names <- colnames(covmat)
     }
   if(isTRUE(cor)){
     decompo <- eigen(cor(x))
@@ -241,14 +243,13 @@ factocp <- function(x,
     stopifnot(length(col.names) == nrow(Gamma_est))
     row.names(Gamma_est) <- col.names
   }
-  colnames(Gamma_est) <-
-    paste0("F", seq_len(ncol(Gamma_est)))
   # Solution (chargements) avec rotation varimax
   facto_cp <- varimax(Gamma_est)
-  # Réordonner en ordre décroissant de variance
+    # Réordonner en ordre décroissant de variance
   od <- order(colSums(facto_cp$loadings^2),
               decreasing = TRUE)
   facto_cp$loadings <- facto_cp$loadings[,od]
+  colnames(facto_cp$loadings) <- paste0("F", seq_len(nfact))
   #Ne fonctionne pas avec vecteur (m=1)
   if(nfact == 1L){
     facto_cp <- list(loadings = Gamma_est)
@@ -267,4 +268,64 @@ print.factanalcp <- function(x, ...){
     cutoff <- 0.3
   }
   print(x$loadings, cutoff = cutoff)
+}
+
+#' Création d'échelles
+#'
+#' Calcul de moyennes de colonnes à partir d'une base de données,
+#' en regroupant les variables dont les chargements excèdent le seuil
+#'
+#' @param chargements matrice de chargements, \code{loadings}
+#' @param data matrice ou base de données
+#' @param seuil valeur du seuil pour les chargements
+#' @return une liste avec les échelles, \code{echelles}, et les valeurs du alpha de Cronbach, \code{alpha}
+#' @export
+creation_echelles <- function(chargements, data, seuil = 0.4){
+  stopifnot(length(seuil) == 1, seuil > 0, seuil < 1)
+  if(class(chargements) %in% c("princomp", "factanalcp","factanal")){
+    chargements <- stats::loadings(chargements)
+  }
+    nc <- ncol(chargements)
+    echelles <- matrix(nrow = nrow(data), ncol = nc)
+  alpha <- numeric(nc)
+  for(j in seq_len(nc)){
+    signif <- abs(chargements[,j]) > seuil
+    if(length(unique(sign(chargements[signif(j), j]))) != 1L){
+      warning("Certains chargements ont des signes inverses.")
+    }
+    echelles[,j] <- rowMeans(data[,signif])
+    alpha[j] <- alphaC(data[,signif])
+    colnames(echelles) <- names(alpha) <- paste0("E", 1:nc)
+  }
+  return(list(echelles = echelles, alpha = alpha))
+}
+
+
+#' Critère parallèle de Horn
+#'
+#' Cette fonction calcule par Monte Carlo les quantiles de la
+#' distribution des valeurs propres pour une matrice de corrélation
+#' de données indépendantes de dimension p, par le biais de tirages
+#' d'une loi de Wishart
+#' @param n nombre d'observations
+#' @param p nombre de variables explicatives
+#' @param niveau niveau pour le quantile
+#' @param nsim nombre de simulations
+#' @return un vecteur de quantiles pour les valeurs propres
+horn_parallele <- function(n, p, niveau = 0.95, nsim = 1000L){
+  n <- nrow(data)
+  p <- ncol(data)
+  apply(
+    X = apply(
+      X = rWishart(n = nsim,
+               df = n - 1,
+               Sigma = diag(p)),
+      MARGIN = 3,
+      FUN = function(x){
+      eigen(cov2cor(x),
+            symmetric = TRUE,
+            only.values = TRUE)$values}),
+    MARGIN = 1,
+    FUN = quantile,
+    probs = niveau)
 }
