@@ -210,8 +210,6 @@ factocp <- function(x,
     x <- try(as.matrix(x))
     if(inherits(x, "try-error")){
       stop("Argument invalide: pas de donn\u00e9es num\u00e9riques en intrant.")
-    } else{
-      col.names <- colnames(covmat)
     }
   if(isTRUE(cor)){
     decompo <- eigen(cor(x))
@@ -238,22 +236,25 @@ factocp <- function(x,
   }
   # Extraire les premiers vecteurs propres
   Gamma_est <- t(t(decompo$vectors[,seq_len(nfact), drop = FALSE]) * sqrt(decompo$values[seq_len(nfact)]))
-
+ # browser()
   if(!is.null(col.names)){
     stopifnot(length(col.names) == nrow(Gamma_est))
     row.names(Gamma_est) <- col.names
   }
+  if(nfact == 1L){
+    colnames(Gamma_est) <- paste0("F", seq_len(nfact))
+    facto_cp <- list(loadings = Gamma_est)
+  } else {
   # Solution (chargements) avec rotation varimax
   facto_cp <- varimax(Gamma_est)
     # Réordonner en ordre décroissant de variance
   od <- order(colSums(facto_cp$loadings^2),
               decreasing = TRUE)
   facto_cp$loadings <- facto_cp$loadings[,od]
+  # facto_cp <- as.matrix(facto_cp)
   colnames(facto_cp$loadings) <- paste0("F", seq_len(nfact))
-  #Ne fonctionne pas avec vecteur (m=1)
-  if(nfact == 1L){
-    facto_cp <- list(loadings = Gamma_est)
   }
+
   facto_cp$var_cumul <- variance_cumu
   class(facto_cp$loadings) <- "loadings"
   class(facto_cp) <- "factanalcp"
