@@ -110,7 +110,7 @@ g1 <-  ggplot2::ggplot(
   ggplot2::theme_classic()
 g2 <-  ggplot2::ggplot(
   data = df[-nrow(df),],
-  mapping = ggplot2::aes(x = .data$index,
+  mapping = ggplot2::aes(x = .data$index + 1L,
                          y = .data$Rcsp)) +
   ggplot2::geom_line() +
   ggplot2::geom_point() +
@@ -140,7 +140,7 @@ return(invisible(df))
 
 
 #' Indice de Rand
-#' 
+#'
 #' Calcul de la similarité; chaque paire est réduite à un index binaire (0 si les observations sont des regroupements différents, 1 si elles sont classées dans le même). Ces paires sont comptabilisées dans un tableau de contingence; l'indice de Rand est le taux de bonne classification.
 #' @param x vecteur d'étiquettes A
 #' @param y vecteur d'étiquettes B

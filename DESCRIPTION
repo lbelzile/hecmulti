@@ -1,7 +1,7 @@
 Package: hecmulti
 Type: Package
 Title: Matériel de cours pour Analyse multidimensionnelle appliquée
-Version: 2023.11.19
+Version: 2024.04.23
 Author: Leo Belzile
 Maintainer: Leo Belzile <leo.belzile@hec.ca>
 Description: Jeux de données et fonctions pour le cours
@@ -24,5 +24,5 @@ Suggests:
     psych,
     cluster
 URL: https://github.com/lbelzile/hecmulti
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
 VignetteBuilder: knitr
