@@ -1,0 +1,149 @@
+# Analyse multidimensionnelle appliquée
+
+Ce paquet **R** contient des fonctions et les jeux de données du cours
+MATH 60602 - Analyse multidimensionnelle appliquée à HEC Montréal.
+
+Vous pouvez installer le paquet à partir de Github à l’aide des
+commandes suivantes après avoir installé `remotes`:
+
+``` r
+
+# install.packages("remotes")
+remotes::install_github("lbelzile/hecmulti")
+```
+
+# Index du paquet
+
+## Toutes les fonctions
+
+- [`aapl`](https://lbelzile.github.io/hecmulti/reference/aapl.md) : Prix
+  de l'action Apple
+- [`abonnement`](https://lbelzile.github.io/hecmulti/reference/abonnement.md)
+  : Abonnement de télécommunications
+- [`aerien`](https://lbelzile.github.io/hecmulti/reference/aerien.md) :
+  Enquête de satisfaction d'une compagnie aérienne
+- [`ajustement_factanal()`](https://lbelzile.github.io/hecmulti/reference/ajustement_factanal.md)
+  : Critères d'information pour analyse factorielle
+- [`alphaC()`](https://lbelzile.github.io/hecmulti/reference/alphaC.md)
+  : Alpha de Cronbach
+- [`avarice`](https://lbelzile.github.io/hecmulti/reference/avarice.md)
+  : Échelles d'avarice
+- [`bartlettcorr_factanal()`](https://lbelzile.github.io/hecmulti/reference/bartlettcorr_factanal.md)
+  : Correction de Bartlett pour analyse factorielle
+- [`biere`](https://lbelzile.github.io/hecmulti/reference/biere.md) :
+  Classement de bières
+- [`bjffacto`](https://lbelzile.github.io/hecmulti/reference/bjffacto.md)
+  : Douleur comme liant social
+- [`calibration()`](https://lbelzile.github.io/hecmulti/reference/calibration.md)
+  : Test de calibration de Spiegelhalter
+- [`chaussures`](https://lbelzile.github.io/hecmulti/reference/chaussures.md)
+  : Ventes d'un magasin de chaussures
+- [`chomage`](https://lbelzile.github.io/hecmulti/reference/chomage.md)
+  : Étude sur le chômage
+- [`coefscore_factanal()`](https://lbelzile.github.io/hecmulti/reference/coefscore_factanal.md)
+  : Coefficients du score pour analyse factorielle
+- [`colinearite`](https://lbelzile.github.io/hecmulti/reference/colinearite.md)
+  : Données colinéaires
+- [`college`](https://lbelzile.github.io/hecmulti/reference/college.md)
+  : Admission dans un collège
+- [`compinvest`](https://lbelzile.github.io/hecmulti/reference/compinvest.md)
+  : Étude sur le comportement d'investisseurs
+- [`courbe_lift()`](https://lbelzile.github.io/hecmulti/reference/courbe_lift.md)
+  : Courbe lift
+- [`courbe_roc()`](https://lbelzile.github.io/hecmulti/reference/courbe_roc.md)
+  : Fonction d'efficacité du récepteur
+- [`creation_echelles()`](https://lbelzile.github.io/hecmulti/reference/creation_echelles.md)
+  : Création d'échelles
+- [`dbm`](https://lbelzile.github.io/hecmulti/reference/dbm.md) : Envoi
+  de catalogue
+- [`dbm_manquantes`](https://lbelzile.github.io/hecmulti/reference/dbm_manquantes.md)
+  : Envoi de catalogue
+- [`dons`](https://lbelzile.github.io/hecmulti/reference/dons.md) : Dons
+  à un organisme de charité
+- [`eboulis()`](https://lbelzile.github.io/hecmulti/reference/eboulis.md)
+  : Diagramme d'éboulis
+- [`electionsqc`](https://lbelzile.github.io/hecmulti/reference/electionsqc.md)
+  : Élections générales québécoises
+- [`elnino`](https://lbelzile.github.io/hecmulti/reference/elnino.md) :
+  El Nino
+- [`eval_EQM_regsubsets()`](https://lbelzile.github.io/hecmulti/reference/eval_EQM_regsubsets.md)
+  : Calcul de la racine de l'erreur quadratique moyenne
+- [`factocp()`](https://lbelzile.github.io/hecmulti/reference/factocp.md)
+  : Analyse factorielle avec composantes principales
+- [`factor`](https://lbelzile.github.io/hecmulti/reference/factor.md) :
+  Étude dans un magasin
+- [`homogeneite()`](https://lbelzile.github.io/hecmulti/reference/homogeneite.md)
+  : Coefficient de détermination (semi-partiel)
+- [`horn_parallele()`](https://lbelzile.github.io/hecmulti/reference/horn_parallele.md)
+  : Critère parallèle de Horn
+- [`junkmail`](https://lbelzile.github.io/hecmulti/reference/junkmail.md)
+  : Pourriels
+- [`lnh`](https://lbelzile.github.io/hecmulti/reference/lnh.md) :
+  Résultats de la LNH, 2021-2022
+- [`lnh_BT`](https://lbelzile.github.io/hecmulti/reference/lnh_BT.md) :
+  Résultats de la LNH, format Bradley-Terry
+- [`logistclient`](https://lbelzile.github.io/hecmulti/reference/logistclient.md)
+  : Promotion de produits
+- [`logit1`](https://lbelzile.github.io/hecmulti/reference/logit1.md) :
+  Recommendation du PRCA
+- [`logit6`](https://lbelzile.github.io/hecmulti/reference/logit6.md) :
+  Données catégorielles et ordinales
+- [`manquantes`](https://lbelzile.github.io/hecmulti/reference/manquantes.md)
+  : Recommendation du PRCA (données manquantes)
+- [`moyenne_modeles_stepAIC()`](https://lbelzile.github.io/hecmulti/reference/moyenne_modeles_stepAIC.md)
+  : Moyenne de modèles avec sélection séquentielle
+- [`multinom`](https://lbelzile.github.io/hecmulti/reference/multinom.md)
+  : Satisfaction par rapport à un produit
+- [`perfo_logistique()`](https://lbelzile.github.io/hecmulti/reference/perfo_logistique.md)
+  : Performance d'un modèle logistique
+- [`polynome`](https://lbelzile.github.io/hecmulti/reference/polynome.md)
+  : Sélection du degré d'un polynôme
+- [`predict(`*`<regsubsets>`*`)`](https://lbelzile.github.io/hecmulti/reference/predict.regsubsets.md)
+  : Prédiction pour regsubsets
+- [`predvc()`](https://lbelzile.github.io/hecmulti/reference/predvc.md)
+  : Prédictions par validation croisée répétée
+- [`rand()`](https://lbelzile.github.io/hecmulti/reference/rand.md) :
+  Indice de Rand
+- [`rc_hclust()`](https://lbelzile.github.io/hecmulti/reference/rc_hclust.md)
+  : Critères de sélection
+- [`regroupements1`](https://lbelzile.github.io/hecmulti/reference/regroupements1.md)
+  : Analyse de regroupement
+- [`renfe`](https://lbelzile.github.io/hecmulti/reference/renfe.md) :
+  Prix de billets de train
+- [`salaireprof`](https://lbelzile.github.io/hecmulti/reference/salaireprof.md)
+  : Discrimination salariale dans un collège
+- [`select_pcoupe()`](https://lbelzile.github.io/hecmulti/reference/select_pcoupe.md)
+  : Sélection du point de coupure selon le gain
+- [`sondage`](https://lbelzile.github.io/hecmulti/reference/sondage.md)
+  : Données de sondage sans valeurs manquantes
+- [`sondage_entreprise`](https://lbelzile.github.io/hecmulti/reference/sondage_entreprise.md)
+  : Sondage de satisfaction en entreprise
+- [`sondage_manquantes`](https://lbelzile.github.io/hecmulti/reference/sondage_manquantes.md)
+  : Données de sondage avec valeurs manquantes
+- [`survie1`](https://lbelzile.github.io/hecmulti/reference/survie1.md)
+  : Temps d'abonnement
+- [`survie2`](https://lbelzile.github.io/hecmulti/reference/survie2.md)
+  : Profils de clients
+- [`survie3`](https://lbelzile.github.io/hecmulti/reference/survie3.md)
+  : Temps d'abonnement avec changement de forfait
+- [`survie4`](https://lbelzile.github.io/hecmulti/reference/survie4.md)
+  : Temps d'abonnement (risques compétitifs)
+- [`tisupport`](https://lbelzile.github.io/hecmulti/reference/tisupport.md)
+  : Billets pour soutien TI
+- [`visaechelles`](https://lbelzile.github.io/hecmulti/reference/visaechelles.md)
+  : Analyse factorielle des données bancaires
+- [`visalogist`](https://lbelzile.github.io/hecmulti/reference/visalogist.md)
+  : Données bancaires (régression logistique)
+- [`visaprem`](https://lbelzile.github.io/hecmulti/reference/visaprem.md)
+  : Données bancaires
+- [`visapromo`](https://lbelzile.github.io/hecmulti/reference/visapromo.md)
+  : Données bancaires avec offre promotionnelle
+- [`vote`](https://lbelzile.github.io/hecmulti/reference/vote.md) :
+  Participation électorale américaine
+
+# Articles
+
+### Tous les articles
+
+- [Analyse
+  factorielle](https://lbelzile.github.io/hecmulti/articles/analyse_factorielle.md):

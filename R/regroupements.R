@@ -14,34 +14,39 @@
 #' \item{\code{Rcsp}}{critère du R-carré semi-partiel}
 #'}
 rc_hclust <- function(x, hc, kmax = 10L) {
-  if(is.null(x)){
+  if (is.null(x)) {
     stop("Pas de base de donn\u00e9es fournies.")
   }
   stopifnot(inherits(hc, "hclust"))
-  if(!hc$method %in% c("ward", "ward.D", "ward.D2")){
-    stop("Crit\u00e8re pas pertinent avec la m\u00e9thode choisie: seule la m\u00e9thode de Ward utilise l'homog\u00e9n\u00e9it.")
+  if (!hc$method %in% c("ward", "ward.D", "ward.D2")) {
+    stop(
+      "Crit\u00e8re pas pertinent avec la m\u00e9thode choisie: seule la m\u00e9thode de Ward utilise l'homog\u00e9n\u00e9it\u00e9."
+    )
   }
   # doit être un object de classe hclust
   k <- as.integer(kmax)
   stopifnot(k > 2, nrow(x) >= kmax)
   groups <- cutree(hc, k = seq_len(k))
   TSS <- function(x, g) {
-    sum(aggregate(x, by = list(g), function(x)
-      sum(scale(x, scale = FALSE) ^ 2))[, -1])
+    sum(aggregate(x, by = list(g), function(x) sum(scale(x, scale = FALSE)^2))[,
+      -1
+    ])
   }
-  TSS.all <- apply(groups, 2, function(g)
-    TSS(x, g))
-  data.frame(index = 1:kmax,
-             SCD = TSS.all,
-             Rc = 1 - TSS.all / TSS.all[1],
-             Rcsp = c(-diff(TSS.all) / TSS.all[1], NA))
+  TSS.all <- apply(groups, 2, function(g) TSS(x, g))
+  data.frame(
+    index = 1:kmax,
+    SCD = TSS.all,
+    Rc = 1 - TSS.all / TSS.all[1],
+    Rcsp = c(-diff(TSS.all) / TSS.all[1], NA)
+  )
 }
 
 #' @export
-logLik.kmeans <- function(object, ...){
-  structure(-object$tot.withinss/2,
-            df = length(object$centers),
-            nobs = length(object$cluster)
+logLik.kmeans <- function(object, ...) {
+  structure(
+    -object$tot.withinss / 2,
+    df = length(object$centers),
+    nobs = length(object$cluster)
   )
 }
 
@@ -58,84 +63,99 @@ logLik.kmeans <- function(object, ...){
 #' @param which vecteur d'entiers indiquant quels graphiques imprimer, soit \code{1} pour le diagramme du coefficient de déterminationet \code{2} pour le coefficient de détermination semi-partiel
 #' @return une matrice de deux objets \code{ggplot}
 homogeneite <- function(
-    scd = NULL,
-    rhier = NULL,
-    data = NULL,
-    ngroupes = length(scd),
-    which = 1:2){
+  scd = NULL,
+  rhier = NULL,
+  data = NULL,
+  ngroupes = length(scd),
+  which = 1:2
+) {
   ngroupes <- as.integer(ngroupes)
-  stopifnot(length(ngroupes) == 1L,
-            ngroupes > 1)
-# Méthodes pour hclust
-if(!is.null(rhier)){
-  if(is.null(data)){
-    stop("Argument \"data\" manquant.")
+  stopifnot(length(ngroupes) == 1L, ngroupes > 1)
+  # Méthodes pour hclust
+  if (!is.null(rhier)) {
+    if (is.null(data)) {
+      stop("Argument \"data\" manquant.")
+    }
+    df <- rc_hclust(
+      x = data,
+      hc = rhier,
+      kmax = ngroupes
+    )
+  } else {
+    if (is.null(scd)) {
+      stop(
+        "Vecteur de la somme du carr\u00e9 des distances (intra-groupes) manquant."
+      )
+    }
+    stopifnot(ngroupes == length(scd))
+    sctotal <- scd[1]
+    df <- data.frame(
+      index = seq_len(ngroupes),
+      SCD = scd,
+      Rc = 1 - scd / sctotal,
+      Rcsp = c(-diff(scd) / sctotal, NA)
+    )
   }
-  df <- rc_hclust(
-    x = data,
-    hc = rhier,
-    kmax = ngroupes)
-} else{
-  if(is.null(scd)){
-    stop("Vecteur de la somme du carr\u00e9 des distances (intra-groupes) manquant.")
-  }
-  stopifnot(ngroupes == length(scd))
-  sctotal <- scd[1]
-   df <- data.frame(
-    index = seq_len(ngroupes),
-    SCD = scd,
-    Rc = 1 - scd / sctotal ,
-    Rcsp = c(-diff(scd) / sctotal, NA))
-}
-  if(isTRUE(any(df$Rcsp < 0))){
-    stop("Erreur: la somme du carr\u00e9 des distances (intra-groupes) augmente quand le nombre de regroupements augmente!")
+  if (isTRUE(any(df$Rcsp < 0))) {
+    stop(
+      "Erreur: la somme du carr\u00e9 des distances (intra-groupes) augmente quand le nombre de regroupements augmente!"
+    )
   }
 
-g1 <-  ggplot2::ggplot(
-  data = df,
-  mapping = ggplot2::aes(
-    x = .data$index,
-    y = .data$Rc)) +
-  ggplot2::geom_line() +
-  ggplot2::geom_point() +
-  ggplot2::scale_x_continuous(breaks = seq_len(ngroupes)) +
-  ggplot2::scale_y_continuous(
-    limits = c(0,1),
-    expand = c(0,0),
-    breaks = c(0,0.25,0.5,0.75,1),
-    labels = c("0", "0.25", "0.5", "0.75", "1")) +
-  ggplot2::labs(x = "nombre de regroupements",
-                y = "",
-                subtitle = "R carr\u00e9") +
-  ggplot2::theme_classic()
-g2 <-  ggplot2::ggplot(
-  data = df[-nrow(df),],
-  mapping = ggplot2::aes(x = .data$index + 1L,
-                         y = .data$Rcsp)) +
-  ggplot2::geom_line() +
-  ggplot2::geom_point() +
-  ggplot2::scale_x_continuous(
-    breaks = seq_len(ngroupes)) +
-  ggplot2::scale_y_continuous(
-    limits = c(0,1),
-    expand = c(0,0),
-    breaks = c(0,0.25,0.5,0.75,1),
-    labels = c("0", "0.25", "0.5", "0.75", "1")) +
-  ggplot2::labs(x = "nombre de regroupements",
-                y = "",
-                subtitle = "R carr\u00e9 semi-partiel") +
-  ggplot2::theme_classic()
-stopifnot(isTRUE(all(which %in% c(1, 2))))
-if(length(which) == 1){
-  if(which == 1){
-    print(g1)
-  } else if(which == 2){
-    print(g2)
+  g1 <- ggplot2::ggplot(
+    data = df,
+    mapping = ggplot2::aes(
+      x = .data$index,
+      y = .data$Rc
+    )
+  ) +
+    ggplot2::geom_line() +
+    ggplot2::geom_point() +
+    ggplot2::scale_x_continuous(breaks = seq_len(ngroupes)) +
+    ggplot2::scale_y_continuous(
+      limits = c(0, 1),
+      expand = c(0, 0),
+      breaks = c(0, 0.25, 0.5, 0.75, 1),
+      labels = c("0", "0.25", "0.5", "0.75", "1")
+    ) +
+    ggplot2::labs(
+      x = "nombre de regroupements",
+      y = "",
+      subtitle = "R carr\u00e9"
+    ) +
+    ggplot2::theme_classic()
+  g2 <- ggplot2::ggplot(
+    data = df[-nrow(df), ],
+    mapping = ggplot2::aes(x = .data$index + 1L, y = .data$Rcsp)
+  ) +
+    ggplot2::geom_line() +
+    ggplot2::geom_point() +
+    ggplot2::scale_x_continuous(
+      breaks = seq_len(ngroupes)
+    ) +
+    ggplot2::scale_y_continuous(
+      limits = c(0, 1),
+      expand = c(0, 0),
+      breaks = c(0, 0.25, 0.5, 0.75, 1),
+      labels = c("0", "0.25", "0.5", "0.75", "1")
+    ) +
+    ggplot2::labs(
+      x = "nombre de regroupements",
+      y = "",
+      subtitle = "R carr\u00e9 semi-partiel"
+    ) +
+    ggplot2::theme_classic()
+  stopifnot(isTRUE(all(which %in% c(1, 2))))
+  if (length(which) == 1) {
+    if (which == 1) {
+      print(g1)
+    } else if (which == 2) {
+      print(g2)
+    }
+  } else {
+    print(patchwork::wrap_plots(list(g1, g2)))
   }
-} else{
-  print(patchwork::wrap_plots(list(g1, g2)))
-}
-return(invisible(df))
+  return(invisible(df))
 }
 
 
@@ -146,10 +166,10 @@ return(invisible(df))
 #' @param y vecteur d'étiquettes B
 #' @export
 #' @importFrom cluster daisy
-rand <- function(x, y){
-# x et y sont des étiquettes
-stopifnot(length(x) == length(y))
-dx <- cluster::daisy(x = data.frame(x = factor(x)), metric = "gower")
-dy <- cluster::daisy(x = data.frame(x = factor(y)), metric = "gower")
-mean(dx == dy)
+rand <- function(x, y) {
+  # x et y sont des étiquettes
+  stopifnot(length(x) == length(y))
+  dx <- cluster::daisy(x = data.frame(x = factor(x)), metric = "gower")
+  dy <- cluster::daisy(x = data.frame(x = factor(y)), metric = "gower")
+  mean(dx == dy)
 }
