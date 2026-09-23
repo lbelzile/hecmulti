@@ -2,6 +2,14 @@
 
 ## Toutes les fonctions
 
+- [`AIC(`*`<regsubsets>`*`)`](https://lbelzile.github.io/hecmulti/reference/AIC.regsubsets.md)
+  : Critère d'information d'Akaike
+- [`AIC(`*`<summary.regsubsets>`*`)`](https://lbelzile.github.io/hecmulti/reference/AIC.summary.regsubsets.md)
+  : Critère d'information AIC
+- [`BIC(`*`<regsubsets>`*`)`](https://lbelzile.github.io/hecmulti/reference/BIC.regsubsets.md)
+  : Critère d'information BIC
+- [`BIC(`*`<summary.regsubsets>`*`)`](https://lbelzile.github.io/hecmulti/reference/BIC.summary.regsubsets.md)
+  : Critère d'information BIC
 - [`aapl`](https://lbelzile.github.io/hecmulti/reference/aapl.md) : Prix
   de l'action Apple
 - [`abonnement`](https://lbelzile.github.io/hecmulti/reference/abonnement.md)
@@ -36,6 +44,8 @@
   : Étude sur le comportement d'investisseurs
 - [`courbe_lift()`](https://lbelzile.github.io/hecmulti/reference/courbe_lift.md)
   : Courbe lift
+- [`courbe_pr()`](https://lbelzile.github.io/hecmulti/reference/courbe_pr.md)
+  : Courbe précision rappel
 - [`courbe_roc()`](https://lbelzile.github.io/hecmulti/reference/courbe_roc.md)
   : Fonction d'efficacité du récepteur
 - [`creation_echelles()`](https://lbelzile.github.io/hecmulti/reference/creation_echelles.md)

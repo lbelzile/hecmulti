@@ -35,10 +35,14 @@ une base de données avec les composantes suivantes:
 
 - `pcorrect`: taux de bonne classification
 
-- `sensi`: sensibilité
+- `sensi`: sensibilité ou rappel
 
 - `speci`: spécificité
 
 - `fpos`: taux de faux positifs
 
 - `fneg`: taux de faux négatifs
+
+- `prec`: précision
+
+- `F1`: score F1, moyenne géométrique du rappel et de la précision

@@ -5,7 +5,7 @@ Cette fonction retourne le critère d'information BIC
 ## Utilisation
 
 ``` r
-# Méthode S3 pour summary.regsubsets
+# Méthode S3 pour la classe summary.regsubsets
 BIC(object, ...)
 ```
 

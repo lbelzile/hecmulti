@@ -7,7 +7,7 @@ modèles de 1 à `nvmax` variables sont retournés.
 ## Utilisation
 
 ``` r
-# Méthode S3 pour summary.regsubsets
+# Méthode S3 pour la classe summary.regsubsets
 AIC(object, ..., k = 2)
 ```
 

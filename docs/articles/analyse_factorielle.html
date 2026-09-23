@@ -248,31 +248,31 @@ facteurs. Si on extrait les cinq premières composantes principales et
 qu’on effectue une rotation varimax, on recouvre le modèle d’analyse
 factorielle avec cinq facteurs.</p>
 <p>La décomposition en vecteurs propres de la matrice de covariance est
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐒</mi><mo>=</mo><mi>𝐐</mi><mi>𝚲</mi><msup><mi>𝐐</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\boldsymbol{S} = \boldsymbol{Q}\boldsymbol{\Lambda}\boldsymbol{Q}^{-1}</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="bold-italic">𝑺</mi><mo>=</mo><mi mathvariant="bold-italic">𝑸</mi><mi mathvariant="bold">𝚲</mi><msup><mi mathvariant="bold-italic">𝑸</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\boldsymbol{S} = \boldsymbol{Q}\boldsymbol{\Lambda}\boldsymbol{Q}^{-1}</annotation></semantics></math>,
 où
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐐</mi><annotation encoding="application/x-tex">\boldsymbol{Q}</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="bold-italic">𝑸</mi><annotation encoding="application/x-tex">\boldsymbol{Q}</annotation></semantics></math>
 est la matrice
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>×</mo><mi>p</mi></mrow><annotation encoding="application/x-tex">p \times p</annotation></semantics></math>
 de vecteurs propres et
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝚲</mi><annotation encoding="application/x-tex">\boldsymbol{\Lambda}</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="bold">𝚲</mi><annotation encoding="application/x-tex">\boldsymbol{\Lambda}</annotation></semantics></math>
 une matrice diagonale contenant les valeurs propres (ordonnées de la
 plus grande à la plus petite). L’analyse en composantes principales
 revient à conserver uniquement les
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
 premières composantes, d’où une racine avec
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐐</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo></mrow></msub><msubsup><mi>𝚲</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msubsup></mrow><annotation encoding="application/x-tex">\boldsymbol{Q}_{(k)}\boldsymbol{\Lambda}_{(k)}^{1/2}</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="bold-italic">𝑸</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo></mrow></msub><msubsup><mi mathvariant="bold">𝚲</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msubsup></mrow><annotation encoding="application/x-tex">\boldsymbol{Q}_{(k)}\boldsymbol{\Lambda}_{(k)}^{1/2}</annotation></semantics></math>
 où
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐐</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo></mrow></msub><annotation encoding="application/x-tex">\boldsymbol{Q}_{(k)}</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="bold-italic">𝑸</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo></mrow></msub><annotation encoding="application/x-tex">\boldsymbol{Q}_{(k)}</annotation></semantics></math>
 est une matrice
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>×</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">p \times k</annotation></semantics></math>
 avec les
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
 premiers vecteurs propres et
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝚲</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\boldsymbol{\Lambda}_{k}</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="bold">𝚲</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\boldsymbol{\Lambda}_{k}</annotation></semantics></math>
 la sous-matrice
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>×</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">k \times k</annotation></semantics></math>
 de
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝚲</mi><annotation encoding="application/x-tex">\boldsymbol{\Lambda}</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="bold">𝚲</mi><annotation encoding="application/x-tex">\boldsymbol{\Lambda}</annotation></semantics></math>
 contenant les
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
 plus grandes valeurs propres. Il suffit ensuite de calculer la rotation
