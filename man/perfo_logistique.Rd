@@ -20,10 +20,12 @@ une base de données avec les composantes suivantes:
 \item{\code{FP}: }{faux positifs}
 \item{\code{FN}: }{faux négatifs}
 \item{\code{pcorrect}: }{taux de bonne classification}
-\item{\code{sensi}: }{sensibilité}
+\item{\code{sensi}: }{sensibilité ou rappel}
 \item{\code{speci}: }{spécificité}
 \item{\code{fpos}: }{taux de faux positifs}
 \item{\code{fneg}: }{taux de faux négatifs}
+\item{\code{prec}: }{précision}
+\item{\code{F1}: }{score F1, moyenne géométrique du rappel et de la précision}
 }
 }
 \description{
